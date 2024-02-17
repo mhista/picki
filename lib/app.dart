@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pickafrika/features/authentication/screens/onboarding.dart';
+import 'package:pickafrika/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:pickafrika/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
