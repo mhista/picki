@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-class THttpHelper {
+class PHttpHelper {
   static const String _baseUrl = 'https://your-api-base-url.com';
 
   // helper method to make get request

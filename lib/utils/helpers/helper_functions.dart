@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class THelperFunctions {
+class PHelperFunctions {
   static Color? getColor(String value) {
     // define your product specific colors here and it will the attribute colors and show specific color
 

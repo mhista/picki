@@ -1,11 +1,11 @@
-class TImages {
+class PImages {
   //  App Logos
-  static const String darkAppLogo = 'assets/images/p black.png';
+  static const String appLogo = 'assets/images/logo_images/p black resized.png';
   static const String lightAppLogo = 'assets/images/p white.png';
 
 //   Social Logos
-  static const String google = 'assets/images/google.png';
-  static const String facebook = 'assets/images/facebook.png';
+  static const String google = 'assets/images/logo_images/google-icon.png';
+  static const String facebook = 'assets/images/logo_images/facebook-icon.png';
 
   // onboarding images
 

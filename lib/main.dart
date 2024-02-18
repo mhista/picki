@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pickafrika/app.dart';
-import 'package:pickafrika/utils/theme/theme.dart';
 
 void main() {
   // Todo: Add Widgets Binding
@@ -11,4 +10,3 @@ void main() {
 
   runApp(const App());
 }
-

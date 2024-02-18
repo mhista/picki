@@ -51,6 +51,7 @@ flutter:
 #------------------------------LOCAL ASSETS-----------------------------
   assets:
     - assets/images/
+    - assets/images/logo_images/
     - assets/images/onboarding_images/
     - assets/logos/
     # - assets/icons/

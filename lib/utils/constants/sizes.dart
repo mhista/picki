@@ -1,4 +1,4 @@
-class TSizes {
+class PSizes {
   // padding and margin sizes
 
   static const double xs = 4.0;
@@ -32,7 +32,7 @@ class TSizes {
 // default spacing between sections
   static const double defaultSpace = 24.0;
   static const double spaceBtwItems = 16.0;
-  static const double spaceBtwSections = 4.0;
+  static const double spaceBtwSections = 20.0;
 
 //   border radius
   static const double borderRadiusSm = 4.0;
@@ -49,7 +49,7 @@ class TSizes {
 
 //   input field
   static const double inputFieldRadius = 12.0;
-  static const double spaceBtwInputFields = 16.0;
+  static const double spaceBtwInputFields = 15.0;
 
 //   card sizes
   static const double cardRadiusLg = 16.0;
