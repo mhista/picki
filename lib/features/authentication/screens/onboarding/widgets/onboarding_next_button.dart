@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/colors.dart';
@@ -24,7 +25,7 @@ class OnBoardingNextButton extends StatelessWidget {
           shape: const CircleBorder(),
           backgroundColor: isDark ? PColors.primary : Colors.black,
         ),
-        child: const Icon(Iconsax.arrow_right_3),
+        child: const Icon(FontAwesomeIcons.arrowRight),
       ),
     );
   }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/features/authentication/screens/signup/verify_email.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import 'terms_and_conditions_checkbox.dart';
 
 class PSignupForm extends StatelessWidget {
   const PSignupForm({
@@ -85,47 +88,7 @@ class PSignupForm extends StatelessWidget {
             height: PSizes.spaceBtwSections,
           ),
           // Terms and condition
-          Row(
-            children: [
-              SizedBox(
-                width: 24,
-                height: 24,
-                child: Checkbox(
-                  value: true,
-                  onChanged: (vaalue) {},
-                ),
-              ),
-              const SizedBox(
-                width: PSizes.spaceBtwItems,
-              ),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                        text: '${PTexts.iAgreeTo} ',
-                        style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(
-                        text: '${PTexts.privacyPolicy} ',
-                        style: Theme.of(context).textTheme.bodyMedium!.apply(
-                            color: isDark ? PColors.white : PColors.primary,
-                            decorationColor:
-                                isDark ? PColors.white : PColors.primary,
-                            decoration: TextDecoration.underline)),
-                    TextSpan(
-                        text: '${PTexts.and} ',
-                        style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(
-                        text: '${PTexts.termsOfUse} ',
-                        style: Theme.of(context).textTheme.bodyMedium!.apply(
-                            color: isDark ? PColors.white : PColors.primary,
-                            decorationColor:
-                                isDark ? PColors.white : PColors.primary,
-                            decoration: TextDecoration.underline)),
-                  ],
-                ),
-              )
-            ],
-          ),
+          const PTermsAndConditions(),
           const SizedBox(
             height: PSizes.spaceBtwSections,
           ),
@@ -134,7 +97,7 @@ class PSignupForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               child: const Text(PTexts.createAccount),
-              onPressed: () {},
+              onPressed: () => Get.to(() => const VerifyEmailScreen()),
             ),
           )
         ],

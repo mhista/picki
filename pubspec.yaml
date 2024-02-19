@@ -30,6 +30,7 @@ dependencies:
   get_storage: ^2.1.1
   flutter_native_splash: ^2.3.11
   smooth_page_indicator: ^1.1.0
+  font_awesome_flutter: ^10.7.0
   
 
 #PRODUCT SPECIFIC
@@ -51,6 +52,7 @@ flutter:
 #------------------------------LOCAL ASSETS-----------------------------
   assets:
     - assets/images/
+    - assets/images/animations/
     - assets/images/logo_images/
     - assets/images/onboarding_images/
     - assets/logos/

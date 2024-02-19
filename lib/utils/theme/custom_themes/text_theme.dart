@@ -21,9 +21,9 @@ class TTextTheme {
       bodyLarge: const TextStyle().copyWith(
           fontSize: 14.0, fontWeight: FontWeight.w500, color: PColors.dark),
       bodyMedium: const TextStyle().copyWith(
-          fontSize: 12.0, fontWeight: FontWeight.normal, color: PColors.dark),
+          fontSize: 14.0, fontWeight: FontWeight.normal, color: PColors.dark),
       bodySmall: const TextStyle().copyWith(
-          fontSize: 14.0,
+          fontSize: 12.0,
           fontWeight: FontWeight.w500,
           color: PColors.dark.withOpacity(0.5)),
       labelLarge: const TextStyle().copyWith(

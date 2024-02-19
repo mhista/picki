@@ -8,8 +8,8 @@ import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/constants/text_strings.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
-import '../../../../common/widgets.login_signup/form_divider.dart';
-import '../../../../common/widgets.login_signup/social_button.dart';
+import '../../../../common/widgets/signup_login/form_divider.dart';
+import '../../../../common/widgets/signup_login/social_button.dart';
 import 'widgets/login_form.dart';
 import 'widgets/login_header.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pickafrika/common/widgets.login_signup/form_divider.dart';
-import 'package:pickafrika/common/widgets.login_signup/social_button.dart';
+import 'package:pickafrika/common/widgets/signup_login/form_divider.dart';
+import 'package:pickafrika/common/widgets/signup_login/social_button.dart';
 import 'package:pickafrika/utils/constants/text_strings.dart';
 
-import '../../../../../utils/constants/sizes.dart';
-import 'signup_form.dart';
+import '../../../../utils/constants/sizes.dart';
+import 'widgets/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});

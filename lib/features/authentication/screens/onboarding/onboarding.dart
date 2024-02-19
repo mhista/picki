@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:pickafrika/features/authentication/screens/onboarding/widgets/onboardingskip.dart';
-import 'package:pickafrika/utils/constants/colors.dart';
-import 'package:pickafrika/utils/constants/image_strings.dart';
-import 'package:pickafrika/utils/constants/text_strings.dart';
-import 'package:pickafrika/utils/device/device_utility.dart';
-import 'package:pickafrika/utils/helpers/helper_functions.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../controllers.onboarding/onboarding_controller.dart';
 import 'widgets/onboarding_next_button.dart';
 import 'widgets/onboardingnavigationdot.dart';
 import 'widgets/onboardingpage.dart';
+import 'widgets/onboardingskip.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

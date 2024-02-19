@@ -18,10 +18,10 @@ class PTexts {
   static const String onBoardingSubTitle2 =
       "For Seamless Transaction, Choose Your Payment Path - Your Convenience, Our Priority";
   static const String onBoardingSubTitle3 =
-      "FrommOur Doorstep to Yours - Swift, Secure, and Contactless Delivery";
+      "From Our Doorstep to Yours - Swift, Secure, and Contactless Delivery";
 
 // home
-  static const String homeAppBarTitle = "What are you Shopping today";
+  static const String homeAppBarTitle = "Shopping made easy today";
   static const String homeAppBarSubTitle = "Diwe Innocent";
 
   // Authentication
@@ -52,7 +52,7 @@ class PTexts {
   static const String signUpTitle = "Let's Create Your Account";
   static const String forgetPasswordTitle = "Forget Pasword";
   static const String forgetPasswordSubtitle =
-      "Don't worry, people forget too, enter your valid and we will send you a password reset link";
+      "Don't worry, people forget too, enter your valid email and we will send you a password reset link";
   static const String changePasswordTitle = "Password reset email sent";
   static const String changePasswordSubtitle =
       "The security of your account is our priority, we've sent you a secure link to safely change your password and keep your account protected";
@@ -61,8 +61,7 @@ class PTexts {
       "Congrats your Account awaits: Verify your email to start shopping and experience a world of unrivaled deals and Experience";
   static const String emailNotReceivedMessage =
       "Didn't get the email? check your spam or resend it";
-  static const String accountCreatedTitle =
-      "Your account was successfully created";
+  static const String accountCreatedTitle = "Account successfully created!";
   static const String accountCreatedSubtitle =
       "Welcome to your best shopping destination, your account is created. Unleashe the joy of seamless online shopping";
 }

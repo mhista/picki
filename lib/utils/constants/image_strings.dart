@@ -15,4 +15,10 @@ class PImages {
       'assets/images/onboarding_images/sammy-line-sailor-on-mast.gif';
   static const String onBoardingImage2 =
       'assets/images/onboarding_images/sammy-line-woman-in-shopping-cart.gif';
+
+  // other images
+  static const String successImage =
+      'assets/images/animations/clapping-pple.png';
+  static const String emailDeliveredImage =
+      'assets/images/animations/sammy-email.png';
 }

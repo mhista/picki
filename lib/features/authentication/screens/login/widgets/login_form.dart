@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/features/authentication/screens/password_config/forget_password.dart';
+import 'package:pickafrika/navigation_menu.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -52,7 +54,7 @@ class PLoginForm extends StatelessWidget {
                 ),
                 // forget password
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => const ForgetPasswordScreen()),
                   child: const Text(PTexts.forgetPassword),
                 )
               ],
@@ -64,7 +66,7 @@ class PLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(const NavigationMenu()),
                 child: const Text(PTexts.signIn),
               ),
             ),
