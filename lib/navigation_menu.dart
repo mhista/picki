@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'features/shop/screens/home/widgets/home.dart';
+import 'features/shop/screens/home/home.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 

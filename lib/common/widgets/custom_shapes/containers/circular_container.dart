@@ -9,6 +9,7 @@ class PCircularContainer extends StatelessWidget {
     this.height = 400,
     this.radius = 400,
     this.padding = 0,
+    this.margin,
     this.backgroundColor = PColors.white,
     this.child,
   });
@@ -16,15 +17,19 @@ class PCircularContainer extends StatelessWidget {
   final double radius, padding;
   final Color backgroundColor;
   final Widget? child;
+  final EdgeInsets? margin;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       height: height,
       padding: EdgeInsets.all(padding),
+      margin: margin,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
-          color: backgroundColor.withOpacity(0.1)),
+          color: backgroundColor == PColors.white
+              ? backgroundColor.withOpacity(0.1)
+              : backgroundColor),
       child: child,
     );
   }

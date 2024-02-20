@@ -17,7 +17,7 @@ class PPrimaryHeaderContainer extends StatelessWidget {
         color: PColors.primary,
         padding: const EdgeInsets.all(0),
         child: SizedBox(
-          height: 400,
+          height: 350,
           child: Stack(
             children: [
               /// --Background custom shapes

@@ -8,4 +8,9 @@ class PSpacingStyle {
       left: PSizes.defaultSpace,
       bottom: PSizes.defaultSpace,
       right: PSizes.defaultSpace);
+  static const EdgeInsetsGeometry carouselPadding = EdgeInsets.only(
+      top: PSizes.borderRadiusLg,
+      left: PSizes.defaultSpace,
+      bottom: PSizes.defaultSpace,
+      right: PSizes.defaultSpace);
 }

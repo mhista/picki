@@ -31,6 +31,7 @@ dependencies:
   flutter_native_splash: ^2.3.11
   smooth_page_indicator: ^1.1.0
   font_awesome_flutter: ^10.7.0
+  carousel_slider: ^4.2.1
   
 
 #PRODUCT SPECIFIC
@@ -53,7 +54,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/animations/
+    - assets/images/banners/
     - assets/images/logo_images/
+    - assets/images/categories/
     - assets/images/onboarding_images/
     - assets/logos/
     # - assets/icons/
