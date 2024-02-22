@@ -1,18 +1,17 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:pickafrika/common/styles/spacing_styles.dart';
-import 'package:pickafrika/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/images/edge_rounded_images.dart';
+import '../../../../common/widgets/layouts/gid_layout.dart';
+import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
+import 'widgets/home_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -66,40 +65,33 @@ class HomeScreen extends StatelessWidget {
             ),
             // BODY PART
             Padding(
-              padding: PSpacingStyle.carouselPadding,
+              padding: const EdgeInsets.all(PSizes.buttonWidth),
               child: Column(
                 children: [
-                  CarouselSlider(
-                    items: const [
-                      PRoundedImage(
-                        imageUrl: PImages.promoBanner1,
-                      ),
-                      PRoundedImage(
-                        imageUrl: PImages.promoBanner2,
-                      ),
-                      PRoundedImage(
-                        imageUrl: PImages.promoBanner3,
-                      ),
+                  const PPromoSlider(
+                    banners: [
+                      PImages.promoBanner1,
+                      PImages.promoBanner2,
+                      PImages.promoBanner3,
                     ],
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                    ),
                   ),
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      for (int i = 0; i < 3; i++)
-                        const PCircularContainer(
-                          margin: EdgeInsets.only(right: 10),
-                          width: 20,
-                          height: 4,
-                          backgroundColor: Colors.green,
-                        ),
-                    ],
-                  )
+                  // Popular Products
+
+                  // HEADING SECTION
+                  PSectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () {},
+                  ),
+                  const SizedBox(
+                    height: PSizes.spaceBtwItems,
+                  ),
+                  PGridLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => const PProductCardVertical(),
+                  ),
                 ],
               ),
             )
@@ -109,3 +101,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+// (_, index) => const PProductCardVertical()

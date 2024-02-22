@@ -58,6 +58,13 @@ flutter:
     - assets/images/logo_images/
     - assets/images/categories/
     - assets/images/onboarding_images/
+    - assets/images/products/
+    - assets/images/products/autoparts/
+    - assets/images/products/chairs/
+    - assets/images/products/female/
+    - assets/images/products/men/
+    - assets/images/products/shoe/
+    - assets/images/products/jewelery/
     - assets/logos/
     # - assets/icons/
 
