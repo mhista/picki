@@ -4,12 +4,14 @@ import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/styles/shadows.dart';
 import 'package:pickafrika/common/widgets/images/edge_rounded_images.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
+import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../icons/circular_icon.dart';
+import '../../texts/brand_text_title_with_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
@@ -28,21 +30,20 @@ class PProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
             boxShadow: [PShadowStyle.verticalProductShadow],
             borderRadius: BorderRadius.circular(PSizes.productImageRadius),
-            color: isDark ? PColors.darkGrey : PColors.white),
+            color: isDark ? PColors.darkerGrey : PColors.white),
         child: Column(
           //Thumbnail. wishlist button, discount tag
           children: [
             PRoundedContainer(
               height: 175,
               padding: const EdgeInsets.all(PSizes.sm),
-              backgroundColor: isDark ? PColors.darkerGrey : PColors.white,
+              backgroundColor: isDark ? PColors.black : PColors.white,
               child: Stack(
                 children: [
                   PRoundedImage(
                     imageUrl: PImages.productShoe3,
                     applyImageRadius: true,
-                    backgroundColor:
-                        isDark ? PColors.darkerGrey : PColors.white,
+                    backgroundColor: isDark ? PColors.black : PColors.white,
                   ),
                   Positioned(
                     top: 10,
@@ -75,34 +76,20 @@ class PProductCardVertical extends StatelessWidget {
               height: PSizes.spaceBtwItems / 2,
             ),
             // Details of product
-            Padding(
-              padding: const EdgeInsets.only(left: PSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: PSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const ProductTitleText(
+                  ProductTitleText(
                     title: 'White Air Jordan Shoes',
                     smallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: PSizes.spaceBtwItems / 2,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        width: PSizes.xs,
-                      ),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: PColors.primary,
-                        size: PSizes.iconXs,
-                      )
-                    ],
+                  BrandTitleTextWithVerifiedIcon(
+                    title: 'Nike',
                   ),
                 ],
               ),
@@ -121,7 +108,7 @@ class PProductCardVertical extends StatelessWidget {
                 // ADD TO CAT BUTTON
                 Container(
                   decoration: const BoxDecoration(
-                    color: PColors.dark,
+                    color: PColors.black,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(PSizes.cardRadiusMd),
                       bottomRight: Radius.circular(PSizes.productImageRadius),

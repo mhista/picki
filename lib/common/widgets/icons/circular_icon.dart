@@ -37,7 +37,7 @@ class PCircularIcon extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor ??
               (isDark
-                  ? PColors.black.withOpacity(0.9)
+                  ? PColors.dark.withOpacity(0.9)
                   : PColors.light.withOpacity(0.9)),
           borderRadius: BorderRadius.circular(100)),
       child: IconButton(

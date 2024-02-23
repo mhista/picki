@@ -24,7 +24,7 @@ class PCartCounterIcon extends StatelessWidget {
           top: 5,
           child: Badge(
             padding: const EdgeInsets.symmetric(horizontal: 5),
-            backgroundColor: PColors.dark.withOpacity(0.7),
+            backgroundColor: PColors.dark.withOpacity(0.8),
             textColor: PColors.white,
             label: const Text(
               '2',
