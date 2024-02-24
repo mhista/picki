@@ -59,6 +59,9 @@ class HomeScreen extends StatelessWidget {
                         PHomeCategories()
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: PSizes.defaultSpace,
                   )
                 ],
               ),

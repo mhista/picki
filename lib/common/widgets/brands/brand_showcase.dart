@@ -43,6 +43,7 @@ class BrandShowcase extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget BrandProductShocaseImage(bool isDark, String image, context) {
     return Expanded(
       child: PRoundedContainer(

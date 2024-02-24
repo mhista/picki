@@ -16,28 +16,25 @@ class PPrimaryHeaderContainer extends StatelessWidget {
       child: Container(
         color: PColors.primary,
         padding: const EdgeInsets.all(0),
-        child: SizedBox(
-          height: 350,
-          child: Stack(
-            children: [
-              /// --Background custom shapes
-              Positioned(
-                top: -150,
-                right: -250,
-                child: PCircularContainer(
-                  backgroundColor: PColors.textWhite.withOpacity(0.1),
-                ),
+        child: Stack(
+          children: [
+            /// --Background custom shapes
+            Positioned(
+              top: -150,
+              right: -250,
+              child: PCircularContainer(
+                backgroundColor: PColors.textWhite.withOpacity(0.1),
               ),
-              Positioned(
-                top: 100,
-                right: -300,
-                child: PCircularContainer(
-                  backgroundColor: PColors.textWhite.withOpacity(0.1),
-                ),
+            ),
+            Positioned(
+              top: 100,
+              right: -300,
+              child: PCircularContainer(
+                backgroundColor: PColors.textWhite.withOpacity(0.1),
               ),
-              child
-            ],
-          ),
+            ),
+            child
+          ],
         ),
       ),
     );

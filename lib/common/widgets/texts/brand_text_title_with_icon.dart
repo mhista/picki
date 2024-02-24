@@ -4,7 +4,6 @@ import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/enums.dart';
 import '../../../utils/constants/sizes.dart';
-import '../products/product_cards/product_card_vertical.dart';
 import 'brand_text_title.dart';
 
 class BrandTitleTextWithVerifiedIcon extends StatelessWidget {

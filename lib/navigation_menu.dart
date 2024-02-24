@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/features/personalization/screens/settings/settings.dart';
+import 'package:pickafrika/features/shop/screens/wishlist/wishlist.dart';
 import 'features/shop/screens/home/home.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
@@ -45,11 +47,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const Store(),
-    Container(
-      color: Colors.pink,
-    ),
-    Container(
-      color: Colors.blue,
-    ),
+    const WishListScreen(),
+    const SettingsScreen()
   ];
 }

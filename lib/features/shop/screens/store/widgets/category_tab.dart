@@ -14,30 +14,40 @@ class CategoryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(PSizes.defaultSpace),
-      child: Column(
-        children: [
-          // BRANDS
-          const BrandShowcase(
-            images: [
-              PImages.productShoe3,
-              PImages.productMen2,
-              PImages.productWomen1
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(PSizes.defaultSpace),
+          child: Column(
+            children: [
+              // BRANDS
+              const BrandShowcase(
+                images: [
+                  PImages.productShoe3,
+                  PImages.productMen2,
+                  PImages.productWomen1
+                ],
+              ),
+
+              PSectionHeading(
+                title: 'You Might Like',
+                onPressed: () {},
+              ),
+              const SizedBox(
+                height: PSizes.spaceBtwItems,
+              ),
+              PGridLayout(
+                  itemCount: 6,
+                  itemBuilder: (_, index) => const PProductCardVertical()),
+              const SizedBox(
+                height: PSizes.spaceBtwSections,
+              ),
             ],
           ),
-          PSectionHeading(
-            title: 'You Might Like',
-            onPressed: () {},
-          ),
-          const SizedBox(
-            height: PSizes.spaceBtwItems,
-          ),
-          PGridLayout(
-              itemCount: 4,
-              itemBuilder: (_, index) => const PProductCardVertical())
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

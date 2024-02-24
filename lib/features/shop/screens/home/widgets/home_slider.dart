@@ -26,6 +26,7 @@ class PPromoSlider extends StatelessWidget {
               )
               .toList(),
           options: CarouselOptions(
+            autoPlay: true,
             viewportFraction: 1,
             onPageChanged: (index, _) => controller.updatePageIndicator(index),
           ),

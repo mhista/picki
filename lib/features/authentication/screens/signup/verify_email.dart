@@ -5,7 +5,6 @@ import 'package:pickafrika/common/widgets/success_screen/success_screen1.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/constants/text_strings.dart';
-import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/emailing/reusable_email.dart';
 import '../login/login.dart';

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/styles/shadows.dart';
 import 'package:pickafrika/common/widgets/images/edge_rounded_images.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
-import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
+import '../../../../features/shop/screens/product_details/product_detail.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../icons/circular_icon.dart';
 import '../../texts/brand_text_title_with_icon.dart';
@@ -23,14 +23,14 @@ class PProductCardVertical extends StatelessWidget {
     final isDark = PHelperFunctions.isDarkMode(context);
     // card with side paddings, edges, radius and shadow
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
             boxShadow: [PShadowStyle.verticalProductShadow],
             borderRadius: BorderRadius.circular(PSizes.productImageRadius),
-            color: isDark ? PColors.darkerGrey : PColors.white),
+            color: isDark ? PColors.darkerGrey : PColors.light),
         child: Column(
           //Thumbnail. wishlist button, discount tag
           children: [

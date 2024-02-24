@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/device/device_utility.dart';
+
+import '../../../utils/helpers/helper_functions.dart';
 
 class PAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PAppBar(
@@ -20,6 +23,7 @@ class PAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   @override
   Widget build(BuildContext context) {
+    final isDark = PHelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: PSizes.sm,
@@ -29,7 +33,10 @@ class PAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Iconsax.arrow_left),
+                icon: Icon(
+                  Iconsax.arrow_left,
+                  color: isDark ? PColors.white : PColors.dark,
+                ),
               )
             : leadingIcon != null
                 ? IconButton(

@@ -18,7 +18,7 @@ class PHomeCategories extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return PVerticalImageText(
-            image: PImages.sportIcon,
+            image: PImages.shoeIcon,
             title: 'Shoes',
             onTap: () {},
           );

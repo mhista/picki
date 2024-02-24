@@ -35,6 +35,7 @@ class PRoundedImage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: PSizes.sm),
         child: Container(
+          padding: padding,
           height: height,
           width: width,
           decoration: BoxDecoration(
