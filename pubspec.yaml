@@ -31,10 +31,12 @@ dependencies:
   flutter_native_splash: ^2.3.11
   smooth_page_indicator: ^1.1.0
   font_awesome_flutter: ^10.7.0
-  carousel_slider: ^4.2.1
+  
   
 
 #PRODUCT SPECIFIC
+  carousel_slider: ^4.2.1
+  readmore: ^2.2.0
 
 #----------------------PCKAGES END--------------------------------------
 dev_dependencies:
