@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:pickafrika/features/shop/screens/product_details/widgets/product_attributes.dart';
+import 'package:pickafrika/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
-import 'package:readmore/readmore.dart';
 
+import '../../../../common/widgets/texts/read_more_text.dart';
 import 'widgets/product_image_slider.dart';
 import 'widgets/product_meta_data.dart';
 import 'widgets/rating_and_share.dart';
@@ -58,16 +60,9 @@ class ProductDetailScreen extends StatelessWidget {
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   ),
-                  const ReadMoreText(
-                    'lorem lipsum dolore sicyut uiwh  uihdidcuihdc uihwidkncidc uidhidcnuic uihdneui uiedheuide uiieudejkkdnie eined euidbe ceh ecuincuic  uice cuecbie uuci  ciu ecue euc euc wecuy dcc   wuybeyuee ',
-                    trimLines: 2,
-                    trimMode: TrimMode.Line,
-                    trimCollapsedText: 'Show more',
-                    trimExpandedText: 'Show less',
-                    moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  const PReadMoreText(
+                    text:
+                        'lorem lipsum dolore sicyut uiwh  uihdidcuihdc uihwidkncidc uidhidcnuic uihdneui uiedheuide uiieudejkkdnie eined euidbe ceh ecuincuic  uice cuecbie uuci  ciu ecue euc euc wecuy dcc   wuybeyuee ',
                   ),
                   // REVIEWS
                   const Divider(),
@@ -82,7 +77,8 @@ class ProductDetailScreen extends StatelessWidget {
                         showActionButton: false,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            Get.to(() => const ProductReviewScreen()),
                         icon: const Icon(
                           Iconsax.arrow_right_3,
                           size: 18,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:pickafrika/common/widgets/icons/circular_icon.dart';
+import 'package:pickafrika/common/widgets/products/cart/add_remove_button.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
@@ -27,30 +26,16 @@ class BottomAddToCart extends StatelessWidget {
         children: [
           Row(
             children: [
-              const PCircularIcon(
-                icon: Iconsax.minus,
-                width: 40,
-                height: 40,
-                backgroundColor: PColors.darkGrey,
-                color: PColors.white,
-              ),
-              const SizedBox(
-                width: PSizes.spaceBtwItems,
-              ),
-              Text(
-                '2',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              const SizedBox(
-                width: PSizes.spaceBtwItems,
-              ),
-              const PCircularIcon(
-                icon: Iconsax.add,
-                width: 40,
-                height: 40,
-                backgroundColor: PColors.black,
-                color: PColors.white,
-              ),
+              ProductAddAndRemove(
+                  width: 40,
+                  height: 40,
+                  addColor: PColors.white,
+                  addBgColor: PColors.black,
+                  minusColor: PColors.white,
+                  minusBgColor: PColors.darkGrey,
+                  text: '2',
+                  addOnPressed: () {},
+                  minusOnPressed: () {}),
             ],
           ),
           ElevatedButton(

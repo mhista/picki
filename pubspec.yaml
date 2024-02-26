@@ -37,6 +37,7 @@ dependencies:
 #PRODUCT SPECIFIC
   carousel_slider: ^4.2.1
   readmore: ^2.2.0
+  flutter_rating_bar: ^4.0.1
 
 #----------------------PCKAGES END--------------------------------------
 dev_dependencies:

@@ -5,6 +5,7 @@ import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
+import 'package:pickafrika/features/personalization/screens/address/address.dart';
 import 'package:pickafrika/features/personalization/screens/profile/profile.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
@@ -55,10 +56,12 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   ),
-                  const PSettingsMenuTile(
-                      icon: Iconsax.safe_home,
-                      title: 'My Address',
-                      subtitle: 'Set delivery address'),
+                  PSettingsMenuTile(
+                    icon: Iconsax.safe_home,
+                    title: 'My Address',
+                    subtitle: 'Set delivery address',
+                    onTap: () => Get.to(() => const UserAddressScreen()),
+                  ),
                   const PSettingsMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'My Cart',

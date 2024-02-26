@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/features/shop/screens/cart/cart.dart';
 
-import '../../../utils/constants/colors.dart';
+import '../../../../utils/constants/colors.dart';
 
 class PCartCounterIcon extends StatelessWidget {
-  const PCartCounterIcon(
-      {super.key, required this.onPressed, required this.iconColor});
-  final VoidCallback onPressed;
+  const PCartCounterIcon({super.key, required this.iconColor});
+  // final VoidCallback onPressed;
   final Color iconColor;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => const CartScreen()),
           icon: Icon(
             Iconsax.shopping_bag,
             color: iconColor,

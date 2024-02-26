@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/appbar/appBar.dart';
-import '../../../../../common/widgets/product.carts/cart_menu_icon.dart';
+import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
@@ -32,9 +32,9 @@ class PHomeAppbar extends StatelessWidget {
           ),
         ],
       ),
-      actions: [
+      actions: const [
         PCartCounterIcon(
-          onPressed: () {},
+          // onPressed: () {},
           iconColor: PColors.white,
         )
       ],
