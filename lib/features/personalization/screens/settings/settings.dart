@@ -7,6 +7,8 @@ import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/personalization/screens/address/address.dart';
 import 'package:pickafrika/features/personalization/screens/profile/profile.dart';
+import 'package:pickafrika/features/shop/screens/cart/cart.dart';
+import 'package:pickafrika/features/shop/screens/order/order.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_list.dart';
@@ -62,11 +64,13 @@ class SettingsScreen extends StatelessWidget {
                     subtitle: 'Set delivery address',
                     onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
-                  const PSettingsMenuTile(
+                  PSettingsMenuTile(
+                      onTap: () => Get.to(() => const CartScreen()),
                       icon: Iconsax.shopping_cart,
                       title: 'My Cart',
                       subtitle: 'Add, remove products and save to checkout'),
-                  const PSettingsMenuTile(
+                  PSettingsMenuTile(
+                      onTap: () => Get.to(() => const OrderScreen()),
                       icon: Iconsax.bag_tick,
                       title: 'My Orders',
                       subtitle: 'View All completed and incompleted orders'),
