@@ -13,4 +13,9 @@ class PSpacingStyle {
       left: PSizes.defaultSpace,
       bottom: PSizes.defaultSpace,
       right: PSizes.defaultSpace);
+  static const EdgeInsetsGeometry successScreenPadding = EdgeInsets.only(
+      top: PSizes.appBarHeight * 1.5,
+      left: PSizes.defaultSpace,
+      bottom: PSizes.defaultSpace,
+      right: PSizes.defaultSpace);
 }

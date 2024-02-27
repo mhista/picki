@@ -35,7 +35,7 @@ class PTermsAndConditions extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall),
               TextSpan(
                   text: '${PTexts.privacyPolicy} ',
-                  style: Theme.of(context).textTheme.bodyMedium!.apply(
+                  style: Theme.of(context).textTheme.labelLarge!.apply(
                       color: isDark ? PColors.white : PColors.primary,
                       decorationColor: isDark ? PColors.white : PColors.primary,
                       decoration: TextDecoration.underline)),
@@ -44,7 +44,7 @@ class PTermsAndConditions extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall),
               TextSpan(
                   text: '${PTexts.termsOfUse} ',
-                  style: Theme.of(context).textTheme.bodyMedium!.apply(
+                  style: Theme.of(context).textTheme.labelLarge!.apply(
                       color: isDark ? PColors.white : PColors.primary,
                       decorationColor: isDark ? PColors.white : PColors.primary,
                       decoration: TextDecoration.underline)),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/texts/product_price_text.dart';
+import 'package:pickafrika/features/shop/screens/checkout/checkout.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/products/cart/add_remove_button.dart';
 import '../../../../common/widgets/products/cart/cart_item.dart';
 import '../../../../utils/constants/colors.dart';
+import 'widgets/cart_items.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -23,55 +26,13 @@ class CartScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(PSizes.defaultSpace),
-        child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (_, index) => Column(
-                  children: [
-                    const CartItem(),
-                    const SizedBox(
-                      height: PSizes.spaceBtwItems,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            // extra space
-                            const SizedBox(
-                              width: 89,
-                            ),
-                            // ADD AND REMOVE BUTTONS
-                            ProductAddAndRemove(
-                              width: 32,
-                              height: 32,
-                              addColor: PColors.white,
-                              addBgColor: PColors.primary,
-                              minusColor:
-                                  isDark ? PColors.white : PColors.black,
-                              minusBgColor:
-                                  isDark ? PColors.darkerGrey : PColors.light,
-                              text: '2',
-                              addOnPressed: () {},
-                              minusOnPressed: () {},
-                            ),
-                          ],
-                        ),
-                        const ProductPriceText(price: '266')
-                      ],
-                    )
-                  ],
-                ),
-            separatorBuilder: (_, __) => const SizedBox(
-                  height: PSizes.spaceBtwSections,
-                ),
-            itemCount: 10),
-      ),
+      body: const Padding(
+          padding: EdgeInsets.all(PSizes.defaultSpace), child: CartItems()),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(PSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () {}, child: const Text('Checkout \$2700')),
+            onPressed: () => Get.to(() => const CheckoutScreen()),
+            child: const Text('Checkout \$2700')),
       ),
     );
   }

@@ -68,6 +68,7 @@ flutter:
     - assets/images/products/men/
     - assets/images/products/shoe/
     - assets/images/products/jewelery/
+    - assets/icons/payment_methods/
     - assets/logos/
     # - assets/icons/
 

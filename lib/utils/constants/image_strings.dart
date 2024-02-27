@@ -10,17 +10,19 @@ class PImages {
   // ONBOARDING images
 
   static const String onBoardingImage3 =
-      'assets/images/onboarding_images/sammy-line-delivery-with-gps-navigation.gif';
+      'assets/images/onboarding_images/sammy-delivery-with-gps-navigation.gif';
   static const String onBoardingImage1 =
-      'assets/images/onboarding_images/sammy-line-sailor-on-mast.gif';
+      'assets/images/onboarding_images/sammy-sailor.gif';
   static const String onBoardingImage2 =
-      'assets/images/onboarding_images/sammy-line-woman-in-shopping-cart.gif';
+      'assets/images/onboarding_images/sammy-woman.gif';
 
   // other images
   static const String successImage =
-      'assets/images/animations/clapping-pple.png';
+      'assets/images/animations/sammy-man-and-woman.png';
   static const String emailDeliveredImage =
-      'assets/images/animations/sammy-email.png';
+      'assets/images/animations/sammy-man-email.png';
+  static const String orderSuccessful =
+      'assets/images/animations/3d-casual-life.png';
 
   // CATEGORY icon images
   static const String sportIcon =
@@ -160,4 +162,16 @@ class PImages {
   static const String productMen8 = 'assets/images/products/men/ment (2).png';
   static const String productMen9 = 'assets/images/products/men/menw (1).png';
   static const String productMen10 = 'assets/images/products/men/menw (2).png';
+
+  // ICONS
+  static const String paypal = 'assets/icons/payment_methods/paypal.png';
+  static const String applePay = 'assets/icons/payment_methods/apple-pay.png';
+  static const String creditCard =
+      'assets/icons/payment_methods/credit-card.png';
+  static const String mastercard =
+      'assets/icons/payment_methods/mastercard.png';
+  static const String googlePay = 'assets/icons/payment_methods/google-pay.png';
+  static const String paystack = 'assets/icons/payment_methods/paystack.png';
+  static const String paytm = 'assets/icons/payment_methods/paytm.png';
+  static const String visa = 'assets/icons/payment_methods/visa.png';
 }
