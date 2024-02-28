@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "67159247551",
+    "project_id": "pickafrika-24713",
+    "storage_bucket": "pickafrika-24713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67159247551:android:555bbd5bf1ff94a99f540a",
+        "android_client_info": {
+          "package_name": "com.example.pickafrika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67159247551-ktgha7dm34ur34kbv9d6f0ga4beinpc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pickafrika",
+            "certificate_hash": "593e9bc6756b83bac2edb18a414ef2e83ec420eb"
+          }
+        },
+        {
+          "client_id": "67159247551-j3vqggs82d1klsd559atlqi1ose1r51s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWcXooggTpJRTMzb1b55kOmYf5aL7-s48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67159247551-j3vqggs82d1klsd559atlqi1ose1r51s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "67159247551-dd18pahp9c25p2mscadug9rq8ttd4a34.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pickafrika.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

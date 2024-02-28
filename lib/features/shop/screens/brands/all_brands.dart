@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/brands/brand_cards.dart';
 import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
-import 'package:pickafrika/common/widgets/products/sorting/sortable_products.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/shop/screens/brands/brand_products.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';

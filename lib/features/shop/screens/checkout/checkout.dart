@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:pickafrika/common/widgets/products/cart/cart_item.dart';
 import 'package:pickafrika/common/widgets/success_screen/success_screen1.dart';
 import 'package:pickafrika/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:pickafrika/features/shop/screens/checkout/widget/billing_address_section.dart';

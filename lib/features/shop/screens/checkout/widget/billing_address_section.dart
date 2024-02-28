@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pickafrika/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
-import 'package:pickafrika/utils/constants/colors.dart';
-import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 

@@ -6,6 +6,7 @@ import 'package:pickafrika/common/widgets/custom_shapes/containers/primary_heade
 import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/personalization/screens/address/address.dart';
+import 'package:pickafrika/features/personalization/screens/data_upload/data_upload.dart';
 import 'package:pickafrika/features/personalization/screens/profile/profile.dart';
 import 'package:pickafrika/features/shop/screens/cart/cart.dart';
 import 'package:pickafrika/features/shop/screens/order/order.dart';
@@ -50,7 +51,7 @@ class SettingsScreen extends StatelessWidget {
 
             // BODY PART
             Padding(
-              padding: const EdgeInsets.all(PSizes.defaultSpace),
+              padding: const EdgeInsets.all(PSizes.defaultSpace - 8),
               child: Column(
                 children: [
                   // ACCOUNT SETTINGS
@@ -95,6 +96,7 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(
                     height: PSizes.spaceBtwSections,
                   ),
+
                   const PSectionHeading(
                     title: 'App Settings',
                     showActionButton: false,
@@ -105,7 +107,13 @@ class SettingsScreen extends StatelessWidget {
                   PSettingsMenuTile(
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
-                    subtitle: 'Upload data to your cloud datbase',
+                    subtitle: 'Upload Data to cloud storage',
+                    onTap: () => Get.to(() => const UploadDataScreen()),
+                  ),
+                  PSettingsMenuTile(
+                    icon: Iconsax.location,
+                    title: 'GeoLocation',
+                    subtitle: 'Products recommended based on location',
                     trailing: Switch(
                       value: true,
                       onChanged: ((value) {}),

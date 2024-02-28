@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/styles/shadows.dart';
 import 'package:pickafrika/common/widgets/icons/favorite_icon.dart';
 import 'package:pickafrika/common/widgets/images/edge_rounded_images.dart';
@@ -12,7 +11,6 @@ import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../features/shop/screens/product_details/product_detail.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
-import '../../icons/circular_icon.dart';
 import '../../texts/brand_text_title_with_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
