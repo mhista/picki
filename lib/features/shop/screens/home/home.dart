@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
@@ -9,6 +10,7 @@ import '../../../../common/widgets/custom_shapes/containers/search_container.dar
 import '../../../../common/widgets/layouts/gid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../all_products/all_products.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
 import 'widgets/home_slider.dart';
@@ -86,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                   // HEADING SECTION
                   PSectionHeading(
                     title: 'Popular Products',
-                    onPressed: () {},
+                    onPressed: () => Get.to(() => const AllProducts()),
                   ),
                   const SizedBox(
                     height: PSizes.spaceBtwItems,

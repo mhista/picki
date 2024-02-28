@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/appbar/tapBar.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
 import 'package:pickafrika/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:pickafrika/features/shop/screens/brands/all_brands.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
@@ -61,7 +63,7 @@ class Store extends StatelessWidget {
                       // featured brands
                       PSectionHeading(
                         title: 'Featured Brands',
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       const SizedBox(
                         height: PSizes.spaceBtwItems / 2,
