@@ -13,8 +13,10 @@ class ReusableEmailWidget extends StatelessWidget {
     required this.textBtnText,
     required this.eOnpressed,
     required this.tOnpressed,
+    this.email = '',
   });
   final String image, title, subtitle, elevatedaBtnText, textBtnText;
+  final String email;
   final VoidCallback eOnpressed, tOnpressed;
 
   @override
@@ -39,7 +41,7 @@ class ReusableEmailWidget extends StatelessWidget {
           height: PSizes.spaceBtwItems,
         ),
         Text(
-          'diweesomchi@gmail.com',
+          email,
           style: Theme.of(context).textTheme.labelLarge,
           textAlign: TextAlign.center,
         ),

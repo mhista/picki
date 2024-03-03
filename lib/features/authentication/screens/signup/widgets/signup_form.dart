@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:pickafrika/features/authentication/screens/signup/verify_email.dart';
+import 'package:pickafrika/features/authentication/controllers/signup/signup_controller.dart';
+import 'package:pickafrika/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
 import 'terms_and_conditions_checkbox.dart';
 
 class PSignupForm extends StatelessWidget {
@@ -15,9 +15,10 @@ class PSignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = PHelperFunctions.isDarkMode(context);
+    final controller = Get.put(SignupController());
 
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           // first and last name
@@ -25,6 +26,9 @@ class PSignupForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) =>
+                      PValidator.validateEmptyText('First Name', value),
                   expands: false,
                   decoration: const InputDecoration(
                       labelText: PTexts.firstname,
@@ -36,6 +40,9 @@ class PSignupForm extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) =>
+                      PValidator.validateEmptyText('Last Name', value),
                   expands: false,
                   decoration: const InputDecoration(
                       labelText: PTexts.lastname,
@@ -49,6 +56,9 @@ class PSignupForm extends StatelessWidget {
           ),
           // Username
           TextFormField(
+            controller: controller.username,
+            validator: (value) =>
+                PValidator.validateEmptyText('Username', value),
             expands: false,
             decoration: const InputDecoration(
                 labelText: PTexts.username,
@@ -59,6 +69,8 @@ class PSignupForm extends StatelessWidget {
           ),
           // Email
           TextFormField(
+            controller: controller.email,
+            validator: (value) => PValidator.validateEmail(value),
             expands: false,
             decoration: const InputDecoration(
                 labelText: PTexts.email, prefixIcon: Icon(Iconsax.direct)),
@@ -68,6 +80,8 @@ class PSignupForm extends StatelessWidget {
           ),
           // PhoneNumber
           TextFormField(
+            controller: controller.phoneNumber,
+            validator: (value) => PValidator.validatePhoneNumber(value),
             expands: false,
             decoration: const InputDecoration(
                 labelText: PTexts.phoneNumber, prefixIcon: Icon(Iconsax.call)),
@@ -76,12 +90,22 @@ class PSignupForm extends StatelessWidget {
             height: PSizes.spaceBtwInputFields,
           ),
           // Password
-          TextFormField(
-            expands: false,
-            decoration: const InputDecoration(
-                labelText: PTexts.password,
-                prefixIcon: Icon(Iconsax.password_check),
-                suffixIcon: Icon(Iconsax.eye_slash)),
+          Obx(
+            () => TextFormField(
+              obscureText: controller.hidePassword.value,
+              controller: controller.password,
+              validator: (value) => PValidator.validatePassword(value),
+              expands: false,
+              decoration: InputDecoration(
+                  labelText: PTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                      onPressed: () => controller.hidePassword.value =
+                          !controller.hidePassword.value,
+                      icon: Icon(controller.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye))),
+            ),
           ),
           const SizedBox(
             height: PSizes.spaceBtwSections,
@@ -95,10 +119,9 @@ class PSignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              child: const Text(PTexts.createAccount),
-              onPressed: () => Get.to(() => const VerifyEmailScreen()),
-            ),
-          )
+                child: const Text(PTexts.createAccount),
+                onPressed: () => controller.signup()),
+          ),
         ],
       ),
     );

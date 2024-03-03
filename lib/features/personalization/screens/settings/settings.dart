@@ -5,6 +5,7 @@ import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
+import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:pickafrika/features/personalization/screens/address/address.dart';
 import 'package:pickafrika/features/personalization/screens/data_upload/data_upload.dart';
 import 'package:pickafrika/features/personalization/screens/profile/profile.dart';
@@ -145,7 +146,8 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          AuthenticationRepository.instance.logout(),
                       child: const Text('Logout'),
                     ),
                   ),

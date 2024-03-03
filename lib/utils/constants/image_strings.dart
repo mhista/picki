@@ -7,6 +7,11 @@ class PImages {
   static const String google = 'assets/images/logo_images/google-icon.png';
   static const String facebook = 'assets/images/logo_images/facebook-icon.png';
 
+// LOTTIE ANIMATIONS
+  static const String lottie1 = 'assets/images/animations/lottie1.json';
+  static const String lottie2 = 'assets/images/animations/lottie2.json';
+  static const String successAnimation =
+      'assets/images/animations/success.json';
   // ONBOARDING images
 
   static const String onBoardingImage3 =
@@ -17,8 +22,7 @@ class PImages {
       'assets/images/onboarding_images/sammy-woman.gif';
 
   // other images
-  static const String successImage =
-      'assets/images/animations/sammy-man-and-woman.png';
+
   static const String emailDeliveredImage =
       'assets/images/animations/sammy-man-email.png';
   static const String orderSuccessful =

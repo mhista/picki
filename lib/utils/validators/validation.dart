@@ -1,4 +1,12 @@
-class TValidator {
+class PValidator {
+  // EMPTY TEXT VALIDATION
+  static String? validateEmptyText(String? firstName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$firstName is required';
+    }
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -47,10 +55,10 @@ class TValidator {
       return 'Phone number is required';
     }
     // Regular expression for validating phone number (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    final phoneRegExp = RegExp(r'^\d{11}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required)';
+      return 'Invalid phone number format (11 digits required)';
     }
 
     return null;
