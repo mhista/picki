@@ -14,14 +14,15 @@ Future<void> main() async {
   // Init local storage
   await GetStorage.init();
   // Todo: init payment methods
-  // Todo: Await Native Splash
+  //  Await Native Splash
+  // Initialize Authentication
+
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   // Initial firebase and authentication
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
-  // Todo: Initialize Authentication
 // Load all the material design / Themes / Localization / Bindings
   runApp(const App());
 }

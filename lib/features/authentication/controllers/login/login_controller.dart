@@ -45,7 +45,7 @@ class LoginController extends GetxController {
         PFullScreenLoader.stopLoading();
         return;
       }
-      // STORE REMEBER ME
+      // STORE REMEMBER ME
       if (rememberMe.value) {
         // localStorage.writeIfNull('remember_me', true);
         localStorage.writeIfNull('remember_me_email', email.text.trim());
@@ -85,8 +85,7 @@ class LoginController extends GetxController {
       PFullScreenLoader.stopLoading();
 
       // SHOW SUCCES MESSAGE
-      PLoaders.successSnackBar(
-          title: 'Welcome }', message: 'Do have a great shopping experience! ');
+      PLoaders.successSnackBar(title: 'Welcome back!');
       // MOVE TO VERIFY HOME SCREEN
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {

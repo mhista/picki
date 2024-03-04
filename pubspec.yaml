@@ -46,6 +46,7 @@ dependencies:
   firebase_auth: ^4.17.6
   cloud_firestore: ^4.15.6
   google_sign_in: ^6.2.1
+  shimmer: ^3.0.0
 
 #----------------------PCKAGES END--------------------------------------
 dev_dependencies:

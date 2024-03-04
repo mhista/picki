@@ -2,12 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/emailing/reusable_email.dart';
+import 'package:pickafrika/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:pickafrika/features/authentication/screens/login/login.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/constants/text_strings.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+  final String email;
+
+  const ResetPasswordScreen({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +33,15 @@ class ResetPasswordScreen extends StatelessWidget {
               // TITLE AND AND SUBTITLE
               // BUTTONS
               ReusableEmailWidget(
+                  email: email,
                   image: PImages.emailDeliveredImage,
                   title: PTexts.changePasswordTitle,
                   subtitle: PTexts.changePasswordSubtitle,
                   elevatedaBtnText: PTexts.done,
                   textBtnText: PTexts.resendEmail,
-                  eOnpressed: () {},
-                  tOnpressed: () {})
+                  doneOnpressed: () => Get.offAll(() => const LoginScreen()),
+                  resendeOnpressed: () => ForgetPasswordController.instance
+                      .resendPasswordResetEmail(email))
             ],
           ),
         ),

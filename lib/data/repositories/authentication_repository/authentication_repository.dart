@@ -5,6 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pickafrika/data/repositories/user/user_repository.dart';
 import 'package:pickafrika/features/authentication/screens/login/login.dart';
 import 'package:pickafrika/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:pickafrika/features/authentication/screens/signup/verify_email.dart';
@@ -21,6 +22,8 @@ class AuthenticationRepository extends GetxController {
   // VARIABLES
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+  // GET AUTHENTICATED USER DATA
+  User? get authUser => _auth.currentUser;
 
   // CALLED FROM THE main.dart on app launch
   @override
@@ -147,8 +150,28 @@ class AuthenticationRepository extends GetxController {
       throw 'something went wrong, please try again';
     }
   }
-  // REAUTHENTICATION
 
+  // REAUTHENTICATION
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      // CREATE CREDENTIALS
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+      // REAUTHENTICATAE
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
   //  ---------------------------------- FEDERATED IDENTITY AND SOCIAL SIGN IN---------------
 
   // GOOGLE AUTHENTICATION
@@ -181,4 +204,20 @@ class AuthenticationRepository extends GetxController {
   //  ---------------------------------------OTHER VERIFICATION ---------------
 
   // DELETE USER
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserData(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
 }

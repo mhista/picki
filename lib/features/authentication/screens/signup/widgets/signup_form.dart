@@ -70,7 +70,7 @@ class PSignupForm extends StatelessWidget {
           // Email
           TextFormField(
             controller: controller.email,
-            validator: (value) => PValidator.validateEmail(value),
+            validator: PValidator.validateEmail,
             expands: false,
             decoration: const InputDecoration(
                 labelText: PTexts.email, prefixIcon: Icon(Iconsax.direct)),
@@ -81,7 +81,7 @@ class PSignupForm extends StatelessWidget {
           // PhoneNumber
           TextFormField(
             controller: controller.phoneNumber,
-            validator: (value) => PValidator.validatePhoneNumber(value),
+            validator: PValidator.validatePhoneNumber,
             expands: false,
             decoration: const InputDecoration(
                 labelText: PTexts.phoneNumber, prefixIcon: Icon(Iconsax.call)),
@@ -94,7 +94,7 @@ class PSignupForm extends StatelessWidget {
             () => TextFormField(
               obscureText: controller.hidePassword.value,
               controller: controller.password,
-              validator: (value) => PValidator.validatePassword(value),
+              validator: PValidator.validatePassword,
               expands: false,
               decoration: InputDecoration(
                   labelText: PTexts.password,

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:pickafrika/features/authentication/models/user_model.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
@@ -31,4 +32,87 @@ class UserRepository extends GetxController {
       throw 'something went wrong, please try again';
     }
   }
+
+  // FETCH USER DATA FROM FIRESTORE BASED ON ID
+  Future<UserModel> fetchUserData() async {
+    try {
+      final documentSnapshot = await _db
+          .collection('Users')
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .get();
+      if (documentSnapshot.exists) {
+        return UserModel.fromSnapshot(documentSnapshot);
+      } else {
+        return UserModel.empty();
+      }
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
+
+  // UPDATE USER DATA IN FIRESTORE
+  Future<void> updateUserData(UserModel user) async {
+    try {
+      await _db.collection('Users').doc(user.id).update(user.toMap());
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
+
+  // UPDATE FIELD IN USERS COLLECTION
+  Future<void> updateSingleField(Map<String, dynamic> map) async {
+    try {
+      await _db
+          .collection('Users')
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .update(map);
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
+
+  // REMOVE USER DATA FROM FIRESTORE
+  Future<void> removeUserData(String userId) async {
+    try {
+      await _db.collection('Users').doc(userId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
+
+  // UPLOADE USER IMAGE
+
+  // FETCH USER DATA FROM FIRESTORE
 }

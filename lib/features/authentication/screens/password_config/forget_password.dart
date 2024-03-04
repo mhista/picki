@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:pickafrika/features/authentication/screens/password_config/reset_password.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/constants/text_strings.dart';
+import 'package:pickafrika/utils/validators/validation.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -37,10 +40,15 @@ class ForgetPasswordScreen extends StatelessWidget {
               height: PSizes.spaceBtwSections * 2,
             ),
             // TEXTFIELD
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: PTexts.email,
-                prefixIcon: Icon(Iconsax.direct),
+            Form(
+              key: controller.resetPasswordFormKey,
+              child: TextFormField(
+                controller: controller.email,
+                validator: PValidator.validateEmail,
+                decoration: const InputDecoration(
+                  labelText: PTexts.email,
+                  prefixIcon: Icon(Iconsax.direct),
+                ),
               ),
             ),
             const SizedBox(
@@ -50,7 +58,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.off(() => const ResetPasswordScreen()),
+                  onPressed: () => controller.sendPasswordResetEmail(),
                   child: const Text(PTexts.submit)),
             )
           ],

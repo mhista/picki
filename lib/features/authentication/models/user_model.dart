@@ -1,15 +1,16 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pickafrika/utils/formatters/formatter.dart';
 
 class UserModel {
   final String id;
-  final String firstName;
-  final String lastName;
+  String firstName;
+  String lastName;
   final String username;
   final String email;
-  final String phoneNumber;
-  final String profilePicture;
+  String phoneNumber;
+  String profilePicture;
   UserModel({
     required this.id,
     required this.firstName,
@@ -71,22 +72,33 @@ class UserModel {
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(json.decode(source));
 
+  static UserModel empty() => UserModel(
+      id: '',
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      phoneNumber: '',
+      profilePicture: '');
+
 // factory methof to create a user model from firebase document snapshot
-  // factory UserModel.fromSnapshot(
-  //     DocumentSnapshot<Map<String, dynamic>> document) {
-  //   if (document.data() != null) {
-  //     final data = document.data()!;
-  //     return UserModel(
-  //       id: document.id,
-  //       firstName: data['firstName'] ?? '',
-  //       lastName: data['lastName'] ?? '',
-  //       username: data['username'] ?? '',
-  //       email: data['email'] ?? '',
-  //       phoneNumber: data['phoneNumber'] ?? '',
-  //       profilePicture: data['profilePicture'] ?? '',
-  //     );
-  //   }
-  // }
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        firstName: data['firstName'] ?? '',
+        lastName: data['lastName'] ?? '',
+        username: data['username'] ?? '',
+        email: data['email'] ?? '',
+        phoneNumber: data['phoneNumber'] ?? '',
+        profilePicture: data['profilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
+  }
 
   /// HELPER FUNCTIONS
 

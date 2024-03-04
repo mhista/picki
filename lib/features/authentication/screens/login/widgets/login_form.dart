@@ -26,7 +26,7 @@ class PLoginForm extends StatelessWidget {
           children: [
             // Email
             TextFormField(
-              validator: (value) => PValidator.validateEmail(value),
+              validator: PValidator.validateEmail,
               controller: controller.email,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right),

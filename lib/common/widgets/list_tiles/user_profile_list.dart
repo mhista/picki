@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pickafrika/features/personalization/controllers/user_controller.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
+import '../../../utils/shimmer/shimmer.dart';
 import '../images/circular_images.dart';
 
 class PUserProfileTile extends StatelessWidget {
@@ -13,6 +16,7 @@ class PUserProfileTile extends StatelessWidget {
   final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       leading: const PCircularImage(
         imageUrl: PImages.appLogo,
@@ -20,15 +24,19 @@ class PUserProfileTile extends StatelessWidget {
         height: 50,
         padding: 0,
       ),
-      title: Text(
-        'Diwe Innocent',
-        style: Theme.of(context)
-            .textTheme
-            .headlineSmall!
-            .apply(color: PColors.white),
-      ),
+      title: Obx(() {
+        {
+          return Text(
+            controller.user.value.fullName,
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall!
+                .apply(color: PColors.white),
+          );
+        }
+      }),
       subtitle: Text(
-        'diweesomchi@gmail.com',
+        controller.user.value.email,
         style:
             Theme.of(context).textTheme.bodyMedium!.apply(color: PColors.white),
       ),

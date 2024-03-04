@@ -11,13 +11,13 @@ class ReusableEmailWidget extends StatelessWidget {
     required this.subtitle,
     required this.elevatedaBtnText,
     required this.textBtnText,
-    required this.eOnpressed,
-    required this.tOnpressed,
+    required this.doneOnpressed,
+    required this.resendeOnpressed,
     this.email = '',
   });
   final String image, title, subtitle, elevatedaBtnText, textBtnText;
   final String email;
-  final VoidCallback eOnpressed, tOnpressed;
+  final VoidCallback doneOnpressed, resendeOnpressed;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class ReusableEmailWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: eOnpressed,
+            onPressed: doneOnpressed,
             child: Text(elevatedaBtnText),
           ),
         ),
@@ -70,7 +70,7 @@ class ReusableEmailWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: TextButton(
-            onPressed: tOnpressed,
+            onPressed: resendeOnpressed,
             child: Text(textBtnText),
           ),
         ),

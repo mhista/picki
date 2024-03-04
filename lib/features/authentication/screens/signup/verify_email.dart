@@ -39,9 +39,9 @@ class VerifyEmailScreen extends StatelessWidget {
               subtitle: PTexts.confirmEmailSubtitle,
               elevatedaBtnText: PTexts.acontinue,
               textBtnText: PTexts.resendEmail,
-              eOnpressed: () =>
+              doneOnpressed: () =>
                   Get.to(() => controller.checkEmailVerificationStatus()),
-              tOnpressed: () => controller.verifyUserEmail()),
+              resendeOnpressed: () => controller.verifyUserEmail()),
         ),
       ),
     );
