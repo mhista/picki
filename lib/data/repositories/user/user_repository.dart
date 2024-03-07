@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:pickafrika/features/authentication/models/user_model.dart';
 
@@ -112,7 +116,25 @@ class UserRepository extends GetxController {
     }
   }
 
-  // UPLOADE USER IMAGE
+  // UPLOADE USER PROFILE IMAGE
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } on FirebaseAuthException catch (e) {
+      throw KFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const KFormatExceptions();
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
 
   // FETCH USER DATA FROM FIRESTORE
 }

@@ -13,7 +13,7 @@ class ReAuthUserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UserController());
+    final controller = UserController.instance;
     return Scaffold(
       appBar: PAppBar(
         title: Text(

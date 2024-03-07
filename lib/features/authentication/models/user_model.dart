@@ -1,16 +1,18 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:pickafrika/utils/formatters/formatter.dart';
 
 class UserModel {
-  final String id;
+  String id;
   String firstName;
   String lastName;
   final String username;
   final String email;
   String phoneNumber;
   String profilePicture;
+  // List addresses;
   UserModel({
     required this.id,
     required this.firstName,
@@ -19,6 +21,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
+    // required this.addresses,
   });
 
   UserModel copyWith({
@@ -29,6 +32,7 @@ class UserModel {
     String? email,
     String? phoneNumber,
     String? profilePicture,
+    // List? addresses,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -38,6 +42,7 @@ class UserModel {
       email: email ?? this.email,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       profilePicture: profilePicture ?? this.profilePicture,
+      // addresses: addresses ?? this.addresses,
     );
   }
 
@@ -51,6 +56,7 @@ class UserModel {
     result.addAll({'email': email});
     result.addAll({'phoneNumber': phoneNumber});
     result.addAll({'profilePicture': profilePicture});
+    // result.addAll({'addresses': addresses});
 
     return result;
   }
@@ -64,6 +70,7 @@ class UserModel {
       email: map['email'] ?? '',
       phoneNumber: map['phoneNumber'] ?? '',
       profilePicture: map['profilePicture'] ?? '',
+      // addresses: map['addresses'] ?? [],
     );
   }
 
@@ -73,13 +80,15 @@ class UserModel {
       UserModel.fromMap(json.decode(source));
 
   static UserModel empty() => UserModel(
-      id: '',
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: '',
-      phoneNumber: '',
-      profilePicture: '');
+        id: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        phoneNumber: '',
+        profilePicture: '',
+        // addresses: [],
+      );
 
 // factory methof to create a user model from firebase document snapshot
   factory UserModel.fromSnapshot(
@@ -94,6 +103,7 @@ class UserModel {
         email: data['email'] ?? '',
         phoneNumber: data['phoneNumber'] ?? '',
         profilePicture: data['profilePicture'] ?? '',
+        // addresses: data['addresses'] ?? '',
       );
     } else {
       return UserModel.empty();

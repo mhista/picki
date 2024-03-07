@@ -5,7 +5,7 @@ import 'package:pickafrika/features/personalization/controllers/user_controller.
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
-import '../../../utils/shimmer/shimmer.dart';
+import '../shimmer/shimmer.dart';
 import '../images/circular_images.dart';
 
 class PUserProfileTile extends StatelessWidget {
@@ -18,22 +18,31 @@ class PUserProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading: const PCircularImage(
-        imageUrl: PImages.appLogo,
-        width: 50,
-        height: 50,
-        padding: 0,
-      ),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isNotEmpty ? networkImage : PImages.appLogo;
+        return controller.imageUploading.value
+            ? const PShimmerEffect(
+                height: 58,
+                width: 58,
+                radius: 58,
+              )
+            : PCircularImage(
+                isNetworkImage: networkImage.isNotEmpty,
+                imageUrl: image,
+                width: 58,
+                height: 58,
+                // backgroundColor: Colors.transparent,
+              );
+      }),
       title: Obx(() {
-        {
-          return Text(
-            controller.user.value.fullName,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall!
-                .apply(color: PColors.white),
-          );
-        }
+        return Text(
+          controller.user.value.fullName,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(color: PColors.white),
+        );
       }),
       subtitle: Text(
         controller.user.value.email,

@@ -8,6 +8,7 @@ import 'package:pickafrika/features/personalization/screens/profile/widgets/chan
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
+import '../../../../common/widgets/shimmer/shimmer.dart';
 import '../../controllers/user_controller.dart';
 import 'widgets/profile_menu.dart';
 
@@ -31,13 +32,25 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 // PROFILE PICTURE
-                const PCircularImage(
-                  imageUrl: PImages.appLogo,
-                  width: 88,
-                  height: 88,
-                ),
+                Obx(() {
+                  final networkImage = controller.user.value.profilePicture;
+                  final image =
+                      networkImage.isNotEmpty ? networkImage : PImages.appLogo;
+                  return controller.imageUploading.value
+                      ? const PShimmerEffect(
+                          height: 80,
+                          width: 80,
+                          radius: 80,
+                        )
+                      : PCircularImage(
+                          isNetworkImage: networkImage.isNotEmpty,
+                          imageUrl: image,
+                          width: 88,
+                          height: 88,
+                        );
+                }),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.uploadUserProfilePics(),
                   child: const Text('Change Profile Pics'),
                 ),
 

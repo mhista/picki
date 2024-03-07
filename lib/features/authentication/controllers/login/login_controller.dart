@@ -52,7 +52,7 @@ class LoginController extends GetxController {
         localStorage.writeIfNull('remember_me_password', password.text.trim());
       }
       // LOGIN USER
-      final userCredential = await AuthenticationRepository.instance
+      await AuthenticationRepository.instance
           .loginWitheEmailAndPassword(email.text.trim(), password.text.trim());
 
       // REMOVE LOADER

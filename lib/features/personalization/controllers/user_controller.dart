@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:pickafrika/data/repositories/user/user_repository.dart';
 import 'package:pickafrika/features/authentication/models/user_model.dart';
@@ -24,6 +25,7 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
   // LOADER NOTIFIER
   final profileLoading = false.obs;
+  final imageUploading = false.obs;
 
   final hidePassword = false.obs;
   final verifyEmail = TextEditingController();
@@ -34,35 +36,6 @@ class UserController extends GetxController {
   onInit() {
     super.onInit();
     fetchUserRecord();
-  }
-
-// SAVE USER RECORD
-  Future<void> saveUserRecord(UserCredential? userCredential) async {
-    try {
-      // CONVERT THE DISPLAY NAME TO FIRST AND LAST NAME
-      if (userCredential != null) {
-        final nameParts =
-            UserModel.splitFullName(userCredential.user!.displayName ?? '');
-        final username =
-            UserModel.generateUsername(userCredential.user!.displayName ?? '');
-
-        // MAP DATA
-        final user = UserModel(
-            id: userCredential.user!.uid,
-            firstName: nameParts[0],
-            lastName:
-                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-            username: username,
-            email: userCredential.user!.email ?? '',
-            phoneNumber: userCredential.user!.phoneNumber ?? '',
-            profilePicture: userCredential.user!.photoURL ?? '');
-
-        await userRepository.saveUser(user);
-      }
-    } catch (e) {
-      PFullScreenLoader.stopLoading();
-      PLoaders.errorSnackBar(title: "Ooops!", message: e.toString());
-    }
   }
 
 // FETCH USER RECORD
@@ -80,6 +53,40 @@ class UserController extends GetxController {
     }
   }
 
+// SAVE USER RECORD
+  Future<void> saveUserRecord(UserCredential? userCredential) async {
+    try {
+      await fetchUserRecord();
+
+      if (user.value.id.isEmpty) {
+        // CONVERT THE DISPLAY NAME TO FIRST AND LAST NAME
+        if (userCredential != null) {
+          final nameParts =
+              UserModel.splitFullName(userCredential.user!.displayName ?? '');
+          final username = UserModel.generateUsername(
+              userCredential.user!.displayName ?? '');
+
+          // MAP DATA
+          final user = UserModel(
+              id: userCredential.user!.uid,
+              firstName: nameParts[0],
+              lastName:
+                  nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+              username: username,
+              email: userCredential.user!.email ?? '',
+              phoneNumber: userCredential.user!.phoneNumber ?? '',
+              profilePicture: userCredential.user!.photoURL ?? '');
+
+          await userRepository.saveUser(user);
+        }
+      }
+    } catch (e) {
+      PFullScreenLoader.stopLoading();
+      PLoaders.errorSnackBar(title: "Ooops!", message: e.toString());
+    }
+  }
+
+// DELETE ACCOUNT POPUP
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
         contentPadding: const EdgeInsets.all(PSizes.md),
@@ -157,6 +164,38 @@ class UserController extends GetxController {
 
       // SHOW GENERIC ERROR TO THE USER
       PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  // UPLOAD USER PROFILE PICTURE
+  void uploadUserProfilePics() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxWidth: 512,
+          maxHeight: 512);
+      if (image != null) {
+        imageUploading.value = true;
+        final imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile', image);
+
+        // UPDATE USER IMAGE IN FIRESTORE
+        Map<String, dynamic> map = {'profilePicture': imageUrl};
+        await userRepository.updateSingleField(map);
+
+        user.value.profilePicture = imageUrl;
+        PLoaders.successSnackBar(
+            title: 'Update successfull',
+            message: 'Your profile image has been updated');
+      }
+    } catch (e) {
+      PFullScreenLoader.stopLoading();
+
+      // SHOW GENERIC ERROR TO THE USER
+      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

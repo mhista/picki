@@ -47,6 +47,9 @@ dependencies:
   cloud_firestore: ^4.15.6
   google_sign_in: ^6.2.1
   shimmer: ^3.0.0
+  firebase_storage: ^11.6.7
+  image_picker: ^1.0.7
+  cached_network_image: ^3.3.1
 
 #----------------------PCKAGES END--------------------------------------
 dev_dependencies:

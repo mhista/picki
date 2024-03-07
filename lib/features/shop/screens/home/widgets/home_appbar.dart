@@ -7,7 +7,7 @@ import '../../../../../common/widgets/appbar/appBar.dart';
 import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../../../../../utils/shimmer/shimmer.dart';
+import '../../../../../common/widgets/shimmer/shimmer.dart';
 
 class PHomeAppbar extends StatelessWidget {
   const PHomeAppbar({

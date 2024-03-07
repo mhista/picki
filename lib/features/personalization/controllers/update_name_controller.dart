@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pickafrika/features/authentication/models/user_model.dart';
 import 'package:pickafrika/features/personalization/controllers/user_controller.dart';
 import 'package:pickafrika/features/personalization/screens/profile/profile.dart';
 
@@ -53,14 +51,14 @@ class UpdateNameController extends GetxController {
 
       // UPDATE USER FIRST AND LASTNAME IN THE FIREBASE FIRESTORE
       Map<String, dynamic> name = {
-        'FirstName': firstName.text.trim(),
-        'LastName': lastName.text.trim()
+        'firstName': firstName.text.trim(),
+        'lastName': lastName.text.trim()
       };
       await userRepository.updateSingleField(name);
       // UPDATE THE RX USER VALUE
       userController.user.value.firstName = firstName.text.trim();
       userController.user.value.lastName = lastName.text.trim();
-
+      userController.user.refresh();
       // STOP THE LOADER
       PFullScreenLoader.stopLoading();
       // SHOW SUCCESS INFO

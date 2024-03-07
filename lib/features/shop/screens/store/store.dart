@@ -5,6 +5,7 @@ import 'package:pickafrika/common/widgets/appbar/tapBar.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
 import 'package:pickafrika/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:pickafrika/features/shop/controllers/category_controller.dart';
 import 'package:pickafrika/features/shop/screens/brands/all_brands.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
@@ -19,9 +20,10 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     final isDark = PHelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: PAppBar(
           title: Text(
@@ -80,36 +82,23 @@ class Store extends StatelessWidget {
                   ),
                 ),
                 // TABS
-                bottom: const PTabBar(
-                  tabs: [
-                    Tab(
-                      child: Text('Sports'),
-                    ),
-                    Tab(
-                      child: Text('Furniture'),
-                    ),
-                    Tab(
-                      child: Text('Electronics'),
-                    ),
-                    Tab(
-                      child: Text('Clothes'),
-                    ),
-                    Tab(
-                      child: Text('Cosmetics'),
-                    )
-                  ],
-                ),
+                bottom: PTabBar(
+                    tabs: categories
+                        .map((category) => Tab(
+                              child: Text(category.name),
+                            ))
+                        .toList()),
               )
             ];
           },
-          body: const TabBarView(
-            children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-            ],
+          body: TabBarView(
+            children: categories
+                .map(
+                  (category) => CategoryTab(
+                    category: category,
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),

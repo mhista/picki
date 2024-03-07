@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:pickafrika/common/widgets/shimmer/shimmer.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -10,7 +12,7 @@ class PCircularImage extends StatelessWidget {
     required this.imageUrl,
     this.width = 56,
     this.height = 56,
-    this.padding = PSizes.sm,
+    this.padding = PSizes.xs,
     this.isNetworkImage = false,
     this.backgroundColor,
     this.fit = BoxFit.cover,
@@ -32,14 +34,34 @@ class PCircularImage extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-          color: backgroundColor ?? (isDark ? PColors.dark : PColors.white),
+          color:
+              backgroundColor ?? (isDark ? PColors.dark : PColors.transparent),
           borderRadius: BorderRadius.circular(100)),
-      child: Center(
-        child: Image(
-            image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl) as ImageProvider,
-            color: overLayColor),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  color: overLayColor,
+                  fit: fit,
+                  height: height,
+                  width: width,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      const PShimmerEffect(
+                    height: 100,
+                    width: 100,
+                    radius: 100,
+                  ),
+                )
+              : Image(
+                  height: height,
+                  width: width,
+                  image: AssetImage(imageUrl),
+                  color: overLayColor,
+                  fit: fit,
+                ),
+        ),
       ),
     );
   }
