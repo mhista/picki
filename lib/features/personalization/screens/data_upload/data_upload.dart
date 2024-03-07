@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
+import 'package:pickafrika/features/shop/controllers/category_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 class UploadDataScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class UploadDataScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance;
     return Scaffold(
       appBar: const PAppBar(
         title: Text('Upload Data'),
@@ -25,33 +27,38 @@ class UploadDataScreen extends StatelessWidget {
                 title: 'Main Record',
                 showActionButton: false,
               ),
-              const PSettingsMenuTile(
+              PSettingsMenuTile(
                 addSpacing: true,
                 icon: Iconsax.category,
                 title: 'Upload Category',
                 addSubtitle: false,
-                trailing: Icon(Icons.arrow_circle_up),
+                trailing: IconButton(
+                    onPressed: () => categories.uploadDummyData(),
+                    icon: const Icon(Icons.arrow_circle_up)),
               ),
-              const PSettingsMenuTile(
+              PSettingsMenuTile(
                 addSpacing: true,
                 icon: Iconsax.shop,
                 title: 'Upload Brand',
                 addSubtitle: false,
-                trailing: Icon(Icons.arrow_circle_up),
+                trailing: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
               ),
-              const PSettingsMenuTile(
+              PSettingsMenuTile(
                 addSpacing: true,
                 icon: Iconsax.shopping_cart,
                 title: 'Upload Products',
                 addSubtitle: false,
-                trailing: Icon(Icons.arrow_circle_up),
+                trailing: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
               ),
-              const PSettingsMenuTile(
+              PSettingsMenuTile(
                 addSpacing: true,
                 icon: Iconsax.cloud_add,
                 title: 'Upload Banners',
                 addSubtitle: false,
-                trailing: Icon(Icons.arrow_circle_up),
+                trailing: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
               ),
 
               Column(
@@ -70,19 +77,21 @@ class UploadDataScreen extends StatelessWidget {
               const SizedBox(
                 height: PSizes.spaceBtwItems,
               ),
-              const PSettingsMenuTile(
+              PSettingsMenuTile(
                 addSpacing: true,
                 icon: Iconsax.repeat,
                 title: 'Upload Brands & Categories Relational Data',
                 addSubtitle: false,
-                trailing: Icon(Icons.arrow_circle_up),
+                trailing: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
               ),
-              const PSettingsMenuTile(
+              PSettingsMenuTile(
                 addSpacing: true,
                 icon: Iconsax.repeat,
                 title: 'Upload Product Categories Relational Data',
                 addSubtitle: false,
-                trailing: Icon(Icons.arrow_circle_up),
+                trailing: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
               ),
             ],
           ),

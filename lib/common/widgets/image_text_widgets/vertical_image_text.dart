@@ -40,7 +40,7 @@ class PVerticalImageText extends StatelessWidget {
                 padding: const EdgeInsets.all(PSizes.sm),
                 decoration: BoxDecoration(
                   color: backgroundColor ??
-                      (isDark ? PColors.dark : PColors.white),
+                      (isDark ? PColors.black : PColors.white),
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Center(

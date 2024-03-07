@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/shimmer/category_shimmer.dart';
 import 'package:pickafrika/features/shop/controllers/category_controller.dart';
 import 'package:pickafrika/features/shop/screens/sub_category/sub_categories.dart';
+import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../../common/widgets/image_text_widgets/vertical_image_text.dart';
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 
 class PHomeCategories extends StatelessWidget {
@@ -15,6 +17,7 @@ class PHomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryController = Get.put(CategoryController());
+    final isDark = PHelperFunctions.isDarkMode(context);
     return Obx(() {
       if (categoryController.isLoading.value) return const CategoryShimmer();
       if (categoryController.featuredCategories.isEmpty) {
@@ -37,6 +40,7 @@ class PHomeCategories extends StatelessWidget {
             itemBuilder: (_, index) {
               final category = categoryController.featuredCategories[index];
               return PVerticalImageText(
+                overlayColor: isDark ? PColors.white : PColors.dark,
                 image: category.image,
                 title: category.name,
                 onTap: () => Get.to(() => const SubCategoriesScreen()),

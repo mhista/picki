@@ -3,25 +3,27 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/data/services/firebase_services/firebase_storage_services.dart';
+import 'package:pickafrika/features/shop/models/banner_model.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
 
-import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
-import '../../../utils/exceptions/format_eceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
 
-class CategoryRepository extends GetxController {
-  static CategoryRepository get instance => Get.find();
+class BannerRepository extends GetxController {
+  static BannerRepository get instance => Get.find();
 
   // VARIABLES
   final _db = FirebaseFirestore.instance;
 
 // GET ALL CATEGORIES
-  Future<List<CategoryModel>> getAllCategories() async {
+  Future<List<BannerModel>> getAllBanners() async {
     try {
-      final snapshot = await _db.collection('Categories').get();
+      final snapshot = await _db
+          .collection('Banners')
+          .where('active', isEqualTo: true)
+          .get();
       final list =
-          snapshot.docs.map((doc) => CategoryModel.fromSnapshot(doc)).toList();
+          snapshot.docs.map((doc) => BannerModel.fromSnapshot(doc)).toList();
       return list;
     } on FirebaseException catch (e) {
       throw KFirebaseException(e.code).message;

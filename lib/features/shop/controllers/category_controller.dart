@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:pickafrika/data/dummy_data.dart';
 import 'package:pickafrika/data/repositories/categories/category_repositories.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
+import 'package:pickafrika/navigation_menu.dart';
 
 import '../../../common/loaders/loaders.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -50,7 +52,7 @@ class CategoryController extends GetxController {
 
   // GET CATEGORY OR SUB-CATEGORY PRODUCTS
   // UPLOAD CATEGORIES
-  void uploadCategories() async {
+  void uploadDummyData() async {
     try {
       PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.lottie1);
       // CHECK INTERNET CONNECTIVITY
@@ -59,15 +61,15 @@ class CategoryController extends GetxController {
         PFullScreenLoader.stopLoading();
         return;
       }
-      // FETCH CATEGORIES FROM DATA SOURCE(FIRESTORE, API etc)
-      final categories = await _categoryRepository.getAllCategories();
-      // UPDATE THE CATEGORIES LIST
-      allCategories.assignAll(categories);
-      // FILTER FEATURED CATEGORIES
-      featuredCategories.assignAll(allCategories
-          .where((category) => category.isFeatured && category.parentId.isEmpty)
-          .take(8)
-          .toList());
+      // UPLOAD CATEGORIES TO FIRESTORE
+
+      await _categoryRepository.uploadDummeyData(DummyData.categories);
+      fetchCategories();
+      PFullScreenLoader.stopLoading();
+      PLoaders.successSnackBar(
+          title: 'Upload successfull',
+          message: 'Categories have been updated successfully');
+      Get.off(() => const NavigationMenu());
     } catch (e) {
       PFullScreenLoader.stopLoading();
 

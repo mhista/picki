@@ -2,20 +2,19 @@ import 'package:pickafrika/features/authentication/models/user_model.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 
+import '../features/shop/models/banner_model.dart';
+
 class DummyData {
   // BANNERS
-  // static final List<BannerModel> banners = [
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  //   BannerModel(targetScreen, active, imageUrl: imageUrl),
-  // ];
+  static final List<BannerModel> banners = [
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.order, active: false),
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.cart, active: true),
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.favourites, active: true),
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.search, active: true),
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.settings, active: true),
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.userAddress, active: true),
+//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.checkout, active: false),
+  ];
 
   // static final UserModel user = UserModel(
   //     firstName: 'Innocent',
@@ -149,17 +148,17 @@ class DummyData {
   ];
 }
 
-class BannerModel {
-  BannerModel(
-    this.targetScreen,
-    this.active, {
-    required this.imageUrl,
-  });
-  final String imageUrl;
+// class BannerModel {
+//   BannerModel(
+//     this.targetScreen,
+//     this.active, {
+//     required this.imageUrl,
+//   });
+//   final String imageUrl;
 
-  final String targetScreen;
-  final bool active;
-}
+//   final String targetScreen;
+//   final bool active;
+// }
 
 class AddressModel {
   final String id;
