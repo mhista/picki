@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/bindings/general_bindings.dart';
+import 'package:pickafrika/routes/app_routes.dart';
 import 'package:pickafrika/utils/theme/theme.dart';
 
 import 'utils/constants/colors.dart';
@@ -12,6 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialBinding: GeneralBindiings(),
+      getPages: AppRoutes.pages,
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,

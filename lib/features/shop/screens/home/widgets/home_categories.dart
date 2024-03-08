@@ -5,7 +5,7 @@ import 'package:pickafrika/features/shop/controllers/category_controller.dart';
 import 'package:pickafrika/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
-import '../../../../../common/widgets/image_text_widgets/vertical_image_text.dart';
+import '../../../../../common/widgets/images/image_text_widgets/vertical_image_text.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 

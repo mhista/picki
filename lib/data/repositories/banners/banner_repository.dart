@@ -15,7 +15,7 @@ class BannerRepository extends GetxController {
   // VARIABLES
   final _db = FirebaseFirestore.instance;
 
-// GET ALL CATEGORIES
+// GET ALL BANNERS
   Future<List<BannerModel>> getAllBanners() async {
     try {
       final snapshot = await _db
@@ -35,27 +35,24 @@ class BannerRepository extends GetxController {
   }
 // GET SUB CATEGORIES
 
-// UPLOAD CATEGORIES TO THE CLOUD FIRESTORE
-  Future<void> uploadDummeyData(List<CategoryModel> categories) async {
+// UPLOAD BANNERS TO THE CLOUD FIRESTORE
+  Future<void> uploadDummeyData(List<BannerModel> banners) async {
     try {
       // UPLOAD ALL CATEGORIES ALONG WITH THEIR IMAGES
       final storage = Get.put(PFirebaseStorageServices());
       // LOOP THROUGH EACH CATEGORY
-      for (var category in categories) {
+      for (var banner in banners) {
         // GET IMAGEDATA LINK FROM THE LOCAL ASSETS;
-        final file = await storage.getImageDataFromAssets(category.image);
+        final file = await storage.getImageDataFromAssets(banner.imageUrl);
 
         // upload image and get its url
         final url =
-            await storage.uploadImageData('Categories', file, category.name);
-        // Assign url to category.image attribute
-        category.image = url;
+            await storage.uploadImageData('Banners', file, banner.imageUrl);
+        // Assign url to banner.image attribute
+        banner.imageUrl = url;
 
-        // STORE CATEGORY IN FIRESTORE
-        await _db
-            .collection('Categories')
-            .doc(category.id)
-            .set(category.toMap());
+        // STORE banner IN FIRESTORE
+        await _db.collection('Banners').doc().set(banner.toMap());
       }
     } on FirebaseException catch (e) {
       throw KFirebaseException(e.code).message;

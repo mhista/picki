@@ -3,17 +3,39 @@ import 'package:pickafrika/features/shop/models/category_model.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 
 import '../features/shop/models/banner_model.dart';
+import '../routes/routes.dart';
 
 class DummyData {
   // BANNERS
   static final List<BannerModel> banners = [
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.order, active: false),
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.cart, active: true),
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.favourites, active: true),
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.search, active: true),
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.settings, active: true),
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.userAddress, active: true),
-//  BannerModel( imageUrl: PImages.promoBanner1, targetScreen: PRoutes.checkout, active: false),
+    BannerModel(
+        imageUrl: PImages.promoBanner1,
+        targetScreen: KRoutes.order,
+        active: false),
+    BannerModel(
+        imageUrl: PImages.promoBanner2,
+        targetScreen: KRoutes.cart,
+        active: true),
+    BannerModel(
+        imageUrl: PImages.promoBanner3,
+        targetScreen: KRoutes.favourites,
+        active: true),
+    BannerModel(
+        imageUrl: PImages.promoBanner1,
+        targetScreen: KRoutes.search,
+        active: true),
+    BannerModel(
+        imageUrl: PImages.promoBanner2,
+        targetScreen: KRoutes.settings,
+        active: true),
+    BannerModel(
+        imageUrl: PImages.promoBanner3,
+        targetScreen: KRoutes.userAddress,
+        active: true),
+    BannerModel(
+        imageUrl: PImages.promoBanner1,
+        targetScreen: KRoutes.checkout,
+        active: false),
   ];
 
   // static final UserModel user = UserModel(
