@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pickafrika/data/dummy_data.dart';
+import 'package:pickafrika/data/dummy_data/dummy_data.dart';
 import 'package:pickafrika/data/repositories/categories/category_repositories.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
 import 'package:pickafrika/navigation_menu.dart';
@@ -26,7 +26,7 @@ class CategoryController extends GetxController {
 // LOAD CATEGORY DATA
   void fetchCategories() async {
     try {
-      // SHOW LOADER WHILE LOADING CATEGORIES
+      // SHOW SHIMMER WHILE LOADING CATEGORIES
       isLoading.value = true;
 
       // FETCH CATEGORIES FROM DATA SOURCE(FIRESTORE, API etc)
@@ -39,8 +39,6 @@ class CategoryController extends GetxController {
           .take(8)
           .toList());
     } catch (e) {
-      PFullScreenLoader.stopLoading();
-
       // SHOW GENERIC ERROR TO THE USER
       PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {

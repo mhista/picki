@@ -3,6 +3,7 @@ import 'package:pickafrika/common/widgets/images/circular_images.dart';
 import 'package:pickafrika/common/widgets/texts/brand_text_title_with_icon.dart';
 import 'package:pickafrika/common/widgets/texts/product_price_text.dart';
 import 'package:pickafrika/common/widgets/texts/product_title_text.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 
@@ -10,14 +11,17 @@ import '../../../../../common/widgets/custom_shapes/containers/rounded_container
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../controllers/product/product_controller.dart';
 
 class ProductMetaData extends StatelessWidget {
-  const ProductMetaData({super.key});
-
+  const ProductMetaData({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
-
+    final controller = ProductController.instance;
+    final salesPercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,7 +34,7 @@ class ProductMetaData extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: PSizes.sm, vertical: PSizes.xs),
               child: Text(
-                '50%',
+                '$salesPercentage%',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!
@@ -41,6 +45,7 @@ class ProductMetaData extends StatelessWidget {
               width: PSizes.spaceBtwItems / 2,
             ),
             // PRICE
+            // if(product.productType == Prod)
             Text(
               '\$250',
               style: Theme.of(context)
@@ -51,8 +56,8 @@ class ProductMetaData extends StatelessWidget {
             const SizedBox(
               width: PSizes.spaceBtwItems / 2,
             ),
-            const ProductPriceText(
-              price: '180',
+            ProductPriceText(
+              price: controller.getProductPrice(product),
               isLarge: true,
             ),
           ],

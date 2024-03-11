@@ -1,9 +1,13 @@
 import 'package:pickafrika/features/authentication/models/user_model.dart';
+import 'package:pickafrika/features/shop/models/brand_model.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
+import 'package:pickafrika/features/shop/models/product_attribute_model.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
+import 'package:pickafrika/features/shop/models/product_variation_model.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 
-import '../features/shop/models/banner_model.dart';
-import '../routes/routes.dart';
+import '../../features/shop/models/banner_model.dart';
+import '../../routes/routes.dart';
 
 class DummyData {
   // BANNERS

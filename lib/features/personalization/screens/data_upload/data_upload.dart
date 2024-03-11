@@ -5,6 +5,7 @@ import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/shop/controllers/banner_controllers.dart';
 import 'package:pickafrika/features/shop/controllers/category_controller.dart';
+import 'package:pickafrika/features/shop/controllers/product/product_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 class UploadDataScreen extends StatelessWidget {
@@ -14,6 +15,8 @@ class UploadDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final categories = CategoryController.instance;
     final banners = BannerController.instance;
+    final products = ProductController.instance;
+
     return Scaffold(
       appBar: const PAppBar(
         title: Text('Upload Data'),
@@ -52,7 +55,8 @@ class UploadDataScreen extends StatelessWidget {
                 title: 'Upload Products',
                 addSubtitle: false,
                 trailing: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
+                    onPressed: () => products.uploadDummyData(),
+                    icon: const Icon(Icons.arrow_circle_up)),
               ),
               PSettingsMenuTile(
                 addSpacing: true,

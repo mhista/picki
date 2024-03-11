@@ -12,9 +12,7 @@ import '../../../controllers/banner_controllers.dart';
 class PPromoSlider extends StatelessWidget {
   const PPromoSlider({
     super.key,
-    required this.banners,
   });
-  final List<String> banners;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(BannerController());

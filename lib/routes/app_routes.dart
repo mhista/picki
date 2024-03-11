@@ -22,8 +22,8 @@ class AppRoutes {
     GetPage(name: KRoutes.store, page: () => const Store()),
     GetPage(name: KRoutes.favourites, page: () => const WishListScreen()),
     GetPage(name: KRoutes.settings, page: () => const SettingsScreen()),
-    GetPage(
-        name: KRoutes.productDetail, page: () => const ProductDetailScreen()),
+    // GetPage(
+    //     name: KRoutes.productDetail, page: () => const ProductDetailScreen()),
     GetPage(name: KRoutes.order, page: () => const OrderScreen()),
     GetPage(name: KRoutes.checkout, page: () => const CheckoutScreen()),
     GetPage(name: KRoutes.cart, page: () => const CartScreen()),

@@ -12,11 +12,11 @@ class SaleTagWidget extends StatelessWidget {
     this.left,
     this.bottom,
     this.backgrondColor = PColors.secondary,
-    required this.tag,
+    this.tag = '',
   });
   final double? top, right, left, bottom;
   final Color backgrondColor;
-  final String tag;
+  final String? tag;
 
   @override
   Widget build(BuildContext context) {

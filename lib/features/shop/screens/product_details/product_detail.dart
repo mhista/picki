@@ -8,12 +8,14 @@ import 'package:pickafrika/features/shop/screens/product_reviews/product_reviews
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/texts/read_more_text.dart';
+import '../../models/product_model.dart';
 import 'widgets/product_image_slider.dart';
 import 'widgets/product_meta_data.dart';
 import 'widgets/rating_and_share.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+  const ProductDetailScreen({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,10 @@ class ProductDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             // PRODUCT IMAGE SLIDER
-            const ProductImageSlider(),
+            ProductImageSlider(
+              product: product,
+            ),
+
             // PRODUCT DETAILS
             Padding(
               padding: const EdgeInsets.only(
@@ -34,8 +39,11 @@ class ProductDetailScreen extends StatelessWidget {
                 children: [
                   // RATING AND SHAER BUTTON
                   const RatingAndShare(),
+
                   // PRICE , TITLE, STOCK, BRAND
-                  const ProductMetaData(),
+                  ProductMetaData(
+                    product: product,
+                  ),
                   // ATTRIBUTES
                   const ProductAttributes(),
                   const SizedBox(

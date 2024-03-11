@@ -55,6 +55,7 @@ class PRoundedImage extends StatelessWidget {
                     fit: fit,
                     progressIndicatorBuilder:
                         (context, url, downloadProgress) => PShimmerEffect(
+                      color: backgroundColor,
                       height: 100,
                       width: double.infinity,
                       radius: borderRadius,

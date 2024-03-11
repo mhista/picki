@@ -23,7 +23,7 @@ class PProductCardHorizontal extends StatelessWidget {
     final isDark = PHelperFunctions.isDarkMode(context);
     // card with side paddings, edges, radius and shadow
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreen()),
+      onTap: () {}, //=> Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 310,
         padding: const EdgeInsets.all(1),

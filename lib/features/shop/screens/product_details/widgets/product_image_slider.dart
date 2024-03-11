@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
+import 'package:pickafrika/features/shop/controllers/product/image_controller.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
 
 import '../../../../../common/widgets/appbar/appBar.dart';
 import '../../../../../common/widgets/icons/circular_icon.dart';
@@ -13,10 +17,13 @@ import '../../../../../utils/helpers/helper_functions.dart';
 class ProductImageSlider extends StatelessWidget {
   const ProductImageSlider({
     super.key,
+    required this.product,
   });
-
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ImageController());
+    final images = controller.getAllProductImage(product);
     final isDark = PHelperFunctions.isDarkMode(context);
     return PCurvedEdgesWidget(
       child: Container(
@@ -24,14 +31,25 @@ class ProductImageSlider extends StatelessWidget {
         child: Stack(
           children: [
             // MAIN LARGE IMAGE
-            const SizedBox(
+            SizedBox(
               height: 350,
               child: Padding(
-                padding: EdgeInsets.all(PSizes.productImageRadius * 2),
+                padding: const EdgeInsets.all(PSizes.productImageRadius * 2),
                 child: Center(
-                  child: Image(
-                    image: AssetImage(PImages.productShoe3),
-                  ),
+                  child: Obx(() {
+                    final image = controller.selectedProductImage.value;
+                    return GestureDetector(
+                      onTap: () => controller.showEnlargedImage(image),
+                      child: CachedNetworkImage(
+                        imageUrl: image,
+                        progressIndicatorBuilder: (_, __, progress) =>
+                            CircularProgressIndicator(
+                          value: progress.progress,
+                          color: PColors.primary,
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -44,17 +62,30 @@ class ProductImageSlider extends StatelessWidget {
               child: SizedBox(
                 height: 75,
                 child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemBuilder: (_, index) => PRoundedImage(
-                        padding: const EdgeInsets.all(PSizes.sm),
-                        border: Border.all(color: PColors.primary),
-                        width: 75,
-                        backgroundColor: isDark ? PColors.dark : PColors.white,
-                        imageUrl: PImages.productShoe5),
-                    separatorBuilder: (_, __) => const SizedBox(),
-                    itemCount: 8),
+                  itemCount: images.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemBuilder: (_, index) => Obx(() {
+                    final imageSelected =
+                        controller.selectedProductImage.value == images[index];
+                    return PRoundedImage(
+                      isNetworkImage: true,
+                      padding: const EdgeInsets.all(PSizes.sm),
+                      border: Border.all(
+                        color: imageSelected
+                            ? PColors.primary
+                            : Colors.transparent,
+                      ),
+                      width: 75,
+                      backgroundColor: isDark ? PColors.dark : PColors.white,
+                      imageUrl: images[index],
+                      onPressed: () =>
+                          controller.selectedProductImage.value = images[index],
+                    );
+                  }),
+                  separatorBuilder: (_, __) => const SizedBox(),
+                ),
               ),
             ),
             // APPBAR ICONS

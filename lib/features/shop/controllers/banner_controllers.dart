@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pickafrika/data/dummy_data.dart';
+import 'package:pickafrika/data/dummy_data/dummy_data.dart';
 import 'package:pickafrika/data/repositories/banners/banner_repository.dart';
 import 'package:pickafrika/features/shop/models/banner_model.dart';
 

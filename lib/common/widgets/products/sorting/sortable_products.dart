@@ -41,7 +41,9 @@ class SortableProducts extends StatelessWidget {
         ),
         PGridLayout(
             itemCount: 8,
-            itemBuilder: (_, index) => const PProductCardVertical())
+            itemBuilder: (_, index) => const PProductCardVertical(
+                  product: null,
+                ))
       ],
     );
   }

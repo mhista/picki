@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:pickafrika/features/shop/models/product_attribute_model.dart';
 import 'package:pickafrika/features/shop/models/product_variation_model.dart';
@@ -9,10 +8,11 @@ import 'package:pickafrika/features/shop/models/product_variation_model.dart';
 import 'brand_model.dart';
 
 class ProductModel {
-  String id;
+  String? id;
   int stock;
   String? sku;
   double price;
+  double? salePrice;
   String title;
   DateTime? date;
   String thumbnail;
@@ -23,12 +23,13 @@ class ProductModel {
   List<String>? images;
   String productType;
   List<ProductAttributeModel> productAttributes;
-  List<ProductVariationModel> prooductVariations;
+  List<ProductVariationModel>? productVariations;
   ProductModel({
-    required this.id,
+    this.id,
     required this.stock,
     this.sku,
     required this.price,
+    this.salePrice,
     required this.title,
     this.date,
     required this.thumbnail,
@@ -39,7 +40,7 @@ class ProductModel {
     this.images,
     required this.productType,
     required this.productAttributes,
-    required this.prooductVariations,
+    this.productVariations,
   });
 
   ProductModel copyWith({
@@ -47,6 +48,7 @@ class ProductModel {
     int? stock,
     String? sku,
     double? price,
+    double? salePrice,
     String? title,
     DateTime? date,
     String? thumbnail,
@@ -57,13 +59,14 @@ class ProductModel {
     List<String>? images,
     String? productType,
     List<ProductAttributeModel>? productAttributes,
-    List<ProductVariationModel>? prooductVariations,
+    List<ProductVariationModel>? productVariations,
   }) {
     return ProductModel(
       id: id ?? this.id,
       stock: stock ?? this.stock,
       sku: sku ?? this.sku,
       price: price ?? this.price,
+      salePrice: salePrice ?? this.salePrice,
       title: title ?? this.title,
       date: date ?? this.date,
       thumbnail: thumbnail ?? this.thumbnail,
@@ -74,9 +77,21 @@ class ProductModel {
       images: images ?? this.images,
       productType: productType ?? this.productType,
       productAttributes: productAttributes ?? this.productAttributes,
-      prooductVariations: prooductVariations ?? this.prooductVariations,
+      productVariations: productVariations ?? this.productVariations,
     );
   }
+
+// EMPTY PRODUCT MODEL
+  static ProductModel empty() => ProductModel(
+      id: '',
+      stock: 0,
+      price: 0.0,
+      title: '',
+      thumbnail: '',
+      description: '',
+      categoryId: '',
+      productType: '',
+      productAttributes: []);
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
@@ -87,6 +102,8 @@ class ProductModel {
       result.addAll({'sku': sku});
     }
     result.addAll({'price': price});
+    result.addAll({'salePrice': salePrice});
+
     result.addAll({'title': title});
     if (date != null) {
       result.addAll({'date': date!.millisecondsSinceEpoch});
@@ -112,7 +129,7 @@ class ProductModel {
       'productAttributes': productAttributes.map((x) => x.toMap()).toList()
     });
     result.addAll({
-      'prooductVariations': prooductVariations.map((x) => x.toMap()).toList()
+      'productVariations': productVariations?.map((x) => x.toMap()).toList()
     });
 
     return result;
@@ -121,12 +138,15 @@ class ProductModel {
 // MAP JSON ORIENTED DOCUMENT SNAPSHOT FROM FIREBASE TO MODEL
   factory ProductModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() == null) return ProductModel.empty();
     final map = document.data()!;
+
     return ProductModel(
       id: document.id,
       stock: map['stock']?.toInt() ?? 0,
       sku: map['sku'],
       price: map['price']?.toDouble() ?? 0.0,
+      salePrice: map['salePrice']?.toDouble() ?? 0.0,
       title: map['title'] ?? '',
       date: map['date'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['date'])
@@ -141,8 +161,8 @@ class ProductModel {
       productAttributes: List<ProductAttributeModel>.from(
           map['productAttributes']
               ?.map((x) => ProductAttributeModel.fromMap(x))),
-      prooductVariations: List<ProductVariationModel>.from(
-          map['prooductVariations']
+      productVariations: List<ProductVariationModel>.from(
+          map['productVariations']
               ?.map((x) => ProductVariationModel.fromMap(x))),
     );
   }
@@ -154,7 +174,7 @@ class ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, stock: $stock, sku: $sku, price: $price, title: $title, date: $date, thumbnail: $thumbnail, isFeatured: $isFeatured, brand: $brand, description: $description, categoryId: $categoryId, images: $images, productType: $productType, productAttributes: $productAttributes, prooductVariations: $prooductVariations)';
+    return 'ProductModel(id: $id, stock: $stock, sku: $sku, price: $price, title: $title, date: $date, thumbnail: $thumbnail, isFeatured: $isFeatured, brand: $brand, description: $description, categoryId: $categoryId, images: $images, productType: $productType, productAttributes: $productAttributes, productVariations: $productVariations)';
   }
 
 // MAP JSON ORIENTED DOCUMENT SNAPSHOT FROM FIREBASE TO MODEL
@@ -167,6 +187,7 @@ class ProductModel {
       stock: map['stock']?.toInt() ?? 0,
       sku: map['sku'],
       price: map['price']?.toDouble() ?? 0.0,
+      salePrice: map['salePrice']?.toDouble() ?? 0.0,
       title: map['title'] ?? '',
       date: map['date'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['date'])
@@ -181,8 +202,8 @@ class ProductModel {
       productAttributes: List<ProductAttributeModel>.from(
           map['productAttributes']
               ?.map((x) => ProductAttributeModel.fromMap(x))),
-      prooductVariations: List<ProductVariationModel>.from(
-          map['prooductVariations']
+      productVariations: List<ProductVariationModel>.from(
+          map['productVariations']
               ?.map((x) => ProductVariationModel.fromMap(x))),
     );
   }
