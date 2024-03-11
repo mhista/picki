@@ -8,7 +8,7 @@ import '../../utils/constants/image_strings.dart';
 
 class ProductDummyData {
   static final List<ProductModel> products = [
-    // // PRODUCT 1
+    // PRODUCT 1
     // ProductModel(
     //   id: '001',
     //   stock: 20,
@@ -20,6 +20,7 @@ class ProductDummyData {
     //   description: 'White Air max sport',
     //   categoryId: '1',
     //   productType: ProductType.variable.name,
+    //   images: [],
     //   productAttributes: [
     //     ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
     //     ProductAttributeModel(
@@ -80,6 +81,7 @@ class ProductDummyData {
     //   description: 'Womens pretty gown',
     //   categoryId: '1',
     //   productType: ProductType.variable.name,
+    //   images: [],
     //   productAttributes: [
     //     ProductAttributeModel(
     //         name: 'Color', values: ['Green', 'Blue', 'Purple']),
@@ -119,22 +121,49 @@ class ProductDummyData {
     //   sku: 'ABR4563',
     // ),
 
+    // // PRODUCT 4
+    // ProductModel(
+    //   id: '003',
+    //   stock: 40,
+    //   price: 600,
+    //   salePrice: 400,
+    //   title: 'White Air max sport',
+    //   thumbnail: PImages.productShoe4,
+    //   isFeatured: true,
+    //   description: 'White Air max sport',
+    //   categoryId: '1',
+    //   productType: ProductType.single.name,
+    //   images: [],
+    //   productVariations: [],
+    //   productAttributes: [
+    //     ProductAttributeModel(
+    //         name: 'Size', values: ['EU 32', 'EU 40', 'EU 24']),
+    //   ],
+    //   brand: BrandModel(
+    //       id: '4',
+    //       name: 'Gucci',
+    //       image: PImages.applePay,
+    //       productsCount: 50,
+    //       isFeatured: true),
+    //   sku: 'ABR4563',
+    // ),
     // PRODUCT 3
     ProductModel(
-      id: '003',
+      id: '004',
       stock: 20,
       price: 500,
       salePrice: 400,
       title: 'Mens kellini suit, ',
-      thumbnail: PImages.productShoe1,
+      thumbnail: PImages.productMen1,
       isFeatured: true,
       description: 'Mens kellini suit, ',
       categoryId: '1',
       productType: ProductType.single.name,
-      // images: [
-      //   PImages.productMen1,
-      //   PImages.productMen2,
-      // ],
+      images: [
+        PImages.productMen3,
+        PImages.productMen2,
+      ],
+      productVariations: [],
       productAttributes: [
         ProductAttributeModel(
             name: 'Size', values: ['EU 32', 'EU 40', 'EU 24']),
@@ -144,30 +173,6 @@ class ProductDummyData {
           name: 'Nike',
           image: PImages.applePay,
           productsCount: 300,
-          isFeatured: true),
-      sku: 'ABR4563',
-    ),
-    // PRODUCT 4
-    ProductModel(
-      id: '004',
-      stock: 20,
-      price: 500,
-      salePrice: 400,
-      title: 'White Air max sport',
-      thumbnail: PImages.productShoe1,
-      isFeatured: true,
-      description: 'White Air max sport',
-      categoryId: '1',
-      productType: ProductType.single.name,
-      productAttributes: [
-        ProductAttributeModel(
-            name: 'Size', values: ['EU 32', 'EU 40', 'EU 24']),
-      ],
-      brand: BrandModel(
-          id: '4',
-          name: 'Gucci',
-          image: PImages.applePay,
-          productsCount: 50,
           isFeatured: true),
       sku: 'ABR4563',
     ),

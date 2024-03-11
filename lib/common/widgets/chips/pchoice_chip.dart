@@ -21,6 +21,7 @@ class PChoiceChip extends StatelessWidget {
     return Theme(
       data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
       child: ChoiceChip(
+        visualDensity: const VisualDensity(horizontal: -2.0),
         label: color != null ? const SizedBox() : Text(text),
         selected: selected,
         onSelected: onSelected,

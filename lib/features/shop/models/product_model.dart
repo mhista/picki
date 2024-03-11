@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:pickafrika/features/shop/models/product_attribute_model.dart';
 import 'package:pickafrika/features/shop/models/product_variation_model.dart';
@@ -8,7 +9,7 @@ import 'package:pickafrika/features/shop/models/product_variation_model.dart';
 import 'brand_model.dart';
 
 class ProductModel {
-  String? id;
+  String id;
   int stock;
   String? sku;
   double price;
@@ -22,14 +23,14 @@ class ProductModel {
   String? categoryId;
   List<String>? images;
   String productType;
-  List<ProductAttributeModel> productAttributes;
+  List<ProductAttributeModel>? productAttributes;
   List<ProductVariationModel>? productVariations;
   ProductModel({
-    this.id,
+    required this.id,
     required this.stock,
     this.sku,
     required this.price,
-    this.salePrice,
+    this.salePrice = 0.0,
     required this.title,
     this.date,
     required this.thumbnail,
@@ -39,7 +40,7 @@ class ProductModel {
     required this.categoryId,
     this.images,
     required this.productType,
-    required this.productAttributes,
+    this.productAttributes,
     this.productVariations,
   });
 
@@ -102,8 +103,9 @@ class ProductModel {
       result.addAll({'sku': sku});
     }
     result.addAll({'price': price});
-    result.addAll({'salePrice': salePrice});
-
+    if (salePrice != null) {
+      result.addAll({'salePrice': salePrice});
+    }
     result.addAll({'title': title});
     if (date != null) {
       result.addAll({'date': date!.millisecondsSinceEpoch});
@@ -121,16 +123,21 @@ class ProductModel {
     if (categoryId != null) {
       result.addAll({'categoryId': categoryId});
     }
-    if (images != null) {
-      result.addAll({'images': images});
-    }
+    images != null ? result.addAll({'images': images}) : [];
+
     result.addAll({'productType': productType});
-    result.addAll({
-      'productAttributes': productAttributes.map((x) => x.toMap()).toList()
-    });
-    result.addAll({
-      'productVariations': productVariations?.map((x) => x.toMap()).toList()
-    });
+    productAttributes != null
+        ? result.addAll({
+            'productAttributes':
+                productAttributes!.map((x) => x.toMap()).toList()
+          })
+        : [];
+    productVariations != null
+        ? result.addAll({
+            'productVariations':
+                productVariations!.map((x) => x.toMap()).toList()
+          })
+        : [];
 
     return result;
   }
@@ -144,7 +151,7 @@ class ProductModel {
     return ProductModel(
       id: document.id,
       stock: map['stock']?.toInt() ?? 0,
-      sku: map['sku'],
+      sku: map['sku'] ?? '',
       price: map['price']?.toDouble() ?? 0.0,
       salePrice: map['salePrice']?.toDouble() ?? 0.0,
       title: map['title'] ?? '',
@@ -152,7 +159,7 @@ class ProductModel {
           ? DateTime.fromMillisecondsSinceEpoch(map['date'])
           : null,
       thumbnail: map['thumbnail'] ?? '',
-      isFeatured: map['isFeatured'],
+      isFeatured: map['isFeatured'] ?? false,
       brand: map['brand'] != null ? BrandModel.fromMap(map['brand']) : null,
       description: map['description'],
       categoryId: map['categoryId'],
@@ -161,33 +168,61 @@ class ProductModel {
       productAttributes: List<ProductAttributeModel>.from(
           map['productAttributes']
               ?.map((x) => ProductAttributeModel.fromMap(x))),
-      productVariations: List<ProductVariationModel>.from(
-          map['productVariations']
-              ?.map((x) => ProductVariationModel.fromMap(x))),
+      productVariations: map['productVariations'] != null
+          ? List<ProductVariationModel>.from(map['productVariations']
+              ?.map((x) => ProductVariationModel.fromMap(x)))
+          : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory ProductModel.fromJson(String source) =>
-      ProductModel.fromSnapshot(json.decode(source));
+      ProductModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, stock: $stock, sku: $sku, price: $price, title: $title, date: $date, thumbnail: $thumbnail, isFeatured: $isFeatured, brand: $brand, description: $description, categoryId: $categoryId, images: $images, productType: $productType, productAttributes: $productAttributes, productVariations: $productVariations)';
+    return 'ProductModel(id: $id, stock: $stock, sku: $sku, price: $price, salePrice: $salePrice, title: $title, date: $date, thumbnail: $thumbnail, isFeatured: $isFeatured, brand: $brand, description: $description, categoryId: $categoryId, images: $images, productType: $productType, productAttributes: $productAttributes, productVariations: $productVariations)';
   }
 
 // MAP JSON ORIENTED DOCUMENT SNAPSHOT FROM FIREBASE TO MODEL
 
-  factory ProductModel.fromQuerySnapshot(
-      QueryDocumentSnapshot<Object?> document) {
-    final map = document.data() as Map<String, dynamic>;
+  // factory ProductModel.fromQuerySnapshot(
+  //     QueryDocumentSnapshot<Object?> document) {
+  //   final map = document.data() as Map<String, dynamic>;
+  //   return ProductModel(
+  //     id: document.id,
+  //     stock: map['stock']?.toInt() ?? 0,
+  //     sku: map['sku'],
+  //     price: map['price']?.toDouble() ?? 0.0,
+  //     salePrice: map['salePrice']?.toDouble() ?? 0.0,
+  //     title: map['title'] ?? '',
+  //     date: map['date'] != null
+  //         ? DateTime.fromMillisecondsSinceEpoch(map['date'])
+  //         : null,
+  //     thumbnail: map['thumbnail'] ?? '',
+  //     isFeatured: map['isFeatured'],
+  //     brand: map['brand'] != null ? BrandModel.fromMap(map['brand']) : null,
+  //     description: map['description'],
+  //     categoryId: map['categoryId'],
+  //     images: map['images'] != null ? List<String>.from(map['images']) : [],
+  //     productType: map['productType'] ?? '',
+  //     productAttributes: List<ProductAttributeModel>.from(
+  //         map['productAttributes']
+  //             ?.map((x) => ProductAttributeModel.fromMap(x))),
+  //     productVariations: List<ProductVariationModel>.from(
+  //         map['productVariations']
+  //             ?.map((x) => ProductVariationModel.fromMap(x))),
+  //   );
+  // }
+
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: document.id,
+      id: map['id'],
       stock: map['stock']?.toInt() ?? 0,
       sku: map['sku'],
       price: map['price']?.toDouble() ?? 0.0,
-      salePrice: map['salePrice']?.toDouble() ?? 0.0,
+      salePrice: map['salePrice']?.toDouble(),
       title: map['title'] ?? '',
       date: map['date'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['date'])
@@ -197,14 +232,15 @@ class ProductModel {
       brand: map['brand'] != null ? BrandModel.fromMap(map['brand']) : null,
       description: map['description'],
       categoryId: map['categoryId'],
-      images: map['images'] != null ? List<String>.from(map['images']) : [],
+      images: List<String>.from(map['images']),
       productType: map['productType'] ?? '',
       productAttributes: List<ProductAttributeModel>.from(
           map['productAttributes']
               ?.map((x) => ProductAttributeModel.fromMap(x))),
-      productVariations: List<ProductVariationModel>.from(
-          map['productVariations']
-              ?.map((x) => ProductVariationModel.fromMap(x))),
+      productVariations: map['productVariations'] != null
+          ? List<ProductVariationModel>.from(map['productVariations']
+              ?.map((x) => ProductVariationModel.fromMap(x)))
+          : null,
     );
   }
 }

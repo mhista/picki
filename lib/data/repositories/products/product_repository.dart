@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/data/services/firebase_services/firebase_storage_services.dart';
@@ -42,6 +43,7 @@ class ProductRepository extends GetxController {
           .where('isFeatured', isEqualTo: true)
           .limit(4)
           .get();
+      debugPrint(snapshot.toString());
       final list =
           snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
       return list;
@@ -62,6 +64,7 @@ class ProductRepository extends GetxController {
       final storage = Get.put(PFirebaseStorageServices());
       // LOOP THROUGH EACH product
       final imageController = Get.put(ImageController());
+
       for (var product in products) {
         final productToUpload =
             await imageController.uploadProductImages(product, storage);

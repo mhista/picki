@@ -3,6 +3,7 @@ import 'package:pickafrika/common/widgets/custom_shapes/containers/rounded_conta
 import 'package:pickafrika/common/widgets/texts/product_price_text.dart';
 import 'package:pickafrika/common/widgets/texts/product_title_text.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
@@ -10,8 +11,9 @@ import 'package:pickafrika/utils/helpers/helper_functions.dart';
 import '../../../../../common/widgets/chips/pchoice_chip.dart';
 
 class ProductAttributes extends StatelessWidget {
-  const ProductAttributes({super.key});
+  const ProductAttributes({super.key, required this.product});
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
@@ -93,69 +95,30 @@ class ProductAttributes extends StatelessWidget {
         ),
         // ATTRIBUTES
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const PSectionHeading(
-              title: 'Colors',
-              showActionButton: false,
-            ),
-            const SizedBox(
-              height: PSizes.spaceBtwItems,
-            ),
-            Wrap(
-              spacing: 8,
-              children: [
-                PChoiceChip(
-                  text: 'Blue',
-                  selected: true,
-                  onSelected: (value) {},
-                ),
-                PChoiceChip(
-                  text: 'Yellow',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                PChoiceChip(
-                  text: 'Red',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-              ],
-            ),
-          ],
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const PSectionHeading(
-              title: 'Size',
-              showActionButton: false,
-            ),
-            const SizedBox(
-              height: PSizes.spaceBtwItems,
-            ),
-            Wrap(
-              spacing: 8,
-              children: [
-                PChoiceChip(
-                  text: 'EU 34',
-                  selected: true,
-                  onSelected: (value) {},
-                ),
-                PChoiceChip(
-                  text: 'EU 32',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                PChoiceChip(
-                  text: 'EU 23',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-              ],
-            ),
-          ],
-        ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: product.productAttributes!
+                .map((attribute) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PSectionHeading(
+                          title: attribute.name ?? '',
+                          showActionButton: false,
+                        ),
+                        const SizedBox(
+                          height: PSizes.spaceBtwItems,
+                        ),
+                        Wrap(
+                            spacing: 8,
+                            children: attribute.values!
+                                .map((val) => PChoiceChip(
+                                      text: val,
+                                      selected: true,
+                                      onSelected: (value) {},
+                                    ))
+                                .toList()),
+                      ],
+                    ))
+                .toList())
       ],
     );
   }

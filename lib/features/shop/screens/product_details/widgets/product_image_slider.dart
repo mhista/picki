@@ -71,6 +71,7 @@ class ProductImageSlider extends StatelessWidget {
                         controller.selectedProductImage.value == images[index];
                     return PRoundedImage(
                       isNetworkImage: true,
+                      fit: BoxFit.contain,
                       padding: const EdgeInsets.all(PSizes.sm),
                       border: Border.all(
                         color: imageSelected

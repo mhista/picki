@@ -5,6 +5,7 @@ import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:pickafrika/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:pickafrika/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/texts/read_more_text.dart';
@@ -38,6 +39,7 @@ class ProductDetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // RATING AND SHAER BUTTON
+
                   const RatingAndShare(),
 
                   // PRICE , TITLE, STOCK, BRAND
@@ -45,10 +47,14 @@ class ProductDetailScreen extends StatelessWidget {
                     product: product,
                   ),
                   // ATTRIBUTES
-                  const ProductAttributes(),
-                  const SizedBox(
-                    height: PSizes.spaceBtwSections,
-                  ),
+                  if (product.productType == ProductType.variable.name)
+                    ProductAttributes(
+                      product: product,
+                    ),
+                  if (product.productType == ProductType.variable.name)
+                    const SizedBox(
+                      height: PSizes.spaceBtwSections,
+                    ),
                   // CHECKOUT BUTTON
                   SizedBox(
                     width: double.infinity,
@@ -68,10 +74,7 @@ class ProductDetailScreen extends StatelessWidget {
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   ),
-                  const PReadMoreText(
-                    text:
-                        'lorem lipsum dolore sicyut uiwh  uihdidcuihdc uihwidkncidc uidhidcnuic uihdneui uiedheuide uiieudejkkdnie eined euidbe ceh ecuincuic  uice cuecbie uuci  ciu ecue euc euc wecuy dcc   wuybeyuee ',
-                  ),
+                  PReadMoreText(text: product.description!),
                   // REVIEWS
                   const Divider(),
                   const SizedBox(

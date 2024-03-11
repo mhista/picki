@@ -34,7 +34,7 @@ class ProductMetaData extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: PSizes.sm, vertical: PSizes.xs),
               child: Text(
-                '$salesPercentage%',
+                '- $salesPercentage%',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!
@@ -45,17 +45,20 @@ class ProductMetaData extends StatelessWidget {
               width: PSizes.spaceBtwItems / 2,
             ),
             // PRICE
-            // if(product.productType == Prod)
-            Text(
-              '\$250',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .apply(decoration: TextDecoration.lineThrough),
-            ),
-            const SizedBox(
-              width: PSizes.spaceBtwItems / 2,
-            ),
+            if (product.productType == ProductType.single.name &&
+                product.salePrice! > 0)
+              Text(
+                '\$${product.price}',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .apply(decoration: TextDecoration.lineThrough),
+              ),
+            if (product.productType == ProductType.single.name &&
+                product.salePrice! > 0)
+              const SizedBox(
+                width: PSizes.spaceBtwItems / 2,
+              ),
             ProductPriceText(
               price: controller.getProductPrice(product),
               isLarge: true,
@@ -67,8 +70,8 @@ class ProductMetaData extends StatelessWidget {
         ),
 
         // TITLE
-        const ProductTitleText(
-          title: 'Red Jacket with shimmerings',
+        ProductTitleText(
+          title: product.title,
         ),
         const SizedBox(
           height: PSizes.spaceBtwItems / 1.5,
@@ -81,7 +84,8 @@ class ProductMetaData extends StatelessWidget {
             const SizedBox(
               width: PSizes.spaceBtwItems / 1.5,
             ),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium!),
+            Text(controller.getStockStatus(product.stock),
+                style: Theme.of(context).textTheme.titleMedium!),
           ],
         ),
         const SizedBox(
@@ -91,14 +95,14 @@ class ProductMetaData extends StatelessWidget {
         Row(
           children: [
             PCircularImage(
-              imageUrl: PImages.shoeIcon,
+              imageUrl: product.brand != null ? product.brand!.image : '',
               width: 32,
               height: 32,
               overLayColor: isDark ? PColors.white : PColors.dark,
             ),
-            const Flexible(
+            Flexible(
               child: BrandTitleTextWithVerifiedIcon(
-                title: 'Nike',
+                title: product.brand != null ? product.brand!.name : '',
                 brandTextSize: TextSizes.medium,
               ),
             ),

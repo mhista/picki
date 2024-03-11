@@ -31,7 +31,7 @@ class SaleTagWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             horizontal: PSizes.sm, vertical: PSizes.xs),
         child: Text(
-          '$tag%',
+          '- $tag%',
           style: Theme.of(context)
               .textTheme
               .labelLarge!

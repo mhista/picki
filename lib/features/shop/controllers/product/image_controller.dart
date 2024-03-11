@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pickafrika/data/repositories/products/product_repository.dart';
 import 'package:pickafrika/data/services/firebase_services/firebase_storage_services.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';

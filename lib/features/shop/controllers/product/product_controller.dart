@@ -80,7 +80,7 @@ class ProductController extends GetxController {
     double largestPrice = 0.0;
 
     // IF NO VARIATION, RETURN THE SINGLE PRICE OR SALE PRICE
-    if (product.productType == ProductType.single.toString()) {
+    if (product.productType == ProductType.single.name) {
       return (product.salePrice! > 0 ? product.salePrice : product.price)
           .toString();
     } else {
@@ -93,7 +93,7 @@ class ProductController extends GetxController {
           smallestPrice = priceToConsider;
         }
         if (priceToConsider > largestPrice) {
-          smallestPrice = priceToConsider;
+          largestPrice = priceToConsider;
         }
       }
       // IF SMALLEST AND LARGEST PRICES ARE THE SAME, RETURN A SINGLE PRICE
