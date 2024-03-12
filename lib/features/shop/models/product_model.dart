@@ -187,34 +187,35 @@ class ProductModel {
 
 // MAP JSON ORIENTED DOCUMENT SNAPSHOT FROM FIREBASE TO MODEL
 
-  // factory ProductModel.fromQuerySnapshot(
-  //     QueryDocumentSnapshot<Object?> document) {
-  //   final map = document.data() as Map<String, dynamic>;
-  //   return ProductModel(
-  //     id: document.id,
-  //     stock: map['stock']?.toInt() ?? 0,
-  //     sku: map['sku'],
-  //     price: map['price']?.toDouble() ?? 0.0,
-  //     salePrice: map['salePrice']?.toDouble() ?? 0.0,
-  //     title: map['title'] ?? '',
-  //     date: map['date'] != null
-  //         ? DateTime.fromMillisecondsSinceEpoch(map['date'])
-  //         : null,
-  //     thumbnail: map['thumbnail'] ?? '',
-  //     isFeatured: map['isFeatured'],
-  //     brand: map['brand'] != null ? BrandModel.fromMap(map['brand']) : null,
-  //     description: map['description'],
-  //     categoryId: map['categoryId'],
-  //     images: map['images'] != null ? List<String>.from(map['images']) : [],
-  //     productType: map['productType'] ?? '',
-  //     productAttributes: List<ProductAttributeModel>.from(
-  //         map['productAttributes']
-  //             ?.map((x) => ProductAttributeModel.fromMap(x))),
-  //     productVariations: List<ProductVariationModel>.from(
-  //         map['productVariations']
-  //             ?.map((x) => ProductVariationModel.fromMap(x))),
-  //   );
-  // }
+  factory ProductModel.fromQuerySnapshot(
+      QueryDocumentSnapshot<Object?> document) {
+    final map = document.data() as Map<String, dynamic>;
+    return ProductModel(
+      id: document.id,
+      stock: map['stock']?.toInt() ?? 0,
+      sku: map['sku'] ?? '',
+      price: map['price']?.toDouble() ?? 0.0,
+      salePrice: map['salePrice']?.toDouble() ?? 0.0,
+      title: map['title'] ?? '',
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'])
+          : null,
+      thumbnail: map['thumbnail'] ?? '',
+      isFeatured: map['isFeatured'],
+      brand: map['brand'] != null ? BrandModel.fromMap(map['brand']) : null,
+      description: map['description'],
+      categoryId: map['categoryId'],
+      images: map['images'] != null ? List<String>.from(map['images']) : [],
+      productType: map['productType'] ?? '',
+      productAttributes: List<ProductAttributeModel>.from(
+          map['productAttributes']
+              ?.map((x) => ProductAttributeModel.fromMap(x))),
+      productVariations: map['productVariations'] != null
+          ? List<ProductVariationModel>.from(map['productVariations']
+              ?.map((x) => ProductVariationModel.fromMap(x)))
+          : null,
+    );
+  }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(

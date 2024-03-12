@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -85,7 +86,14 @@ class HomeScreen extends StatelessWidget {
                   // HEADING SECTION
                   PSectionHeading(
                     title: 'Popular Products',
-                    onPressed: () => Get.to(() => const AllProducts()),
+                    onPressed: () => Get.to(() => AllProducts(
+                          title: 'Popular Products',
+                          // query: FirebaseFirestore.instance
+                          //     .collection('Products')
+                          //     .where('isFeatured', isEqualTo: true)
+                          //     .limit(6),
+                          futureMethod: controller.fetchAllFeaturedProducts(),
+                        )),
                   ),
                   const SizedBox(
                     height: PSizes.spaceBtwItems,

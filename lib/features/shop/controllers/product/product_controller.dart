@@ -30,6 +30,7 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
+// FETCH LIMITED FUTURE PRODUCTS
   void fetchFeaturedProducts() async {
     try {
       // SHOW SHIMMER WHILE LOADING CATEGORIES
@@ -43,6 +44,19 @@ class ProductController extends GetxController {
       PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+// FETCH ALL FEATURED PRODUCTS
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      // FETCH PRODUCTS FROM THE DATABASE
+      final products = await _productRepository.getAllFeaturedProducts();
+      return products;
+    } catch (e) {
+      // SHOW GENERIC ERROR TO THE USER
+      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
     }
   }
 
