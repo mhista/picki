@@ -26,11 +26,11 @@ class VerticalProductShimmer extends StatelessWidget {
                     height: PSizes.spaceBtwItems,
                   ),
                   // TEXT
-                  PShimmerEffect(height: 160, width: 15),
+                  PShimmerEffect(width: 110, height: 15),
                   SizedBox(
                     height: PSizes.spaceBtwItems / 2,
                   ),
-                  PShimmerEffect(height: 110, width: 15),
+                  PShimmerEffect(width: 180, height: 15),
                 ],
               ),
             ));

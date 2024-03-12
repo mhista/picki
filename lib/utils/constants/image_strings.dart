@@ -7,6 +7,17 @@ class PImages {
   static const String google = 'assets/images/logo_images/google-icon.png';
   static const String facebook = 'assets/images/logo_images/facebook-icon.png';
 
+// BRAND LOGOS
+  static const String adidas =
+      'assets/images/logo_images/brand logos/adidas.png';
+  static const String apple = 'assets/images/logo_images/brand logos/apple.png';
+  static const String dell = 'assets/images/logo_images/brand logos/dell.png';
+  static const String hp = 'assets/images/logo_images/brand logos/hp.png';
+  static const String ikea = 'assets/images/logo_images/brand logos/ikea.png';
+  static const String nike = 'assets/images/logo_images/brand logos/nike.png';
+  static const String puma = 'assets/images/logo_images/brand logos/puma.png';
+  static const String zara = 'assets/images/logo_images/brand logos/zara.png';
+
 // LOTTIE ANIMATIONS
   static const String lottie1 = 'assets/images/animations/lottie1.json';
   static const String lottie2 = 'assets/images/animations/lottie2.json';

@@ -9,7 +9,7 @@ import 'package:pickafrika/features/personalization/controllers/user_controller.
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/popups/fullscreen_loader.dart';
 
-import '../../../../utils/device/network_manager.dart';
+import '../../../../utils/helpers/network_manager.dart';
 import '../../models/user_model.dart';
 
 class SignupController extends GetxController {

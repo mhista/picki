@@ -14,7 +14,7 @@ import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../common/loaders/loaders.dart';
 import '../../../utils/constants/image_strings.dart';
-import '../../../utils/device/network_manager.dart';
+import '../../../utils/helpers/network_manager.dart';
 import '../../../utils/popups/fullscreen_loader.dart';
 
 class UserController extends GetxController {

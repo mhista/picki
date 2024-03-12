@@ -21,4 +21,48 @@ class AllProductController extends GetxController {
       return [];
     }
   }
+
+  void sortProducts(String sortOptions) {
+    selectedSortOption.value = sortOptions;
+    switch (sortOptions) {
+      case 'Name':
+        products.sort((a, b) => a.title.compareTo(b.title));
+        break;
+      case 'Higher Price':
+        products.sort((a, b) => b.price.compareTo(a.price));
+        break;
+      case 'Lower Price':
+        products.sort((a, b) => a.price.compareTo(b.price));
+        break;
+      case 'New Products':
+        products.sort((a, b) {
+          if (a.date != null && b.date != null) {
+            return a.date!.compareTo(b.date!);
+          }
+          return 0;
+        });
+        break;
+      case 'Sale':
+        products.sort((a, b) {
+          if (b.salePrice! > 0) {
+            return b.salePrice!.compareTo(a.salePrice!);
+          } else if (a.salePrice! > 0) {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
+        break;
+
+      default:
+        // default sorting option : name
+        products.sort((a, b) => a.title.compareTo(b.title));
+    }
+  }
+
+  void assignProducts(List<ProductModel> products) {
+// Assign products to the 'products list
+    this.products.assignAll(products);
+    sortProducts('Name');
+  }
 }

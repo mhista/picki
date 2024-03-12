@@ -7,7 +7,7 @@ import 'package:pickafrika/data/repositories/authentication_repository/authentic
 
 import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/device/network_manager.dart';
+import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/fullscreen_loader.dart';
 import '../../../personalization/controllers/user_controller.dart';
 

@@ -26,7 +26,9 @@ class BrandProduct extends StatelessWidget {
             SizedBox(
               height: PSizes.spaceBtwSections,
             ),
-            SortableProducts()
+            SortableProducts(
+              products: [],
+            )
           ]),
         ),
       ),

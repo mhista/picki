@@ -20,7 +20,7 @@ class SortableProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
     final controller = Get.put(AllProductController());
-
+    controller.assignProducts(products);
     return Column(
       children: [
         DropdownButtonFormField(
@@ -32,23 +32,29 @@ class SortableProducts extends StatelessWidget {
             'Low Price',
             'Sale',
             'New Products',
-            'Popular products'
+            // 'Popular products'
           ]
               .map((option) => DropdownMenuItem(
                     value: option,
                     child: Text(option),
                   ))
               .toList(),
-          onChanged: (value) {},
+          value: controller.selectedSortOption.value,
+          onChanged: (value) {
+            // Sort products based on the selected option
+            controller.sortProducts(value!);
+          },
         ),
         const SizedBox(
           height: PSizes.spaceBtwSections,
         ),
-        PGridLayout(
-            itemCount: 8,
-            itemBuilder: (_, index) => PProductCardVertical(
-                  product: products[index],
-                ))
+        Obx(() {
+          return PGridLayout(
+              itemCount: controller.products.length,
+              itemBuilder: (_, index) => PProductCardVertical(
+                    product: controller.products[index],
+                  ));
+        })
       ],
     );
   }

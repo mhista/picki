@@ -8,7 +8,7 @@ import 'package:pickafrika/features/personalization/screens/profile/profile.dart
 import '../../../common/loaders/loaders.dart';
 import '../../../data/repositories/user/user_repository.dart';
 import '../../../utils/constants/image_strings.dart';
-import '../../../utils/device/network_manager.dart';
+import '../../../utils/helpers/network_manager.dart';
 import '../../../utils/popups/fullscreen_loader.dart';
 
 class UpdateNameController extends GetxController {

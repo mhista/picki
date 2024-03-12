@@ -7,7 +7,7 @@ import 'package:pickafrika/utils/constants/enums.dart';
 import '../../../../common/loaders/loaders.dart';
 import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/device/network_manager.dart';
+import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/fullscreen_loader.dart';
 
 class ProductController extends GetxController {
