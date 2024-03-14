@@ -53,7 +53,7 @@ class ProductAttributes extends StatelessWidget {
                                 ),
                                 // ACCOUNT PRICE
                                 if (controller
-                                        .selectedVariation.value.salePrice >
+                                        .selectedVariation.value.salePrice! >
                                     0)
                                   Text(
                                     '\$${controller.selectedVariation.value.price}',
@@ -68,7 +68,8 @@ class ProductAttributes extends StatelessWidget {
                                   width: PSizes.spaceBtwItems / 2,
                                 ),
                                 ProductPriceText(
-                                    price: controller.getVariationPrice())
+                                    price:
+                                        controller.getVariationPrice(product))
                               ],
                             ),
                             Row(
@@ -124,7 +125,6 @@ class ProductAttributes extends StatelessWidget {
                                         controller.selectedAttributes[
                                                 attribute.name] ==
                                             val;
-                                    debugPrint(isSelected.toString());
                                     final available = controller
                                         .getAttributeAvailabilityInVariation(
                                             product.productVariations!,

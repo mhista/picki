@@ -18,7 +18,7 @@ class VariationController extends GetxController {
     // when attribute is selected we first add that attribute to the selectedAttributes.
     final selectedAttributes =
         Map<String, dynamic>.from(this.selectedAttributes);
-    selectedAttributes[attributeName] = attributeValue;
+    selectedAttributes[attributeName] = List.from(attributeValue);
     // debugPrint(selectedAttributes.toString());
     this.selectedAttributes[attributeName] = attributeValue;
     debugPrint(this.selectedAttributes.toString());
@@ -29,13 +29,15 @@ class VariationController extends GetxController {
         orElse: () => ProductVariationModel.empty());
 
     // show the selected variation imagee as a main image
-    if (selectedVariation.image.isNotEmpty) {
+    if (selectedVariation.image!.isNotEmpty) {
       ImageController.instance.selectedProductImage.value =
-          selectedVariation.image;
+          selectedVariation.image!;
     }
 
     // Assign selected variation
-    this.selectedVariation.value = selectedVariation;
+    this.selectedVariation.value = selectedVariation
+        .attributeValues[attributeName]!
+        .firstWhere((element) => element == attributeName);
 
 // update selected product variation status
     getProductVariationStockStatus();
@@ -56,7 +58,7 @@ class VariationController extends GetxController {
   }
 
   // CHECK ATTRIBUTE AVAILABILITY / STOCK IN VARIATION
-  Set<String?> getAttributeAvailabilityInVariation(
+  Set<dynamic> getAttributeAvailabilityInVariation(
       List<ProductVariationModel> variations, String attributeName) {
 // pass the variations to check attributes are available and stock is not 0
     final availableVariationAttributeValues = variations
@@ -72,10 +74,14 @@ class VariationController extends GetxController {
   }
 
 // GET VARIATION PRICE
-  String getVariationPrice() {
-    return (selectedVariation.value.salePrice > 0
+  String getVariationPrice(ProductModel product) {
+    return (selectedVariation.value.salePrice! > 0
             ? selectedVariation.value.salePrice
-            : selectedVariation.value.price)
+            : selectedVariation.value.price! > 0
+                ? selectedVariation.value.price
+                : product.salePrice! > 0
+                    ? product.salePrice
+                    : product.price)
         .toString();
   }
 

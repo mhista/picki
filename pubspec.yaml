@@ -71,6 +71,7 @@ flutter:
     - assets/images/animations/
     - assets/images/banners/
     - assets/images/logo_images/
+    - assets/images/logo_images/brand logos/
     - assets/images/categories/
     - assets/images/onboarding_images/
     - assets/images/products/
@@ -82,6 +83,7 @@ flutter:
     - assets/images/products/jewelery/
     - assets/icons/payment_methods/
     - assets/logos/
+
     # - assets/icons/
 
 

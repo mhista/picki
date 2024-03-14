@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 
 class ProductVariationModel {
   final String id;
-  String sku;
-  String image;
+  String? sku;
+  String? image;
   String? description;
-  double price;
-  double salePrice;
+  double? price;
+  double? salePrice;
   int stock;
-  Map<String, String> attributeValues;
+  Map<String, List> attributeValues;
   ProductVariationModel({
     required this.id,
     this.sku = '',
@@ -34,7 +34,7 @@ class ProductVariationModel {
     double? price,
     double? salePrice,
     int? stock,
-    Map<String, String>? attributeValues,
+    Map<String, List>? attributeValues,
   }) {
     return ProductVariationModel(
       id: id ?? this.id,
@@ -75,7 +75,7 @@ class ProductVariationModel {
       price: map['price']?.toDouble() ?? 0.0,
       salePrice: map['salePrice']?.toDouble() ?? 0.0,
       stock: map['stock']?.toInt() ?? 0,
-      attributeValues: Map<String, String>.from(map['attributeValues']),
+      attributeValues: Map<String, List>.from(map['attributeValues']),
     );
   }
 

@@ -1,9 +1,4 @@
-import 'package:pickafrika/features/authentication/models/user_model.dart';
-import 'package:pickafrika/features/shop/models/brand_model.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
-import 'package:pickafrika/features/shop/models/product_attribute_model.dart';
-import 'package:pickafrika/features/shop/models/product_model.dart';
-import 'package:pickafrika/features/shop/models/product_variation_model.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 
 import '../../features/shop/models/banner_model.dart';
@@ -152,15 +147,10 @@ class DummyData {
         parentId: '1'),
 
     // ELECTRONICS
+
     CategoryModel(
         id: '15',
-        name: 'Office furniture',
-        image: PImages.electroniIcon,
-        isFeatured: false,
-        parentId: '2'),
-    CategoryModel(
-        id: '16',
-        name: 'Office furniture',
+        name: 'Office Electronics',
         image: PImages.electroniIcon,
         isFeatured: false,
         parentId: '2'),
@@ -171,6 +161,19 @@ class DummyData {
         image: PImages.clothIcon,
         isFeatured: false,
         parentId: '3'),
+    // ELECTRONICS
+    CategoryModel(
+        id: '17',
+        name: 'Laptops',
+        image: PImages.electroniIcon,
+        isFeatured: false,
+        parentId: '2'),
+    CategoryModel(
+        id: '18',
+        name: 'Phones',
+        image: PImages.electroniIcon,
+        isFeatured: false,
+        parentId: '2'),
   ];
 }
 

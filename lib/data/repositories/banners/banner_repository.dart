@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/data/services/firebase_services/firebase_storage_services.dart';
 import 'package:pickafrika/features/shop/models/banner_model.dart';
-import 'package:pickafrika/features/shop/models/category_model.dart';
 
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';

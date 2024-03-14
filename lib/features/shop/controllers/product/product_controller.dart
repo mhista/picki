@@ -100,8 +100,9 @@ class ProductController extends GetxController {
     } else {
       // CALCULATE THE SMALLEST AND LARGEST PRICES AMONG VARIATIONS
       for (var variation in product.productVariations!) {
-        double priceToConsider =
-            variation.salePrice > 0.0 ? variation.salePrice : variation.price;
+        double priceToConsider = variation.salePrice! > 0.0
+            ? variation.salePrice!
+            : variation.price!;
         // UPDATE THE SMALLEST AND LARGEST PRICES
         if (priceToConsider < smallestPrice) {
           smallestPrice = priceToConsider;

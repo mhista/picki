@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pickafrika/common/loaders/loaders.dart';
 import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
 
-import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/fullscreen_loader.dart';

@@ -31,7 +31,7 @@ class ImageController extends GetxController {
     if (product.productVariations != null ||
         product.productVariations!.isNotEmpty) {
       images.addAll(
-          product.productVariations!.map((variation) => variation.image));
+          product.productVariations!.map((variation) => variation.image!));
     }
 
     // LIST OF IMAGAE
@@ -71,11 +71,11 @@ class ImageController extends GetxController {
       for (var variation in product.productVariations!) {
         // GET IMAGEDATA LINK FROM THE LOCAL ASSETS;
         final assetImage =
-            await storage.getImageDataFromAssets(variation.image);
+            await storage.getImageDataFromAssets(variation.image!);
 
         // upload image and get its url
         final url = await storage.uploadImageData(
-            'Products/Images', assetImage, variation.image);
+            'Products/Images', assetImage, variation.image!);
         variation.image = url;
       }
     }

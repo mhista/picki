@@ -3,18 +3,19 @@ import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/brands/brand_cards.dart';
 import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
+import 'package:pickafrika/features/shop/controllers/brand_controller.dart';
 import 'package:pickafrika/features/shop/screens/brands/brand_products.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/appbar/appBar.dart';
-import '../../../../utils/helpers/helper_functions.dart';
+import '../../../../common/widgets/shimmer/brand_shimmer.dart';
 
 class AllBrandsScreen extends StatelessWidget {
   const AllBrandsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = PHelperFunctions.isDarkMode(context);
+    final controller = BrandController.instance;
     return Scaffold(
       appBar: const PAppBar(
         title: Text(
@@ -37,13 +38,33 @@ class AllBrandsScreen extends StatelessWidget {
               ),
 
               // BRANDS
-              PGridLayout(
-                  mainAxisExtent: 80,
-                  itemCount: 10,
-                  itemBuilder: (contex, index) => BrandCard(
-                        showBorder: true,
-                        onTap: () => Get.to(() => const BrandProduct()),
-                      ))
+              Obx(() {
+                if (controller.isLoading.value) return const BrandShimmer();
+                if (controller.allBrands.isEmpty)
+                  // ignore: curly_braces_in_flow_control_structures
+                  return Center(
+                    child: Text(
+                      'No Data!',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(color: Colors.white),
+                    ),
+                  );
+                return PGridLayout(
+                    mainAxisExtent: 80,
+                    itemCount: controller.allBrands.length,
+                    itemBuilder: (_, index) {
+                      final brand = controller.allBrands[index];
+                      return BrandCard(
+                        showBorder: false,
+                        brand: brand,
+                        onTap: () => Get.to(() => BrandProduct(
+                              brand: brand,
+                            )),
+                      );
+                    });
+              })
             ],
           ),
         ),

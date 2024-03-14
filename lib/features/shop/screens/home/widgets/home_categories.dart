@@ -7,7 +7,6 @@ import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../../common/widgets/images/image_text_widgets/vertical_image_text.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/image_strings.dart';
 
 class PHomeCategories extends StatelessWidget {
   const PHomeCategories({

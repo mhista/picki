@@ -9,7 +9,6 @@ import 'package:pickafrika/data/repositories/user/user_repository.dart';
 import 'package:pickafrika/features/authentication/models/user_model.dart';
 import 'package:pickafrika/features/authentication/screens/login/login.dart';
 import 'package:pickafrika/features/personalization/screens/profile/widgets/re_authenticate_user.dart';
-import 'package:pickafrika/navigation_menu.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../common/loaders/loaders.dart';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/features/authentication/controllers/forget_password/forget_password_controller.dart';
-import 'package:pickafrika/features/authentication/screens/password_config/reset_password.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/constants/text_strings.dart';
 import 'package:pickafrika/utils/validators/validation.dart';

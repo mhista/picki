@@ -5,7 +5,6 @@ import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/shimmer/product_vertical_shimmer.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/cloud_helper_function.dart';
-import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/products/sorting/sortable_products.dart';
 import '../../controllers/product/all_product_controller.dart';

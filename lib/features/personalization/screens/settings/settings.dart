@@ -15,7 +15,6 @@ import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_list.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../controllers/user_controller.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

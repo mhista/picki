@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:pickafrika/data/dummy_data/dummy_data.dart';
 import 'package:pickafrika/data/repositories/categories/category_repositories.dart';
+import 'package:pickafrika/data/repositories/category_relationship/product_category_repository.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/navigation_menu.dart';
 
 import '../../../common/loaders/loaders.dart';
@@ -17,6 +19,8 @@ class CategoryController extends GetxController {
 
   final isLoading = false.obs;
   final _categoryRepository = Get.put(CategoryRepository());
+  final _productCategoryRepository = Get.put(ProductCategoryRepository());
+
   @override
   void onInit() {
     fetchCategories();
@@ -47,6 +51,19 @@ class CategoryController extends GetxController {
   }
 
   // LOAD SELECTED CATEGORY DATA
+  // LOAD CATEGORY DATA
+  Future<List<ProductModel>> getCategoryProducts(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      final products = await _productCategoryRepository.getProductsForCategory(
+          categoryId: categoryId, limit: limit);
+      return products;
+    } catch (e) {
+      // SHOW GENERIC ERROR TO THE USER
+      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 
   // GET CATEGORY OR SUB-CATEGORY PRODUCTS
   // UPLOAD CATEGORIES

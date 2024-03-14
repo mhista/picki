@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class BrandModel {
   String id;
   String name;
   String image;
   bool? isFeatured;
-  int? productsCount;
+  String? productsCount;
   BrandModel({
     required this.id,
     required this.name,
@@ -22,7 +24,7 @@ class BrandModel {
     String? name,
     String? image,
     bool? isFeatured,
-    int? productsCount,
+    String? productsCount,
   }) {
     return BrandModel(
       id: id ?? this.id,
@@ -56,10 +58,22 @@ class BrandModel {
       name: map['name'] ?? '',
       image: map['image'] ?? '',
       isFeatured: map['isFeatured'],
-      productsCount: map['productsCount']?.toInt(),
+      productsCount: map['productsCount'] ?? '',
     );
   }
 
+  factory BrandModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() == null) return BrandModel.empty();
+    final map = document.data()!;
+    return BrandModel(
+      id: document.id,
+      name: map['name'] ?? '',
+      image: map['image'] ?? '',
+      isFeatured: map['isFeatured'] ?? false,
+      productsCount: map['productsCount'] ?? '',
+    );
+  }
   String toJson() => json.encode(toMap());
 
   factory BrandModel.fromJson(String source) =>

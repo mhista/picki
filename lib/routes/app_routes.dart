@@ -11,7 +11,6 @@ import 'package:pickafrika/features/shop/screens/cart/cart.dart';
 import 'package:pickafrika/features/shop/screens/checkout/checkout.dart';
 import 'package:pickafrika/features/shop/screens/home/home.dart';
 import 'package:pickafrika/features/shop/screens/order/order.dart';
-import 'package:pickafrika/features/shop/screens/product_details/product_detail.dart';
 import 'package:pickafrika/features/shop/screens/store/store.dart';
 import 'package:pickafrika/features/shop/screens/wishlist/wishlist.dart';
 import 'package:pickafrika/routes/routes.dart';

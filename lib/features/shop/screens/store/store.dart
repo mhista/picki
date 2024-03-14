@@ -5,6 +5,8 @@ import 'package:pickafrika/common/widgets/appbar/tapBar.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
 import 'package:pickafrika/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:pickafrika/common/widgets/shimmer/brand_shimmer.dart';
+import 'package:pickafrika/features/shop/controllers/brand_controller.dart';
 import 'package:pickafrika/features/shop/controllers/category_controller.dart';
 import 'package:pickafrika/features/shop/screens/brands/all_brands.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
@@ -13,6 +15,7 @@ import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/brands/brand_cards.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../brands/brand_products.dart';
 import 'widgets/category_tab.dart';
 
 class Store extends StatelessWidget {
@@ -20,6 +23,7 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brands = Get.put(BrandController());
     final categories = CategoryController.instance.featuredCategories;
     final isDark = PHelperFunctions.isDarkMode(context);
     return DefaultTabController(
@@ -70,14 +74,32 @@ class Store extends StatelessWidget {
                       const SizedBox(
                         height: PSizes.spaceBtwItems / 2,
                       ),
-                      PGridLayout(
-                          mainAxisExtent: 80,
-                          itemCount: 4,
-                          itemBuilder: (_, index) {
-                            return const BrandCard(
-                              showBorder: false,
-                            );
-                          })
+                      Obx(() {
+                        if (brands.isLoading.value) return const BrandShimmer();
+                        if (brands.featuredBrands.isEmpty)
+                          // ignore: curly_braces_in_flow_control_structures
+                          return Center(
+                            child: Text(
+                              'No Data!',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .apply(color: Colors.white),
+                            ),
+                          );
+                        return PGridLayout(
+                            mainAxisExtent: 80,
+                            itemCount: brands.featuredBrands.length,
+                            itemBuilder: (_, index) {
+                              final brand = brands.featuredBrands[index];
+                              return BrandCard(
+                                  showBorder: false,
+                                  brand: brand,
+                                  onTap: () => Get.to(() => BrandProduct(
+                                        brand: brand,
+                                      )));
+                            });
+                      })
                     ],
                   ),
                 ),

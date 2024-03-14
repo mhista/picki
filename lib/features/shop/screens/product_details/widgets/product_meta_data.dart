@@ -5,7 +5,6 @@ import 'package:pickafrika/common/widgets/texts/product_price_text.dart';
 import 'package:pickafrika/common/widgets/texts/product_title_text.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/enums.dart';
-import 'package:pickafrika/utils/constants/image_strings.dart';
 
 import '../../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../../utils/constants/colors.dart';

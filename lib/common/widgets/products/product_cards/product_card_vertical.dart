@@ -8,7 +8,6 @@ import 'package:pickafrika/features/shop/controllers/product/product_controller.
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
 import 'package:pickafrika/utils/constants/enums.dart';
-import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
@@ -20,19 +19,19 @@ import '../../texts/product_title_text.dart';
 import 'add_to_cart_container.dart';
 
 class PProductCardVertical extends StatelessWidget {
-  const PProductCardVertical({super.key, this.product});
-  final ProductModel? product;
+  const PProductCardVertical({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final controller = ProductController.instance;
     final salePercentage =
-        controller.calculateSalePercentage(product!.price, product!.salePrice);
+        controller.calculateSalePercentage(product.price, product.salePrice);
     final isDark = PHelperFunctions.isDarkMode(context);
     // card with side paddings, edges, radius and shadow
     return GestureDetector(
       onTap: () => Get.to(() => ProductDetailScreen(
-            product: product!,
+            product: product,
           )),
       child: Container(
         width: 180,
@@ -56,14 +55,15 @@ class PProductCardVertical extends StatelessWidget {
                     child: PRoundedImage(
                       backgroundColor: isDark ? PColors.black : PColors.light,
                       isNetworkImage: true,
-                      imageUrl: product!.thumbnail,
+                      imageUrl: product.thumbnail,
                       applyImageRadius: true,
                     ),
                   ),
-                  SaleTagWidget(
-                    tag: salePercentage,
-                    top: 10,
-                  ),
+                  if (salePercentage != null)
+                    SaleTagWidget(
+                      tag: salePercentage,
+                      top: 10,
+                    ),
                   const FavoriteIcon(
                     top: 0,
                     right: 0,
@@ -81,14 +81,14 @@ class PProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProductTitleText(
-                    title: product!.title,
+                    title: product.title,
                     smallSize: true,
                   ),
                   const SizedBox(
                     height: PSizes.spaceBtwItems / 2,
                   ),
                   BrandTitleTextWithVerifiedIcon(
-                    title: product!.brand!.name,
+                    title: product.brand!.name,
                   ),
                 ],
               ),
@@ -101,12 +101,12 @@ class PProductCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      if (product!.productType == ProductType.single.name &&
-                          product!.salePrice! > 0)
+                      if (product.productType == ProductType.single.name &&
+                          product.salePrice! > 0)
                         Padding(
                           padding: const EdgeInsets.only(left: PSizes.sm),
                           child: Text(
-                            product!.price.toString(),
+                            product.price.toString(),
                             style: Theme.of(context)
                                 .textTheme
                                 .labelMedium!
@@ -117,7 +117,7 @@ class PProductCardVertical extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: PSizes.sm),
                         child: ProductPriceText(
-                          price: controller.getProductPrice(product!),
+                          price: controller.getProductPrice(product),
                         ),
                       ),
                     ],

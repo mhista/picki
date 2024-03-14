@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:pickafrika/features/shop/models/product_attribute_model.dart';
 import 'package:pickafrika/features/shop/models/product_variation_model.dart';

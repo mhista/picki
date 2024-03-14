@@ -5,6 +5,7 @@ import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/icons/circular_icon.dart';
 import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
 import 'package:pickafrika/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/features/shop/screens/home/home.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
@@ -33,7 +34,9 @@ class WishListScreen extends StatelessWidget {
             children: [
               PGridLayout(
                   itemCount: 6,
-                  itemBuilder: (_, index) => const PProductCardVertical())
+                  itemBuilder: (_, index) => PProductCardVertical(
+                        product: ProductModel.empty(),
+                      ))
             ],
           ),
         ),

@@ -3,14 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/common/loaders/loaders.dart';
 import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
-import 'package:pickafrika/data/repositories/user/user_repository.dart';
 import 'package:pickafrika/features/authentication/screens/signup/verify_email.dart';
 import 'package:pickafrika/features/personalization/controllers/user_controller.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
 import 'package:pickafrika/utils/popups/fullscreen_loader.dart';
 
 import '../../../../utils/helpers/network_manager.dart';
-import '../../models/user_model.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
