@@ -42,10 +42,14 @@ class CategoryBrands extends StatelessWidget {
                 final brand = brands[index];
                 return FutureBuilder(
                     future: controller.getBrandProducts(
-                        brandId: brand.id, limit: 3),
+                        brandId: brand.id, limit: 2),
                     builder: (context, snapshot) {
+                      const noData = Text('');
+
                       final widget = KCloudHelperFunction.checkMultiRecordState(
-                          snapshot: snapshot, loader: loader);
+                          snapshot: snapshot,
+                          loader: loader,
+                          noDataFound: noData);
                       if (widget != null) return widget;
                       final products = snapshot.data!;
                       return BrandShowcase(

@@ -80,6 +80,17 @@ class ImageController extends GetxController {
       }
     }
 
+    // UPLOAD PROUCT BRAND IMAGE
+    if (product.brand!.image.isNotEmpty) {
+      // GET IMAGEDATA LINK FROM THE LOCAL ASSETS;
+      final assetImage =
+          await storage.getImageDataFromAssets(product.brand!.image);
+
+      // upload image and get its url
+      final url = await storage.uploadImageData(
+          'Products/Images', assetImage, product.brand!.image);
+      product.brand!.image = url;
+    }
     // LIST OF IMAGAE
     debugPrint(product.toString());
     return product;

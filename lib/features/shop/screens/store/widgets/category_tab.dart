@@ -47,14 +47,14 @@ class CategoryTab extends StatelessWidget {
                           onPressed: () => Get.to(AllProducts(
                             title: category.name,
                             futureMethod: controller.getCategoryProducts(
-                                categoryId: category.id, limit: -1),
+                                categoryId: category.id),
                           )),
                         ),
                         const SizedBox(
                           height: PSizes.spaceBtwItems,
                         ),
                         PGridLayout(
-                            itemCount: 4,
+                            itemCount: product.length,
                             itemBuilder: (_, index) => PProductCardVertical(
                                   product: product[index],
                                 )),

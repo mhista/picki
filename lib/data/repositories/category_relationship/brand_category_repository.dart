@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/features/shop/models/brand_category_model.dart';
@@ -21,20 +22,26 @@ class BrandCategoryRepository extends GetxController {
           .collection('BrandCategory')
           .where('categoryId', isEqualTo: categoryId)
           .get();
+      debugPrint(brandCategoryQuery.toString());
+
       // return the brandIds from the documents
       List<String> brandIds = brandCategoryQuery.docs
           .map((doc) => doc['brandId'] as String)
           .toList();
+      debugPrint(brandIds.toString());
+
       // Query to get all brands  where the brandIds is in the list. FieldPath.documentId to query documents in collection
       final brandQuery = await _db
           .collection('Brands')
           .where(FieldPath.documentId, whereIn: brandIds)
-          .limit(2)
+          .limit(3)
           .get();
 
       // Extract brand names or other relevant data from the document
       List<BrandModel> brands =
           brandQuery.docs.map((doc) => BrandModel.fromSnapshot(doc)).toList();
+      debugPrint(brands.toString());
+
       return brands;
     } on FirebaseException catch (e) {
       throw KFirebaseException(e.code).message;
@@ -52,7 +59,7 @@ class BrandCategoryRepository extends GetxController {
     try {
       // STORE BRAND IN FIRESTORE
       for (var brandCategory in brandCategoryModel) {
-        await _db.collection('Brands').doc().set(brandCategory.toMap());
+        await _db.collection('BrandCategory').doc().set(brandCategory.toMap());
       }
     } on FirebaseException catch (e) {
       throw KFirebaseException(e.code).message;

@@ -10,7 +10,7 @@ class ProductVariationModel {
   double? price;
   double? salePrice;
   int stock;
-  Map<String, List> attributeValues;
+  Map<String, String> attributeValues;
   ProductVariationModel({
     required this.id,
     this.sku = '',
@@ -34,7 +34,7 @@ class ProductVariationModel {
     double? price,
     double? salePrice,
     int? stock,
-    Map<String, List>? attributeValues,
+    Map<String, String>? attributeValues,
   }) {
     return ProductVariationModel(
       id: id ?? this.id,
@@ -75,7 +75,7 @@ class ProductVariationModel {
       price: map['price']?.toDouble() ?? 0.0,
       salePrice: map['salePrice']?.toDouble() ?? 0.0,
       stock: map['stock']?.toInt() ?? 0,
-      attributeValues: Map<String, List>.from(map['attributeValues']),
+      attributeValues: Map<String, String>.from(map['attributeValues']),
     );
   }
 

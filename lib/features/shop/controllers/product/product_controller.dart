@@ -70,7 +70,7 @@ class ProductController extends GetxController {
         PFullScreenLoader.stopLoading();
         return;
       }
-      // UPLOAD CATEGORIES TO FIRESTORE
+      // UPLOAD PRODUCTS TO FIRESTORE
 
       await _productRepository.uploadDummeyData(ProductDummyData.products);
       PFullScreenLoader.stopLoading();

@@ -44,7 +44,7 @@ class CategoryController extends GetxController {
           .toList());
     } catch (e) {
       // SHOW GENERIC ERROR TO THE USER
-      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      // PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -60,7 +60,6 @@ class CategoryController extends GetxController {
       return products;
     } catch (e) {
       // SHOW GENERIC ERROR TO THE USER
-      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }

@@ -9,7 +9,7 @@ class BrandCategoryDummyData {
     BrandCategoryModel(brandId: '1', categoryId: '9'),
     BrandCategoryModel(brandId: '1', categoryId: '10'),
     BrandCategoryModel(brandId: '1', categoryId: '16'),
-    BrandCategoryModel(brandId: '2', categoryId: '2'),
+    BrandCategoryModel(brandId: '2', categoryId: '1'),
     BrandCategoryModel(brandId: '2', categoryId: '6'),
     BrandCategoryModel(brandId: '2', categoryId: '3'),
     BrandCategoryModel(brandId: '2', categoryId: '8'),

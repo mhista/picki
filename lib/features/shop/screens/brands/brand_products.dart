@@ -28,10 +28,11 @@ class BrandProduct extends StatelessWidget {
           padding: const EdgeInsets.all(PSizes.defaultSpace - 4),
           child: Column(children: [
             // BRAND DETAILS
-            BrandCard(
-              showBorder: true,
-              brand: brand,
-            ),
+            if (brand.productsCount! > 0)
+              BrandCard(
+                showBorder: true,
+                brand: brand,
+              ),
             const SizedBox(
               height: PSizes.spaceBtwSections,
             ),

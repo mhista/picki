@@ -7,7 +7,7 @@ class BrandModel {
   String name;
   String image;
   bool? isFeatured;
-  String? productsCount;
+  int? productsCount;
   BrandModel({
     required this.id,
     required this.name,
@@ -24,7 +24,7 @@ class BrandModel {
     String? name,
     String? image,
     bool? isFeatured,
-    String? productsCount,
+    int? productsCount,
   }) {
     return BrandModel(
       id: id ?? this.id,
@@ -58,7 +58,7 @@ class BrandModel {
       name: map['name'] ?? '',
       image: map['image'] ?? '',
       isFeatured: map['isFeatured'],
-      productsCount: map['productsCount'] ?? '',
+      productsCount: map['productsCount'] ?? 0,
     );
   }
 
@@ -71,7 +71,7 @@ class BrandModel {
       name: map['name'] ?? '',
       image: map['image'] ?? '',
       isFeatured: map['isFeatured'] ?? false,
-      productsCount: map['productsCount'] ?? '',
+      productsCount: map['productsCount'] ?? 0,
     );
   }
   String toJson() => json.encode(toMap());

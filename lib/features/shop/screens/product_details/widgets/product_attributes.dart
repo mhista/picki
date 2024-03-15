@@ -125,10 +125,14 @@ class ProductAttributes extends StatelessWidget {
                                         controller.selectedAttributes[
                                                 attribute.name] ==
                                             val;
+                                    debugPrint(isSelected.toString());
+                                    debugPrint(val.toString());
+
                                     final available = controller
                                         .getAttributeAvailabilityInVariation(
-                                            product.productVariations!,
-                                            attribute.name!)
+                                          product.productVariations!,
+                                          attribute.name!,
+                                        )
                                         .contains(val);
                                     return PChoiceChip(
                                       text: val,

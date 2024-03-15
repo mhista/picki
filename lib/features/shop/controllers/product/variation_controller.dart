@@ -18,7 +18,7 @@ class VariationController extends GetxController {
     // when attribute is selected we first add that attribute to the selectedAttributes.
     final selectedAttributes =
         Map<String, dynamic>.from(this.selectedAttributes);
-    selectedAttributes[attributeName] = List.from(attributeValue);
+    selectedAttributes[attributeName] = attributeValue;
     // debugPrint(selectedAttributes.toString());
     this.selectedAttributes[attributeName] = attributeValue;
     debugPrint(this.selectedAttributes.toString());
@@ -35,9 +35,7 @@ class VariationController extends GetxController {
     }
 
     // Assign selected variation
-    this.selectedVariation.value = selectedVariation
-        .attributeValues[attributeName]!
-        .firstWhere((element) => element == attributeName);
+    this.selectedVariation.value = selectedVariation;
 
 // update selected product variation status
     getProductVariationStockStatus();
@@ -58,7 +56,7 @@ class VariationController extends GetxController {
   }
 
   // CHECK ATTRIBUTE AVAILABILITY / STOCK IN VARIATION
-  Set<dynamic> getAttributeAvailabilityInVariation(
+  Set<String?> getAttributeAvailabilityInVariation(
       List<ProductVariationModel> variations, String attributeName) {
 // pass the variations to check attributes are available and stock is not 0
     final availableVariationAttributeValues = variations

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/data/services/firebase_services/firebase_storage_services.dart';
@@ -37,15 +38,18 @@ class ProductRepository extends GetxController {
       final snapshot = limit == -1
           ? await _db
               .collection('Products')
-              .where('Brand.id', isEqualTo: brandId)
+              .where('brand.id', isEqualTo: brandId)
               .get()
           : await _db
               .collection('Products')
-              .where('Brand.id', isEqualTo: brandId)
+              .where('brand.id', isEqualTo: brandId)
               .limit(limit)
               .get();
+
       final list =
           snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      debugPrint(list.toString());
+
       return list;
     } on FirebaseException catch (e) {
       throw KFirebaseException(e.code).message;

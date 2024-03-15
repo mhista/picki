@@ -79,7 +79,12 @@ flutter:
     - assets/images/products/chairs/
     - assets/images/products/female/
     - assets/images/products/men/
-    - assets/images/products/shoe/
+    - assets/images/products/nike/
+    - assets/images/products/dell/
+    - assets/images/products/headphones/
+    - assets/images/products/apple/
+    - assets/images/products/jordan/
+    - assets/images/products/adidas/
     - assets/images/products/jewelery/
     - assets/icons/payment_methods/
     - assets/logos/

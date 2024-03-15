@@ -34,12 +34,14 @@ class BrandController extends GetxController {
 
       // FETCH CATEGORIES FROM DATA SOURCE(FIRESTORE, API etc)
       final brands = await _brandRepository.getAllBrands();
+      brands.removeWhere((brand) => brand.productsCount! < 1);
+
       // UPDATE THE CATEGORIES LIST
       allBrands.assignAll(brands);
       // FILTER FEATURED CATEGORIES
       featuredBrands.assignAll(allBrands
           .where((brand) => brand.isFeatured ?? false)
-          .take(4)
+          .take(5)
           .toList());
     } catch (e) {
       // SHOW GENERIC ERROR TO THE USER
@@ -52,12 +54,11 @@ class BrandController extends GetxController {
 // GET BRAND FOR CATEGORIES
   Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
     try {
-      final products =
+      final brands =
           await _brandCategoryRepository.getBrandsForCategory(categoryId);
-      return products;
+      return brands;
     } catch (e) {
       // SHOW GENERIC ERROR TO THE USER
-      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
   }
@@ -68,6 +69,7 @@ class BrandController extends GetxController {
     try {
       final products = await ProductRepository.instance
           .getProductsByBrand(brandId: brandId, limit: limit);
+
       return products;
     } catch (e) {
       // SHOW GENERIC ERROR TO THE USER

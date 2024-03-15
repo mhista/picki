@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/shop/controllers/banner_controllers.dart';
+import 'package:pickafrika/features/shop/controllers/brand_controller.dart';
 import 'package:pickafrika/features/shop/controllers/category_controller.dart';
+import 'package:pickafrika/features/shop/controllers/category_relationship/brand_category_controller.dart';
+import 'package:pickafrika/features/shop/controllers/category_relationship/product_category_controller.dart';
 import 'package:pickafrika/features/shop/controllers/product/product_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
@@ -15,7 +19,11 @@ class UploadDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final categories = CategoryController.instance;
     final banners = BannerController.instance;
+    final brands = Get.put(BrandController());
+
     final products = ProductController.instance;
+    final brandCategory = Get.put(BrandCategoryController());
+    final productCategory = Get.put(ProductCategoryController());
 
     return Scaffold(
       appBar: const PAppBar(
@@ -47,7 +55,8 @@ class UploadDataScreen extends StatelessWidget {
                 title: 'Upload Brand',
                 addSubtitle: false,
                 trailing: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
+                    onPressed: () => brands.createBrand(),
+                    icon: const Icon(Icons.arrow_circle_up)),
               ),
               PSettingsMenuTile(
                 addSpacing: true,
@@ -90,7 +99,8 @@ class UploadDataScreen extends StatelessWidget {
                 title: 'Upload Brands & Categories Relational Data',
                 addSubtitle: false,
                 trailing: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
+                    onPressed: () => brandCategory.uploadData(),
+                    icon: const Icon(Icons.arrow_circle_up)),
               ),
               PSettingsMenuTile(
                 addSpacing: true,
@@ -98,7 +108,8 @@ class UploadDataScreen extends StatelessWidget {
                 title: 'Upload Product Categories Relational Data',
                 addSubtitle: false,
                 trailing: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.arrow_circle_up)),
+                    onPressed: () => productCategory.uploadData(),
+                    icon: const Icon(Icons.arrow_circle_up)),
               ),
             ],
           ),

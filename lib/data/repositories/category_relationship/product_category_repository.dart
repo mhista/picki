@@ -32,6 +32,7 @@ class ProductCategoryRepository extends GetxController {
       List<String> productIds = productCategoryQuery.docs
           .map((doc) => doc['productId'] as String)
           .toList();
+
       // Query to get all products  where the brandIds is in the list. FieldPath.documentId to query documents in collection
       final productQuery = await _db
           .collection('Products')
@@ -42,6 +43,7 @@ class ProductCategoryRepository extends GetxController {
       List<ProductModel> products = productQuery.docs
           .map((doc) => ProductModel.fromSnapshot(doc))
           .toList();
+
       return products;
     } on FirebaseException catch (e) {
       throw KFirebaseException(e.code).message;
