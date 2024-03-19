@@ -67,7 +67,6 @@ class VariationController extends GetxController {
         .map((variation) => variation.attributeValues[attributeName])
         .toSet();
 
-    debugPrint(availableVariationAttributeValues.toString());
     return availableVariationAttributeValues;
   }
 
