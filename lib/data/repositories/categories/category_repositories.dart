@@ -28,7 +28,25 @@ class CategoryRepository extends GetxController {
       throw 'something went wrong, please try again';
     }
   }
+
 // GET SUB CATEGORIES
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      final snapshot = await _db
+          .collection('Categories')
+          .where('parentId', isEqualTo: categoryId)
+          .get();
+      final list =
+          snapshot.docs.map((doc) => CategoryModel.fromSnapshot(doc)).toList();
+      return list;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
 
 // UPLOAD CATEGORIES TO THE CLOUD FIRESTORE
   Future<void> uploadDummeyData(List<CategoryModel> categories) async {

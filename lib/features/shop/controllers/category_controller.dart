@@ -28,7 +28,7 @@ class CategoryController extends GetxController {
   }
 
 // LOAD CATEGORY DATA
-  void fetchCategories() async {
+  Future<void> fetchCategories() async {
     try {
       // SHOW SHIMMER WHILE LOADING CATEGORIES
       isLoading.value = true;
@@ -47,6 +47,19 @@ class CategoryController extends GetxController {
       // PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+// LOAD SUBCATEGORIES FORF A SELECTED CATEGORY
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      // FETCH SUBCATEGORIES FROM DATA SOURCE(FIRESTORE, API etc)
+      final categories = await _categoryRepository.getSubCategories(categoryId);
+      return categories;
+    } catch (e) {
+      // SHOW GENERIC ERROR TO THE USER
+      // PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
     }
   }
 

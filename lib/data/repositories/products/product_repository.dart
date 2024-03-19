@@ -115,6 +115,25 @@ class ProductRepository extends GetxController {
       throw 'something went wrong, please try again';
     }
   }
+
+  // GET ALL PRODUCTS
+  Future<List<ProductModel>> getFavoriteProducts(List<String> productId) async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productId)
+          .get();
+      final list =
+          snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      return list;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
 // GET SUB Products
 
 // UPLOAD Products TO THE CLOUD FIRESTORE

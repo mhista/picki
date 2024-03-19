@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:pickafrika/common/widgets/images/edge_rounded_images.dart';
+import 'package:pickafrika/common/widgets/products/product_pricing_row.dart';
 import 'package:pickafrika/common/widgets/texts/brand_text_title_with_icon.dart';
 import 'package:pickafrika/common/widgets/texts/product_price_text.dart';
 import 'package:pickafrika/common/widgets/texts/product_title_text.dart';
+import 'package:pickafrika/features/shop/models/product_model.dart';
+import 'package:pickafrika/features/shop/screens/product_details/product_detail.dart';
+// ignore: unused_import
 import 'package:pickafrika/utils/constants/image_strings.dart';
 
+import '../../../../features/shop/controllers/product/product_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
@@ -14,14 +20,19 @@ import 'add_to_cart_container.dart';
 import 'sale_tag.dart';
 
 class PProductCardHorizontal extends StatelessWidget {
-  const PProductCardHorizontal({super.key});
+  const PProductCardHorizontal({super.key, required this.product});
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
     // card with side paddings, edges, radius and shadow
     return GestureDetector(
-      onTap: () {}, //=> Get.to(() => const ProductDetailScreen()),
+      onTap: () => Get.to(() => ProductDetailScreen(
+          product: product)), //=> Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 310,
         padding: const EdgeInsets.all(1),
@@ -42,27 +53,30 @@ class PProductCardHorizontal extends StatelessWidget {
                     width: 120,
                     height: 120,
                     child: PRoundedImage(
-                      imageUrl: PImages.productShoe3,
+                      isNetworkImage: true,
+                      imageUrl: product.thumbnail,
                       applyImageRadius: true,
                       backgroundColor: isDark ? PColors.black : PColors.white,
                     ),
                   ),
-                  const SaleTagWidget(
-                    tag: '50',
-                    top: 10,
-                  ),
-                  const FavoriteIcon(
+                  if (salePercentage != null)
+                    const SaleTagWidget(
+                      tag: '50',
+                      top: 10,
+                    ),
+                  FavoriteIcon(
                     top: -2,
                     right: 0,
+                    productId: product.id,
                   ),
                 ],
               ),
             ),
             // DETAILS
-            const SizedBox(
+            SizedBox(
               width: 172,
               child: Padding(
-                padding: EdgeInsets.only(top: PSizes.sm, left: PSizes.sm),
+                padding: const EdgeInsets.only(top: PSizes.sm, left: PSizes.sm),
                 child: Column(
                   children: [
                     Column(
@@ -70,24 +84,21 @@ class PProductCardHorizontal extends StatelessWidget {
                       // mainAxisSize: MainAxisSize.min,
                       children: [
                         ProductTitleText(
-                          title: 'White Air jordan wfjicuninc wjfoio iojriof',
+                          title: product.title,
                           smallSize: true,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: PSizes.spaceBtwItems / 2,
                         ),
-                        BrandTitleTextWithVerifiedIcon(title: 'Nike')
+                        BrandTitleTextWithVerifiedIcon(
+                            title: product.brand!.name)
                       ],
                     ),
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      // Pricing
-                      children: [
-                        Flexible(child: ProductPriceText(price: '300.0 ')),
-                        // Add to cart
-                        AddToCartContainer()
-                      ],
+                    const Spacer(),
+                    PricingRow(
+                      product: product,
+                      controller: controller,
+                      isRow: true,
                     )
                   ],
                 ),

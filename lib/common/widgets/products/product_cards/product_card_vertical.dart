@@ -16,6 +16,7 @@ import '../../custom_shapes/containers/rounded_container.dart';
 import '../../texts/brand_text_title_with_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
+import '../product_pricing_row.dart';
 import 'add_to_cart_container.dart';
 
 class PProductCardVertical extends StatelessWidget {
@@ -64,9 +65,10 @@ class PProductCardVertical extends StatelessWidget {
                       tag: salePercentage,
                       top: 10,
                     ),
-                  const FavoriteIcon(
+                  FavoriteIcon(
                     top: 0,
                     right: 0,
+                    productId: product.id,
                   )
                 ],
               ),
@@ -94,39 +96,7 @@ class PProductCardVertical extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // PRICE
-                Flexible(
-                  child: Column(
-                    children: [
-                      if (product.productType == ProductType.single.name &&
-                          product.salePrice! > 0)
-                        Padding(
-                          padding: const EdgeInsets.only(left: PSizes.sm),
-                          child: Text(
-                            product.price.toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .apply(decoration: TextDecoration.lineThrough),
-                          ),
-                        ),
-                      // PRICE, SHOW SALE PRICE AS MAIN PRICE IF SALE EXIST
-                      Padding(
-                        padding: const EdgeInsets.only(left: PSizes.sm),
-                        child: ProductPriceText(
-                          price: controller.getProductPrice(product),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // ADD TO CAT BUTTON
-                const AddToCartContainer()
-              ],
-            )
+            PricingRow(product: product, controller: controller)
           ],
         ),
       ),

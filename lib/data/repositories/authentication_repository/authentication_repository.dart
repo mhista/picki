@@ -13,6 +13,7 @@ import 'package:pickafrika/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:pickafrika/utils/exceptions/firebase_exceptions.dart';
 import 'package:pickafrika/utils/exceptions/format_eceptions.dart';
 import 'package:pickafrika/utils/exceptions/platform_exceptions.dart';
+import 'package:pickafrika/utils/local_storage/storage_utility.dart';
 
 import '../../../navigation_menu.dart';
 
@@ -28,7 +29,9 @@ class AuthenticationRepository extends GetxController {
   // CALLED FROM THE main.dart on app launch
   @override
   void onReady() {
+    // REMOVES THE NATIVE SPLASH SCREEN
     FlutterNativeSplash.remove();
+    // REDIRECTS USER TO THE RIGHT SCREEN
     screenRedirect();
   }
 
@@ -37,6 +40,7 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        await PLocalStorage.init(user.uid);
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => const VerifyEmailScreen());

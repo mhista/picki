@@ -42,7 +42,9 @@ class PHomeCategories extends StatelessWidget {
                 overlayColor: isDark ? PColors.white : PColors.dark,
                 image: category.image,
                 title: category.name,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
+                onTap: () => Get.to(() => SubCategoriesScreen(
+                      category: category,
+                    )),
               );
             },
           ),

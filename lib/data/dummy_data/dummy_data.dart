@@ -101,11 +101,6 @@ class DummyData {
         name: 'Cosmetics',
         image: PImages.cosmeticIcon,
         isFeatured: true),
-    CategoryModel(
-        id: '14',
-        name: 'Jewelry',
-        image: PImages.jeweleryIcon,
-        isFeatured: true),
 
     // SUBCATEGORIES
     CategoryModel(
@@ -144,8 +139,12 @@ class DummyData {
         name: 'Office furniture',
         image: PImages.furntureIcon,
         isFeatured: false,
-        parentId: '1'),
-
+        parentId: '5'),
+    CategoryModel(
+        id: '14',
+        name: 'Jewelry',
+        image: PImages.jeweleryIcon,
+        isFeatured: true),
     // ELECTRONICS
 
     CategoryModel(
@@ -188,27 +187,6 @@ class DummyData {
 //   final String targetScreen;
 //   final bool active;
 // }
-
-class AddressModel {
-  final String id;
-  final String name;
-  final String phoneNumber;
-  final String street;
-  final String city;
-  final String state;
-  final String postalCode;
-  final String country;
-  AddressModel({
-    required this.id,
-    required this.name,
-    required this.phoneNumber,
-    required this.street,
-    required this.city,
-    required this.state,
-    required this.postalCode,
-    required this.country,
-  });
-}
 
 class CartModel {
   String cartId;

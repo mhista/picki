@@ -44,7 +44,6 @@ class UserController extends GetxController {
 
       final user = await userRepository.fetchUserData();
       this.user(user);
-      debugPrint(user.fullName);
     } catch (e) {
       user(UserModel.empty());
     } finally {

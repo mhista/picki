@@ -8,6 +8,7 @@ import 'package:pickafrika/features/shop/models/product_model.dart';
 
 import '../../../../../common/widgets/appbar/appBar.dart';
 import '../../../../../common/widgets/icons/circular_icon.dart';
+import '../../../../../common/widgets/icons/favorite_icon.dart';
 import '../../../../../common/widgets/images/edge_rounded_images.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -89,12 +90,13 @@ class ProductImageSlider extends StatelessWidget {
               ),
             ),
             // APPBAR ICONS
-            const PAppBar(
+            PAppBar(
               showBackArrow: true,
               actions: [
-                PCircularIcon(
-                  icon: Iconsax.heart5,
-                  color: PColors.error,
+                FavoriteIcon(
+                  top: 0,
+                  right: 0,
+                  productId: product.id,
                 )
               ],
             )

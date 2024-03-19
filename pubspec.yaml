@@ -31,6 +31,7 @@ dependencies:
   flutter_native_splash: ^2.3.10
   smooth_page_indicator: ^1.1.0
   font_awesome_flutter: ^10.7.0
+  image_picker: ^1.0.7
   
   
 
@@ -47,9 +48,9 @@ dependencies:
   cloud_firestore: ^4.15.6
   google_sign_in: ^6.2.1
   shimmer: ^3.0.0
-  firebase_storage: ^11.6.7
-  image_picker: ^1.0.7
+  firebase_storage: ^11.6.7 
   cached_network_image: ^3.3.1
+  shared_preferences: ^2.2.2
 
 #----------------------PCKAGES END--------------------------------------
 dev_dependencies:

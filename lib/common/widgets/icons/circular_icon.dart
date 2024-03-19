@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pickafrika/common/animations/icon_animations/icon_animation.dart';
+import 'package:pickafrika/features/shop/controllers/product/favourite_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -19,12 +21,17 @@ class PCircularIcon extends StatelessWidget {
     this.height,
     this.onPressed,
     this.size = PSizes.lg,
+    this.animate = true,
+    this.productId,
   });
 
   final IconData icon;
   final Color? color, backgroundColor;
+
   final double? width, height, size;
   final VoidCallback? onPressed;
+  final bool animate;
+  final String? productId;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +47,7 @@ class PCircularIcon extends StatelessWidget {
                   : PColors.light.withOpacity(0.9)),
           borderRadius: BorderRadius.circular(100)),
       child: IconButton(
-          onPressed: () {},
+          onPressed: onPressed,
           icon: Icon(
             icon,
             color: color,
