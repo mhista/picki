@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pickafrika/common/loaders/loaders.dart';
 import 'package:pickafrika/features/shop/controllers/product/variation_controller.dart';
-import 'package:pickafrika/features/shop/models/cacrt_item_model.dart';
+import 'package:pickafrika/features/shop/models/cart_item_model.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/local_storage/storage_utility.dart';
@@ -9,6 +9,9 @@ import 'package:pickafrika/utils/local_storage/storage_utility.dart';
 class CartController extends GetxController {
   static CartController get instance => Get.find();
 
+  CartController() {
+    loadCartItems();
+  }
   // VARIABLES
   final noOfCartItems = 0.obs;
   final totalCartPrice = 0.0.obs;
@@ -97,18 +100,74 @@ class CartController extends GetxController {
     );
   }
 
+// ADD ONE ITEM TO CART
+  void addItemToCart(CartItemModel item) {
+    int index = cartItems.indexWhere((cartItem) =>
+        cartItem.productId == item.productId &&
+        cartItem.variationId == item.variationId);
+    if (index >= 0) {
+      cartItems[index].quantity += 1;
+    } else {
+      cartItems.add(item);
+    }
+
+    updateCart();
+    PLoaders.customToast(message: 'Product has been added to Cart');
+  }
+
+  // REMOVE ONE ITEM IN CART
+  void removeItemFromCart(CartItemModel item) {
+    int index = cartItems.indexWhere((cartItem) =>
+        cartItem.productId == item.productId &&
+        cartItem.variationId == item.variationId);
+    if (index >= 0) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+      } else {
+        // SHOW A DIALOG BEFOR REMOVING
+        cartItems[index].quantity == 1
+            ? removeFromCartDialog(index)
+            : cartItems.removeAt(index);
+      }
+    }
+
+    updateCart();
+    PLoaders.customToast(message: 'Product has been removed to Cart');
+  }
+
+  // INITIALIZE ALREADY ADDED PRODUCT
+  void updateAlreadyAddedProductInCart(ProductModel product) {
+    // if product has no variation then calculate cartEntries and display total number.
+    // Else make default entries to 0 and show cartEntries when variation is selected
+
+    if (product.productType == ProductType.single.name) {
+      productQuantityInCart.value = getProductQuantityInCart(product.id);
+    } else {
+      // get selected variation
+      final variationId = variationController.selectedVariation.value.id;
+      if (variationId.isNotEmpty) {
+        productQuantityInCart.value =
+            getVariationQuantityInCart(product.id, variationId);
+      } else {
+        productQuantityInCart.value = 0;
+      }
+    }
+  }
+
   // UPDATE THE LOCAL STORAGE OF SPECIFIC USER
   void updateCart() {
     updateCartTotals();
     saveCartItem();
     cartItems.refresh();
+    // debugPrint(cartItems.length.toString());
   }
 
+// UPDATE THE TOTAL PRICE AND NUMBER OF ITEMS
   void updateCartTotals() {
     double calculatedTotalPrice = 0.0;
     int calculatedNoOfItems = 0;
     for (var item in cartItems) {
-      calculatedTotalPrice = (item.price) * item.quantity.toDouble();
+      calculatedTotalPrice += (item.price) * item.quantity.toDouble();
       calculatedNoOfItems += item.quantity;
     }
     totalCartPrice.value = calculatedTotalPrice;
@@ -136,7 +195,7 @@ class CartController extends GetxController {
   int getProductQuantityInCart(String productId) {
     final foundItem = cartItems
         .where((item) => item.productId == productId)
-        .fold(0, (previousValue, element) => previousValue + element.quantity);
+        .fold(0, (previousValue, item) => previousValue + item.quantity);
     return foundItem;
   }
 
@@ -149,9 +208,25 @@ class CartController extends GetxController {
     return foundItem.quantity;
   }
 
+// CLEAR THE CART
   void clearCart() {
     productQuantityInCart.value = 0;
     cartItems.clear();
     updateCart();
+  }
+
+// SHOW DIALOG
+  void removeFromCartDialog(int index) {
+    Get.defaultDialog(
+        title: 'Remove Product',
+        middleText: 'Are you sure you want to remove this product?',
+        onConfirm: () {
+          // REMOVE THE ITEM FROM CART
+          cartItems.removeAt(index);
+          updateCart();
+          PLoaders.customToast(message: 'Product removed from the Cart');
+          Get.back();
+        },
+        onCancel: () => () => Get.back());
   }
 }

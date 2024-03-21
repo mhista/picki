@@ -125,8 +125,8 @@ class ProductAttributes extends StatelessWidget {
                                         controller.selectedAttributes[
                                                 attribute.name] ==
                                             val;
-                                    debugPrint(isSelected.toString());
-                                    debugPrint(val.toString());
+                                    // debugPrint(isSelected.toString());
+                                    // debugPrint(val.toString());
 
                                     final available = controller
                                         .getAttributeAvailabilityInVariation(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pickafrika/features/shop/controllers/cart_controller.dart';
 import 'package:pickafrika/features/shop/controllers/product/image_controller.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/features/shop/models/product_variation_model.dart';
@@ -21,7 +22,7 @@ class VariationController extends GetxController {
     selectedAttributes[attributeName] = attributeValue;
     // debugPrint(selectedAttributes.toString());
     this.selectedAttributes[attributeName] = attributeValue;
-    debugPrint(this.selectedAttributes.toString());
+    // debugPrint(this.selectedAttributes.toString());
 
     final selectedVariation = product.productVariations!.firstWhere(
         (variation) => _isSameAttributeValues(
@@ -34,6 +35,11 @@ class VariationController extends GetxController {
           selectedVariation.image!;
     }
 
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController
+          .getVariationQuantityInCart(product.id, selectedVariation.id);
+    }
     // Assign selected variation
     this.selectedVariation.value = selectedVariation;
 

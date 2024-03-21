@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pickafrika/features/shop/controllers/cart_controller.dart';
 
 import '../../../../../common/widgets/products/cart/add_remove_button.dart';
 import '../../../../../common/widgets/products/cart/cart_item.dart';
@@ -13,52 +15,61 @@ class CartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
-
+    final cartController = CartController.instance;
     return ListView.separated(
-        shrinkWrap: true,
-        itemBuilder: (_, index) => Column(
-              children: [
-                const CartItem(),
-                if (showAddRemoveButton)
-                  const SizedBox(
-                    height: PSizes.spaceBtwItems,
-                  ),
-                // ADD AND REMOVE BUTTONS
+      itemCount: cartController.cartItems.length,
+      shrinkWrap: true,
+      itemBuilder: (_, index) => Obx(() {
+        debugPrint(index.toString());
+        final item = cartController.cartItems[index];
+        return Column(
+          children: [
+            CartItem(
+              cartItem: item,
+            ),
+            if (showAddRemoveButton)
+              const SizedBox(
+                height: PSizes.spaceBtwItems,
+              ),
+            // ADD AND REMOVE BUTTONS
 
-                if (showAddRemoveButton)
+            if (showAddRemoveButton)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          // extra space
-                          const SizedBox(
-                            width: 89,
-                          ),
-                          // ADD REMOVE BUTTON
-                          ProductAddAndRemove(
-                            width: 32,
-                            height: 32,
-                            addColor: PColors.white,
-                            addBgColor: PColors.primary,
-                            minusColor: isDark ? PColors.white : PColors.black,
-                            minusBgColor:
-                                isDark ? PColors.darkerGrey : PColors.light,
-                            text: '2',
-                            addOnPressed: () {},
-                            minusOnPressed: () {},
-                          ),
-                        ],
+                      // extra space
+                      const SizedBox(
+                        width: 89,
                       ),
-                      // PRODUCT TOTAL PRICE
-                      const ProductPriceText(price: '266')
+                      // ADD REMOVE BUTTON
+                      ProductAddAndRemove(
+                        width: 32,
+                        height: 32,
+                        addColor: PColors.white,
+                        addBgColor: PColors.primary,
+                        minusColor: isDark ? PColors.white : PColors.black,
+                        minusBgColor:
+                            isDark ? PColors.darkerGrey : PColors.light,
+                        text: item.quantity.toString(),
+                        addOnPressed: () => cartController.addItemToCart(item),
+                        minusOnPressed: () =>
+                            cartController.removeItemFromCart(item),
+                      ),
                     ],
-                  )
-              ],
-            ),
-        separatorBuilder: (_, __) => const SizedBox(
-              height: PSizes.spaceBtwSections,
-            ),
-        itemCount: 2);
+                  ),
+                  // PRODUCT TOTAL PRICE
+                  ProductPriceText(
+                      price: (item.price * item.quantity).toStringAsFixed(1))
+                ],
+              )
+          ],
+        );
+      }),
+      separatorBuilder: (_, __) => const SizedBox(
+        height: PSizes.spaceBtwSections,
+      ),
+    );
   }
 }

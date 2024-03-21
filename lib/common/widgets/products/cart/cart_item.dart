@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pickafrika/features/shop/models/cart_item_model.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -11,8 +12,9 @@ import '../../texts/product_title_text.dart';
 class CartItem extends StatelessWidget {
   const CartItem({
     super.key,
+    required this.cartItem,
   });
-
+  final CartItemModel cartItem;
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
@@ -21,7 +23,8 @@ class CartItem extends StatelessWidget {
       children: [
         // IMAGE
         PRoundedImage(
-          imageUrl: PImages.productShoe3,
+          isNetworkImage: true,
+          imageUrl: cartItem.image ?? '',
           width: 60,
           height: 60,
           padding: const EdgeInsets.all(PSizes.md),
@@ -37,35 +40,36 @@ class CartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const BrandTitleTextWithVerifiedIcon(title: 'Nike'),
-              const Flexible(
+              BrandTitleTextWithVerifiedIcon(title: cartItem.brandName ?? ''),
+              Flexible(
                 child: ProductTitleText(
-                  title: 'White Air jordan ',
+                  title: cartItem.title,
                   maxLines: 1,
                 ),
               ),
               // /ATTRIBUTES
 
-              Text.rich(TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Color ',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  TextSpan(
-                    text: 'Green ',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  TextSpan(
-                    text: 'Size ',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  TextSpan(
-                    text: 'UK 08 ',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ],
-              )),
+              Text.rich(
+                TextSpan(
+                  children: (cartItem.selectedVariation ?? {})
+                      .entries
+                      .map(
+                        (e) => TextSpan(
+                          children: [
+                            TextSpan(
+                              text: e.key,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            TextSpan(
+                              text: e.value,
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
             ],
           ),
         )

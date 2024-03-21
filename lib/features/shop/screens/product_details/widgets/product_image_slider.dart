@@ -93,10 +93,16 @@ class ProductImageSlider extends StatelessWidget {
             PAppBar(
               showBackArrow: true,
               actions: [
-                FavoriteIcon(
-                  top: 0,
-                  right: 0,
-                  productId: product.id,
+                Flexible(
+                  child: Stack(
+                    children: [
+                      FavoriteIcon(
+                        top: 0,
+                        right: 0,
+                        productId: product.id,
+                      ),
+                    ],
+                  ),
                 )
               ],
             )

@@ -57,7 +57,9 @@ class PricingRow extends StatelessWidget {
           ),
         ),
         // ADD TO CAT BUTTON
-        const AddToCartContainer()
+        AddToCartContainer(
+          product: product,
+        )
       ],
     );
   }

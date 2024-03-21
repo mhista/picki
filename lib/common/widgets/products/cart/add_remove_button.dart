@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/helper_functions.dart';
 import '../../icons/circular_icon.dart';
 
 class ProductAddAndRemove extends StatelessWidget {
@@ -24,13 +23,11 @@ class ProductAddAndRemove extends StatelessWidget {
   final Color addColor, addBgColor;
   final Color minusColor, minusBgColor;
   final String text;
-  final Function() addOnPressed;
-  final Function() minusOnPressed;
+  final VoidCallback? addOnPressed;
+  final VoidCallback? minusOnPressed;
 
   @override
   Widget build(BuildContext context) {
-    final isDark = PHelperFunctions.isDarkMode(context);
-
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
