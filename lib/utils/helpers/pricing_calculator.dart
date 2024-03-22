@@ -1,29 +1,33 @@
 class PPricingCalculator {
   /// -- calculate the price based on tax and shipping
-  static double calculateTotalPrice(double productPrice, String location) {
-    double taxRate = getTaxRateForLocation(location);
-    double taxAmount = productPrice * taxRate;
+  static double calculateTotalPrice(
+      double subTotal, String location, int itemCount) {
+    double taxRate = _getTaxRateForLocation(location);
+    double taxAmount = subTotal * taxRate;
 
-    double shippingCost = productPrice * taxRate;
+    double shippingCost = calculateShippingCost(subTotal, location, itemCount);
 
-    double totalPrice = productPrice + taxAmount + shippingCost;
+    double totalPrice = subTotal + taxAmount + shippingCost;
     return totalPrice;
   }
 
   /// -- calculate shipping cost
-  static String calculateShippingCost(double productPrice, String location) {
+  static double calculateShippingCost(
+      double subTotal, String location, int itemCount) {
     double shippingCost = getShippingCost(location);
-    return shippingCost.toStringAsFixed(2);
+    double eachItemsShippingCost = shippingCost * itemCount;
+
+    return eachItemsShippingCost;
   }
 
   /// -- calculate tax
-  static String calculateTax(double productPrice, String location) {
-    double taxRate = getTaxRateForLocation(location);
-    double taxAmount = productPrice * taxRate;
+  static String calculateTax(double subTotal, String location) {
+    double taxRate = _getTaxRateForLocation(location);
+    double taxAmount = subTotal * taxRate;
     return taxAmount.toStringAsFixed(2);
   }
 
-  static double getTaxRateForLocation(String location) {
+  static double _getTaxRateForLocation(String location) {
     // lookup the tax rate for the given location rom tax rate datebase or API
     // return the appropriate tax rate
     return 0.10; //example tax rate of 10%

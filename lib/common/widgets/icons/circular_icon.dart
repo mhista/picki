@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pickafrika/common/animations/icon_animations/icon_animation.dart';
-import 'package:pickafrika/features/shop/controllers/product/favourite_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 
 import '../../../utils/constants/colors.dart';

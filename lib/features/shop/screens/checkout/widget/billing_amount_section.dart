@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:pickafrika/features/shop/controllers/cart_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
+import 'package:pickafrika/utils/helpers/pricing_calculator.dart';
 
 class BillingAmountSection extends StatelessWidget {
   const BillingAmountSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
+    final subTotal = controller.totalCartPrice.value;
+    final itemCount = controller.noOfCartItems.value;
     return Column(
       children: [
         // SUBTOTAL
@@ -17,7 +22,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$256.0',
+              '\$$subTotal',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
@@ -34,7 +39,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$6.0',
+              '\$${PPricingCalculator.calculateShippingCost(subTotal, 'Nigeria', itemCount)}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],
@@ -51,7 +56,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$6.0',
+              '\$${PPricingCalculator.calculateTax(subTotal, 'Nigeria')}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],
@@ -68,7 +73,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$346.0',
+              '\$${PPricingCalculator.calculateTotalPrice(subTotal, 'Nigeria', itemCount)}',
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],

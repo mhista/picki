@@ -19,8 +19,8 @@ class FavouritesController extends GetxController {
   }
 
   // METHOD TO INITIALIZE BY READING FROM STORAGE
-  void initFavourites() {
-    final json = PLocalStorage.instance().readData('favorites');
+  void initFavourites() async {
+    final json = await PLocalStorage.instance().readData('favorites');
     if (json != null) {
       final storedFavorites = jsonDecode(json) as Map<String, dynamic>;
       favorites.assignAll(

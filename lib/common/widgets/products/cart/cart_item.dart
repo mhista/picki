@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pickafrika/features/shop/models/cart_item_model.dart';
 
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../images/edge_rounded_images.dart';

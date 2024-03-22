@@ -4,7 +4,6 @@ import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/features/shop/controllers/cart_controller.dart';
 import 'package:pickafrika/features/shop/screens/checkout/checkout.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
-import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../common/loaders/animation_loader.dart';
 import '../../../../navigation_menu.dart';

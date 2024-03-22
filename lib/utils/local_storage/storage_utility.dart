@@ -22,21 +22,33 @@ class PLocalStorage {
 
 // generic method to save data
   Future<void> saveData<T>(String key, T value) async {
+    if (_instance == null) {
+      throw Exception('PLocalStorage is not initialized');
+    }
     await _storage.write(key, value);
   }
 
   // generic method to read data
   T? readData<T>(String key) {
+    if (_instance == null) {
+      throw Exception('PLocalStorage is not initialized');
+    }
     return _storage.read<T>(key);
   }
 
 // generic method to remove data
   Future<void> removeData(String key) async {
+    if (_instance == null) {
+      throw Exception('PLocalStorage is not initialized');
+    }
     await _storage.remove(key);
   }
 
 // clear all data in storage
   Future<void> clearAll() async {
+    if (_instance == null) {
+      throw Exception('PLocalStorage is not initialized');
+    }
     await _storage.erase();
   }
 }

@@ -35,14 +35,19 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-  // FUNCTION TO SHOW REDIRECT SCREEN
+  // FUNCTION TO SHOW DETERMINE THE SCREEN TO THE RIGHT SCREEN
   screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
+      // if the user is logged in
       if (user.emailVerified) {
+        // initialize user specific storage
         await PLocalStorage.init(user.uid);
+
+        // if users email is verified, navigate to the main navigation menu
         Get.offAll(() => const NavigationMenu());
       } else {
+        // if the user is not verified, redirect to the verify email screen
         Get.offAll(() => const VerifyEmailScreen());
       }
     } else {

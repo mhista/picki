@@ -17,7 +17,7 @@ class AddToCartContainer extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
-    final cartController = CartController.instance;
+    final cartController = Get.put(CartController());
     return InkWell(
       onTap: () {
         // if the product has variation, open the product detail for variation selection

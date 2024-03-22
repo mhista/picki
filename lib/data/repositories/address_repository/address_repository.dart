@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:pickafrika/data/repositories/authentication_repository/authentication_repository.dart';
 
 import '../../../features/personalization/models/address_model.dart';

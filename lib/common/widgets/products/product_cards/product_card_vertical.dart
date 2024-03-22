@@ -7,17 +7,14 @@ import 'package:pickafrika/common/widgets/products/product_cards/sale_tag.dart';
 import 'package:pickafrika/features/shop/controllers/product/product_controller.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/utils/constants/colors.dart';
-import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../features/shop/screens/product_details/product_detail.dart';
 import '../../custom_shapes/containers/rounded_container.dart';
 import '../../texts/brand_text_title_with_icon.dart';
-import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 import '../product_pricing_row.dart';
-import 'add_to_cart_container.dart';
 
 class PProductCardVertical extends StatelessWidget {
   const PProductCardVertical({super.key, required this.product});

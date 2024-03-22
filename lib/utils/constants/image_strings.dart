@@ -232,7 +232,8 @@ class PImages {
   static const String mastercard =
       'assets/icons/payment_methods/mastercard.png';
   static const String googlePay = 'assets/icons/payment_methods/google-pay.png';
-  static const String paystack = 'assets/icons/payment_methods/paystack.png';
+  static const String paystack =
+      'assets/icons/payment_methods/paystack-logo.png';
   static const String paytm = 'assets/icons/payment_methods/paytm.png';
   static const String visa = 'assets/icons/payment_methods/visa.png';
 }

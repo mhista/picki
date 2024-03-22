@@ -1,13 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:pickafrika/features/shop/controllers/product/image_controller.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 
 import '../../../../../common/widgets/appbar/appBar.dart';
-import '../../../../../common/widgets/icons/circular_icon.dart';
 import '../../../../../common/widgets/icons/favorite_icon.dart';
 import '../../../../../common/widgets/images/edge_rounded_images.dart';
 import '../../../../../utils/constants/colors.dart';

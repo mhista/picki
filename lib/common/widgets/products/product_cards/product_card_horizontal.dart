@@ -4,7 +4,6 @@ import 'package:pickafrika/common/widgets/custom_shapes/containers/rounded_conta
 import 'package:pickafrika/common/widgets/images/edge_rounded_images.dart';
 import 'package:pickafrika/common/widgets/products/product_pricing_row.dart';
 import 'package:pickafrika/common/widgets/texts/brand_text_title_with_icon.dart';
-import 'package:pickafrika/common/widgets/texts/product_price_text.dart';
 import 'package:pickafrika/common/widgets/texts/product_title_text.dart';
 import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/features/shop/screens/product_details/product_detail.dart';
@@ -16,7 +15,6 @@ import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../icons/favorite_icon.dart';
-import 'add_to_cart_container.dart';
 import 'sale_tag.dart';
 
 class PProductCardHorizontal extends StatelessWidget {

@@ -4,7 +4,6 @@ import 'package:pickafrika/common/widgets/appbar/appBar.dart';
 import 'package:pickafrika/common/widgets/images/edge_rounded_images.dart';
 import 'package:pickafrika/common/widgets/products/product_cards/product_card_horizontal.dart';
 import 'package:pickafrika/common/widgets/shimmer/product_horizontal_shimmer.dart';
-import 'package:pickafrika/common/widgets/shimmer/product_vertical_shimmer.dart';
 import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/features/shop/controllers/category_controller.dart';
 import 'package:pickafrika/features/shop/models/category_model.dart';

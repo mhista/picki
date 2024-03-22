@@ -8,7 +8,6 @@ import 'package:pickafrika/common/widgets/layouts/gid_layout.dart';
 import 'package:pickafrika/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:pickafrika/common/widgets/shimmer/product_vertical_shimmer.dart';
 import 'package:pickafrika/features/shop/controllers/product/favourite_controller.dart';
-import 'package:pickafrika/features/shop/models/product_model.dart';
 import 'package:pickafrika/features/shop/screens/home/home.dart';
 import 'package:pickafrika/navigation_menu.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';

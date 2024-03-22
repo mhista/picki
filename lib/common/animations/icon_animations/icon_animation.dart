@@ -9,11 +9,11 @@ class TextTweenAnimation extends StatelessWidget {
     return TweenAnimationBuilder(
       duration: const Duration(milliseconds: 500),
       tween: Tween<double>(begin: 0.0, end: 1.0),
-      builder: (BuildContext context, double _val, Widget? child) {
+      builder: (BuildContext context, double val, Widget? child) {
         return Opacity(
-          opacity: _val,
+          opacity: val,
           child:
-              Padding(padding: EdgeInsets.only(top: _val * 20), child: child),
+              Padding(padding: EdgeInsets.only(top: val * 20), child: child),
         );
       },
       child: text,

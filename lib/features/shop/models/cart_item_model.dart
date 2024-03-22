@@ -62,6 +62,8 @@ class CartItemModel {
     }
     if (selectedVariation != null) {
       result.addAll({'selectedVariation': selectedVariation});
+    } else {
+      result.addAll({'selectedVariation': {}});
     }
 
     return result;
@@ -76,7 +78,8 @@ class CartItemModel {
       quantity: map['quantity']?.toInt() ?? 0,
       variationId: map['variationId'] ?? '',
       brandName: map['brandName'],
-      selectedVariation: Map<String, String>.from(map['selectedVariation']),
+      selectedVariation:
+          Map<String, String>.from(map['selectedVariation'] ?? {}),
     );
   }
 

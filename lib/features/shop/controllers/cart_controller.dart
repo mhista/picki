@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/common/loaders/loaders.dart';
 import 'package:pickafrika/features/shop/controllers/product/variation_controller.dart';
@@ -8,6 +9,11 @@ import 'package:pickafrika/utils/local_storage/storage_utility.dart';
 
 class CartController extends GetxController {
   static CartController get instance => Get.find();
+
+  @override
+  void onReady() {
+    // super.onInit();
+  }
 
   CartController() {
     loadCartItems();
@@ -182,10 +188,12 @@ class CartController extends GetxController {
 
 // GET CARTITEMS FROM LOCAL STORAGE
   void loadCartItems() {
-    final cartItemsString =
-        PLocalStorage.instance().readData<List<dynamic>>('cartItem');
-    if (cartItemsString != null) {
-      cartItems.assignAll(cartItemsString
+    //  await PLocalStorage.init(user.uid);
+    final cartItemsStrings =
+        PLocalStorage.instance().readData<List<dynamic>>('cartItems');
+    debugPrint(cartItemsStrings.toString());
+    if (cartItemsStrings != null) {
+      cartItems.assignAll(cartItemsStrings
           .map((item) => CartItemModel.fromMap(item as Map<String, dynamic>)));
       updateCartTotals();
     }

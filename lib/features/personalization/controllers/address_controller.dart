@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/common/loaders/loaders.dart';
+import 'package:pickafrika/common/widgets/texts/section_heading.dart';
 import 'package:pickafrika/data/repositories/address_repository/address_repository.dart';
 import 'package:pickafrika/features/personalization/models/address_model.dart';
-import 'package:pickafrika/utils/constants/colors.dart';
+import 'package:pickafrika/features/personalization/screens/address/add_new_address.dart';
+import 'package:pickafrika/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:pickafrika/utils/constants/image_strings.dart';
+import 'package:pickafrika/utils/helpers/cloud_helper_function.dart';
 import 'package:pickafrika/utils/helpers/network_manager.dart';
 import 'package:pickafrika/utils/popups/fullscreen_loader.dart';
+
+import '../../../utils/constants/sizes.dart';
 
 class AddressController extends GetxController {
   static AddressController get instance => Get.find();
@@ -122,6 +126,51 @@ class AddressController extends GetxController {
     } catch (e) {
       PLoaders.errorSnackBar(title: 'Address Not Found', message: e.toString());
     }
+  }
+
+  Future<dynamic> selectNewAddressPopup(BuildContext context) async {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(PSizes.lg),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const PSectionHeading(title: 'Select Address'),
+              FutureBuilder(
+                  future: allUserAddress(),
+                  builder: (_, snapshot) {
+                    // Helper function: handle loader, no record, or error message
+                    final response = KCloudHelperFunction.checkMultiRecordState(
+                        snapshot: snapshot);
+                    if (response != null) return response;
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (_, index) => SingleAddress(
+                        address: snapshot.data![index],
+                        onTap: () async {
+                          await selectAddress(snapshot.data![index]);
+                          Get.back();
+                        },
+                      ),
+                    );
+                  }),
+              const SizedBox(
+                height: PSizes.defaultSpace,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () => Get.to(() => const AddAddressScreen()),
+                    child: const Text('Add new address')),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   // Function to reset form field
