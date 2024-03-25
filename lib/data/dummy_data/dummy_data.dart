@@ -78,20 +78,20 @@ class DummyData {
   // ]);
 
   static final List<CategoryModel> categories = [
-    CategoryModel(
-        id: '1', name: 'Sports', image: PImages.sportIcon, isFeatured: true),
-    CategoryModel(
-        id: '5',
-        name: 'Furniture',
-        image: PImages.furntureIcon,
-        isFeatured: true),
-    CategoryModel(
-        id: '2',
-        name: 'Electronics',
-        image: PImages.electroniIcon,
-        isFeatured: true),
-    CategoryModel(
-        id: '3', name: 'Clothes', image: PImages.clothIcon, isFeatured: true),
+    // CategoryModel(
+    //     id: '1', name: 'Sports', image: PImages.sportIcon, isFeatured: true),
+    // CategoryModel(
+    //     id: '5',
+    //     name: 'Furniture',
+    //     image: PImages.furntureIcon,
+    //     isFeatured: true),
+    // CategoryModel(
+    //     id: '2',
+    //     name: 'Electronics',
+    //     image: PImages.electroniIcon,
+    //     isFeatured: true),
+    // CategoryModel(
+    //     id: '3', name: 'Clothes', image: PImages.clothIcon, isFeatured: true),
     CategoryModel(
         id: '4', name: 'Animals', image: PImages.animalIcon, isFeatured: true),
     CategoryModel(

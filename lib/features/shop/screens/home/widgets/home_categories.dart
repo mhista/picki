@@ -16,7 +16,6 @@ class PHomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryController = Get.put(CategoryController());
-    final isDark = PHelperFunctions.isDarkMode(context);
     return Obx(() {
       if (categoryController.isLoading.value) return const CategoryShimmer();
       if (categoryController.featuredCategories.isEmpty) {
@@ -39,7 +38,7 @@ class PHomeCategories extends StatelessWidget {
             itemBuilder: (_, index) {
               final category = categoryController.featuredCategories[index];
               return PVerticalImageText(
-                overlayColor: isDark ? PColors.white : PColors.dark,
+                // overlayColor: isDark ? PColors.white : PColors.dark,
                 image: category.image,
                 title: category.name,
                 onTap: () => Get.to(() => SubCategoriesScreen(

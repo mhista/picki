@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/features/personalization/controllers/user_controller.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
+import 'package:pickafrika/utils/helpers/helper_functions.dart';
 
 import '../../../../../common/widgets/appbar/appBar.dart';
 import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
@@ -17,17 +18,15 @@ class PHomeAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
+    final isDark = PHelperFunctions.isDarkMode(context);
     return PAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            PTexts.homeAppBarTitle,
-            style: Theme.of(context)
-                .textTheme
-                .labelMedium!
-                .apply(color: PColors.grey),
-          ),
+          Text(PTexts.homeAppBarTitle,
+              style: Theme.of(context).textTheme.labelMedium!
+              // .apply(color: is PColors.grey),
+              ),
           const SizedBox(
             height: PSizes.spaceBtwItems - 10,
           ),
@@ -40,21 +39,18 @@ class PHomeAppbar extends StatelessWidget {
                 radius: 5,
               );
             } else {
-              return Text(
-                controller.user.value.fullName,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall!
-                    .apply(color: PColors.white),
-              );
+              return Text(controller.user.value.fullName,
+                  style: Theme.of(context).textTheme.headlineSmall!
+                  // .apply(color: PColors.white),
+                  );
             }
           }),
         ],
       ),
-      actions: const [
+      actions: [
         PCartCounterIcon(
           // onPressed: () {},
-          iconColor: PColors.white,
+          iconColor: isDark ? PColors.white : PColors.dark,
         )
       ],
     );

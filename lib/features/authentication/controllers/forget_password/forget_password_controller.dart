@@ -19,7 +19,7 @@ class ForgetPasswordController extends GetxController {
     try {
       // START LOADING
       PFullScreenLoader.openLoadingDialog(
-          'Processing Your Request.... ', PImages.lottie1);
+          'Processing Your Request.... ', PImages.loading);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -57,7 +57,7 @@ class ForgetPasswordController extends GetxController {
     try {
       // START LOADING
       PFullScreenLoader.openLoadingDialog(
-          'Processing Your Request.... ', PImages.lottie1);
+          'Processing Your Request.... ', PImages.loading);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

@@ -1,4 +1,5 @@
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'dart:io';
@@ -18,9 +19,15 @@ class PFirebaseStorageServices extends GetxController {
   // RETURNS A UNIT8LIST CONTAINING IMAGE DATA
   Future<Uint8List> getImageDataFromAssets(String path) async {
     try {
+      // debugPrint(path);
+
       final byteData = await rootBundle.load(path);
+      debugPrint(byteData.toString());
+
       final imageData = byteData.buffer
           .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
+      debugPrint(path);
+
       return imageData;
     } catch (e) {
       throw 'Error loading image data: $e';

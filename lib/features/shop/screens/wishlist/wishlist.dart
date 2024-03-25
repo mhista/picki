@@ -44,7 +44,7 @@ class WishListScreen extends StatelessWidget {
                     builder: (context, snapshot) {
                       final emptyWidget = AnimationLoaderWidget(
                         text: 'Whoops! Your wishlist is empty!',
-                        animation: PImages.lottie2,
+                        animation: PImages.whops,
                         showAction: true,
                         actionText: 'Let\'s add some',
                         onActionPressed: () =>

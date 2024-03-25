@@ -34,36 +34,40 @@ class OrderController extends GetxController {
   }
 
   void processOrder(double total) async {
-    // START LOADER
-    PFullScreenLoader.openLoadingDialog(
-        'Processing your order', PImages.lottie1);
-    // GET USER AUTH ID
-    final userId = AuthenticationRepository.instance.authUser!.uid;
-    if (userId.isEmpty) return;
+    try {
+      // START LOADER
+      PFullScreenLoader.openLoadingDialog(
+          'Processing your order', PImages.lottie1);
+      // GET USER AUTH ID
+      final userId = AuthenticationRepository.instance.authUser!.uid;
+      if (userId.isEmpty) return;
 
-    // ADD DETAILS
-    final order = OrderModel(
-        id: UniqueKey().toString(),
-        status: OrderStatus.processing,
-        userId: userId,
-        totalAmount: total,
-        orderDate: DateTime.now(),
-        items: cartController.cartItems.toList(),
-        address: addressController.selectedAddress.value,
-        paymentMethod: checkoutController.selectedPaymentModel.value.name,
-        deliveryDate: DateTime.now());
-    // SAVE THE ORDER TO FIRESTORE
-    await orderRepository.saveOrder(order, userId);
-    // UPDATE CART STATUS
-    cartController.clearCart();
+      // ADD DETAILS
+      final order = OrderModel(
+          id: UniqueKey().toString(),
+          status: OrderStatus.processing,
+          userId: userId,
+          totalAmount: total,
+          orderDate: DateTime.now(),
+          items: cartController.cartItems.toList(),
+          address: addressController.selectedAddress.value,
+          paymentMethod: checkoutController.selectedPaymentModel.value.name,
+          deliveryDate: DateTime.now());
+      // SAVE THE ORDER TO FIRESTORE
+      await orderRepository.saveOrder(order, userId);
+      // UPDATE CART STATUS
+      cartController.clearCart();
+      PFullScreenLoader.stopLoading();
+      // SHOW SUCCESSS SCREEN
 
-    // SHOW SUCCESSS SCREEN
-
-    () => Get.off(() => SuccessScreen1(
-          image: PImages.orderSuccessful,
-          title: 'Payment Successful',
-          subtitle: 'Your product has been added for shipment. expect soon!',
-          onPressed: () => Get.offAll(() => const NavigationMenu()),
-        ));
+      Get.off(() => SuccessScreen1(
+            image: PImages.lottie3,
+            title: 'Payment Successful',
+            subtitle: 'Your product has been added for shipment. expect soon!',
+            onPressed: () => Get.offAll(() => const NavigationMenu()),
+          ));
+    } catch (e) {
+      PLoaders.errorSnackBar(title: 'Ohps!', message: e.toString());
+    }
   }
 }

@@ -118,7 +118,7 @@ class CartController extends GetxController {
     }
 
     updateCart();
-    PLoaders.customToast(message: 'Product has been added to Cart');
+    // PLoaders.customToast(message: 'Product has been added to Cart');
   }
 
   // REMOVE ONE ITEM IN CART
@@ -130,7 +130,8 @@ class CartController extends GetxController {
       if (cartItems[index].quantity > 1) {
         cartItems[index].quantity -= 1;
       } else {
-        // SHOW A DIALOG BEFOR REMOVING
+        // SHOW A DIALOG BEFORE REMOVING
+
         cartItems[index].quantity == 1
             ? removeFromCartDialog(index)
             : cartItems.removeAt(index);
@@ -138,7 +139,7 @@ class CartController extends GetxController {
     }
 
     updateCart();
-    PLoaders.customToast(message: 'Product has been removed to Cart');
+    // PLoaders.customToast(message: 'Product has been removed to Cart');
   }
 
   // INITIALIZE ALREADY ADDED PRODUCT

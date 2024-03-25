@@ -54,7 +54,7 @@ class BannerController extends GetxController {
 
   void uploadDummyData() async {
     try {
-      PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.lottie1);
+      PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.cloud);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

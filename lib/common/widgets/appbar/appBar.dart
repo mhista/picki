@@ -29,7 +29,7 @@ class PAppBar extends StatelessWidget implements PreferredSizeWidget {
         horizontal: PSizes.sm,
       ),
       child: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),

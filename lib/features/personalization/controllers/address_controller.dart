@@ -26,7 +26,14 @@ class AddressController extends GetxController {
   final city = TextEditingController();
   final state = TextEditingController();
   final country = TextEditingController();
+
+  @override
+  onInit() {
+    allUserAddress();
+    super.onInit();
+  }
   // FORM KEY
+
   GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
 
   // REFRESH DATA

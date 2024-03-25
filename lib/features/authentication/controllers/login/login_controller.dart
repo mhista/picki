@@ -30,7 +30,7 @@ class LoginController extends GetxController {
   Future<void> emailAndPassworSignIn() async {
     try {
       // START LOADING
-      PFullScreenLoader.openLoadingDialog('Logging in.... ', PImages.lottie1);
+      PFullScreenLoader.openLoadingDialog('Logging in.... ', PImages.loading);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -67,7 +67,7 @@ class LoginController extends GetxController {
   Future<void> signInWithGoogle() async {
     try {
       // START LOADING
-      PFullScreenLoader.openLoadingDialog('Logging in.... ', PImages.lottie1);
+      PFullScreenLoader.openLoadingDialog('Logging in.... ', PImages.loading);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

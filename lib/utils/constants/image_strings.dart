@@ -23,6 +23,11 @@ class PImages {
 // LOTTIE ANIMATIONS
   static const String lottie1 = 'assets/images/animations/lottie1.json';
   static const String lottie2 = 'assets/images/animations/lottie2.json';
+  static const String lottie3 = 'assets/images/animations/success.json';
+  static const String loading = 'assets/images/animations/loading.json';
+  static const String cloud = 'assets/images/animations/cloud.json';
+  static const String whops = 'assets/images/animations/whops.json';
+
   static const String successAnimation =
       'assets/images/animations/success.json';
   // ONBOARDING images
@@ -42,24 +47,17 @@ class PImages {
       'assets/images/animations/3d-casual-life.png';
 
   // CATEGORY icon images
-  static const String sportIcon =
-      'assets/images/categories/icons8-bowling-64.png';
-  static const String clothIcon =
-      'assets/images/categories/icons8-tailors-dummy-64.png';
-  static const String shoeIcon =
-      'assets/images/categories/icons8-shoes-500.png';
-  static const String cosmeticIcon =
-      'assets/images/categories/icons8-cosmetics-64.png';
-  static const String animalIcon =
-      'assets/images/categories/icons8-dog-heart-64.png';
+  // assets\images\categories\jewelry.png
+  static const String sportIcon = 'assets/images/categories/sports.png';
+  static const String clothIcon = 'assets/images/categories/cloth.png';
+  static const String shoeIcon = 'assets/images/categories/shoe.png';
+  static const String cosmeticIcon = 'assets/images/categories/lip-gloss.png';
+  static const String animalIcon = 'assets/images/categories/animal.png';
   static const String toyIcon =
       'assets/images/categories/icons8-wooden-toy-car-64.png';
-  static const String furntureIcon =
-      'assets/images/categories/icons8-dining-chair-96.png';
-  static const String jeweleryIcon =
-      'assets/images/categories/icons8-sparkling-diamond-64.png';
-  static const String electroniIcon =
-      'assets/images/categories/icons8-smartphone-64.png';
+  static const String furntureIcon = 'assets/images/categories/furniture.png';
+  static const String jeweleryIcon = 'assets/images/categories/jewelry.png';
+  static const String electroniIcon = 'assets/images/categories/laptop.png';
 
   // BANNER IMAGES
   static const String promoBanner1 =

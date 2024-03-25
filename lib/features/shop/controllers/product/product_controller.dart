@@ -18,6 +18,7 @@ class ProductController extends GetxController {
 
   RxList<ProductModel> productModels = <ProductModel>[].obs;
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
+  RxList<ProductModel> recommendedProducts = <ProductModel>[].obs;
 
   final _productRepository = Get.put(ProductRepository());
   void updatePageIndicator(index) {
@@ -27,6 +28,7 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     fetchFeaturedProducts();
+    fetchRecommendedProducts();
     super.onInit();
   }
 
@@ -60,10 +62,27 @@ class ProductController extends GetxController {
     }
   }
 
+// FETCH ALL RECOMMENDE PRODUCTS
+  void fetchRecommendedProducts() async {
+    try {
+      // SHOW SHIMMER WHILE LOADING CATEGORIES
+      isLoading.value = true;
+      // FETCH PRODUCTS FROM THE DATABASE
+      final products = await _productRepository.getFeaturedProducts();
+      // ASSIGN THEM TO THE LIST
+      recommendedProducts.assignAll(products);
+    } catch (e) {
+      // SHOW GENERIC ERROR TO THE USER
+      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   // UPLOAD DUMMY PRODUCTS
   void uploadDummyData() async {
     try {
-      PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.lottie1);
+      PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.cloud);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

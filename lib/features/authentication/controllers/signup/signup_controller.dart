@@ -31,7 +31,7 @@ class SignupController extends GetxController {
     try {
       // START LOADING
       PFullScreenLoader.openLoadingDialog(
-          'Information being processed', PImages.lottie1);
+          'Information being processed', PImages.loading);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

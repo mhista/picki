@@ -11,7 +11,7 @@ class PVerticalImageText extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
-    this.textColor = PColors.white,
+    this.textColor,
     this.backgroundColor,
     this.onTap,
     this.isNetworkImage = true,
@@ -20,7 +20,7 @@ class PVerticalImageText extends StatelessWidget {
   });
   final BoxFit? fit;
   final String image, title;
-  final Color textColor;
+  final Color? textColor;
   final Color? backgroundColor, overlayColor;
   final bool isNetworkImage;
   final void Function()? onTap;

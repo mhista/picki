@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/data/dummy_data/dummy_data.dart';
 import 'package:pickafrika/data/repositories/categories/category_repositories.dart';
@@ -81,7 +82,7 @@ class CategoryController extends GetxController {
   // UPLOAD CATEGORIES
   void uploadDummyData() async {
     try {
-      PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.lottie1);
+      PFullScreenLoader.openLoadingDialog('Processing.... ', PImages.cloud);
       // CHECK INTERNET CONNECTIVITY
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -89,8 +90,10 @@ class CategoryController extends GetxController {
         return;
       }
       // UPLOAD CATEGORIES TO FIRESTORE
-
+      debugPrint('creating');
       await _categoryRepository.uploadDummeyData(DummyData.categories);
+      // debugPrint('done');
+
       fetchCategories();
       PFullScreenLoader.stopLoading();
       PLoaders.successSnackBar(

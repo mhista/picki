@@ -27,7 +27,7 @@ class CartScreen extends StatelessWidget {
       body: Obx(() {
         final emptyAnimationWidget = AnimationLoaderWidget(
           text: 'Whoops! Your Cart is empty!',
-          animation: PImages.lottie2,
+          animation: PImages.whops,
           showAction: true,
           actionText: 'Let\'s fill it',
           onActionPressed: () => Get.off(() => const NavigationMenu()),

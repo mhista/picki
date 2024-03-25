@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pickafrika/data/services/firebase_services/firebase_storage_services.dart';
@@ -57,6 +58,7 @@ class CategoryRepository extends GetxController {
       for (var category in categories) {
         // GET IMAGEDATA LINK FROM THE LOCAL ASSETS;
         final file = await storage.getImageDataFromAssets(category.image);
+        // debugPrint(category.image);
 
         // upload image and get its url
         final url =

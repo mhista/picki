@@ -49,13 +49,10 @@ class AnimationLoaderWidget extends StatelessWidget {
                   width: 250,
                   child: OutlinedButton(
                     onPressed: onActionPressed,
-                    child: Text(
-                      actionText!,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .apply(color: PColors.light),
-                    ),
+                    child: Text(actionText!,
+                        style: Theme.of(context).textTheme.bodyMedium!
+                        // .apply(color: PColors.light),
+                        ),
                   ),
                 )
               : const SizedBox()
