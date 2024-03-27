@@ -99,6 +99,26 @@ class ProductRepository extends GetxController {
     }
   }
 
+// GET LIMITED FEATURED PRODUCTS
+  Future<List<ProductModel>> getRecommendedProducts() async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where('isFeatured', isEqualTo: false)
+          .limit(4)
+          .get();
+      final list =
+          snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      return list;
+    } on FirebaseException catch (e) {
+      throw KFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw KPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong, please try again';
+    }
+  }
+
   // / / GET ALL RECOMMENDED PRODUCTS
   Future<List<ProductModel>> getAllRecommendedProducts() async {
     try {

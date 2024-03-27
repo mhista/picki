@@ -21,9 +21,6 @@ class ProductController extends GetxController {
   RxList<ProductModel> recommendedProducts = <ProductModel>[].obs;
 
   final _productRepository = Get.put(ProductRepository());
-  void updatePageIndicator(index) {
-    carouselCurrentIndex.value = index;
-  }
 
   @override
   void onInit() {
@@ -62,13 +59,13 @@ class ProductController extends GetxController {
     }
   }
 
-// FETCH ALL RECOMMENDE PRODUCTS
+// FETCH LIMITED FUTURE PRODUCTS
   void fetchRecommendedProducts() async {
     try {
       // SHOW SHIMMER WHILE LOADING CATEGORIES
       isLoading.value = true;
       // FETCH PRODUCTS FROM THE DATABASE
-      final products = await _productRepository.getFeaturedProducts();
+      final products = await _productRepository.getRecommendedProducts();
       // ASSIGN THEM TO THE LIST
       recommendedProducts.assignAll(products);
     } catch (e) {
@@ -76,6 +73,19 @@ class ProductController extends GetxController {
       PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+// FETCH ALL RECOMMENDED PRODUCTS
+  Future<List<ProductModel>> fetchAllRecommendedProducts() async {
+    try {
+      // FETCH PRODUCTS FROM THE DATABASE
+      final products = await _productRepository.getAllRecommendedProducts();
+      return products;
+    } catch (e) {
+      // SHOW GENERIC ERROR TO THE USER
+      PLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
     }
   }
 

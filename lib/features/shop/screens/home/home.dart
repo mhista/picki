@@ -4,9 +4,11 @@ import 'package:iconsax/iconsax.dart';
 import 'package:pickafrika/common/widgets/shimmer/product_vertical_shimmer.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/images/edge_rounded_images.dart';
 import '../../../../common/widgets/layouts/gid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../utils/constants/image_strings.dart';
 import '../../controllers/product/product_controller.dart';
 import '../all_products/all_products.dart';
 import 'widgets/home_appbar.dart';
@@ -122,16 +124,20 @@ class HomeScreen extends StatelessWidget {
                   // RECOMMENDED PRODUCTS
                   Column(
                     children: [
+                      const PPromoSlider(),
+                      const SizedBox(
+                        height: PSizes.spaceBtwItems,
+                      ),
                       PSectionHeading(
                         title: 'Recommended',
                         onPressed: () => Get.to(() => AllProducts(
-                              title: 'Popular Products',
+                              title: 'Recommended',
                               // query: FirebaseFirestore.instance
                               //     .collection('Products')
                               //     .where('isFeatured', isEqualTo: true)
                               //     .limit(6),
                               futureMethod:
-                                  controller.fetchRecommendedProducts(),
+                                  controller.fetchAllRecommendedProducts(),
                             )),
                       ),
                       const SizedBox(
@@ -141,7 +147,7 @@ class HomeScreen extends StatelessWidget {
                         if (controller.isLoading.value) {
                           return const VerticalProductShimmer();
                         }
-                        if (controller.featuredProducts.isEmpty) {
+                        if (controller.recommendedProducts.isEmpty) {
                           return Center(
                             child: Text(
                               'No Data Found!',
@@ -150,9 +156,9 @@ class HomeScreen extends StatelessWidget {
                           );
                         } else {
                           return PGridLayout(
-                            itemCount: controller.featuredProducts.length,
+                            itemCount: controller.recommendedProducts.length,
                             itemBuilder: (_, index) => PProductCardVertical(
-                              product: controller.featuredProducts[index],
+                              product: controller.recommendedProducts[index],
                             ),
                           );
                         }

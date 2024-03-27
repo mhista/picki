@@ -8,33 +8,25 @@ class DummyData {
   // BANNERS
   static final List<BannerModel> banners = [
     BannerModel(
-        imageUrl: PImages.promoBanner1,
+        imageUrl: PImages.promoBanner2,
         targetScreen: KRoutes.order,
         active: false),
     BannerModel(
-        imageUrl: PImages.promoBanner2,
+        imageUrl: PImages.promoBanner3,
         targetScreen: KRoutes.cart,
         active: true),
     BannerModel(
-        imageUrl: PImages.promoBanner3,
+        imageUrl: PImages.promoBanner4,
         targetScreen: KRoutes.favourites,
         active: true),
     BannerModel(
-        imageUrl: PImages.promoBanner1,
+        imageUrl: PImages.promoBanner5,
         targetScreen: KRoutes.search,
         active: true),
     BannerModel(
-        imageUrl: PImages.promoBanner2,
+        imageUrl: PImages.promoBanner6,
         targetScreen: KRoutes.settings,
         active: true),
-    BannerModel(
-        imageUrl: PImages.promoBanner3,
-        targetScreen: KRoutes.userAddress,
-        active: true),
-    BannerModel(
-        imageUrl: PImages.promoBanner1,
-        targetScreen: KRoutes.checkout,
-        active: false),
   ];
 
   // static final UserModel user = UserModel(

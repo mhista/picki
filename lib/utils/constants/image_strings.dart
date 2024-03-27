@@ -60,10 +60,12 @@ class PImages {
   static const String electroniIcon = 'assets/images/categories/laptop.png';
 
   // BANNER IMAGES
-  static const String promoBanner1 =
-      'assets/images/banners/black-and-white2.png';
-  static const String promoBanner2 = 'assets/images/banners/brown-jacket2.png';
-  static const String promoBanner3 = 'assets/images/banners/grey-shoes2.png';
+  static const String promoBanner1 = 'assets/images/banners/white.png';
+  static const String promoBanner2 = 'assets/images/banners/yellow.png';
+  static const String promoBanner3 = 'assets/images/banners/black-shoes.png';
+  static const String promoBanner4 = 'assets/images/banners/brown.png';
+  static const String promoBanner5 = 'assets/images/banners/cosmetic.png';
+  static const String promoBanner6 = 'assets/images/banners/white.png';
 
   // PRODUCT IMAGES
   // CHAIRS
