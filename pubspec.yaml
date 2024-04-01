@@ -24,7 +24,7 @@ dependencies:
 
   # UTILITY PACKAGES
   http: ^1.2.0
-  intl: ^0.19.0
+  intl: ^0.18.0
   logger: ^2.0.2+1
   url_launcher: ^6.2.4
   get_storage: ^2.1.1
@@ -51,6 +51,7 @@ dependencies:
   firebase_storage: ^11.6.7 
   cached_network_image: ^3.3.1
   shared_preferences: ^2.2.2
+  device_preview: ^1.1.0
 
 #----------------------PCKAGES END--------------------------------------
 dev_dependencies:
@@ -105,7 +106,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Schyler
+    - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 800

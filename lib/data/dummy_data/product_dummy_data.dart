@@ -1,6 +1,7 @@
 import 'package:pickafrika/data/dummy_data/brand_dummy_data.dart';
 import 'package:pickafrika/utils/constants/enums.dart';
 
+import '../../features/shop/models/product_attribute_model.dart';
 import '../../features/shop/models/product_model.dart';
 import '../../features/shop/models/product_variation_model.dart';
 import '../../utils/constants/image_strings.dart';
@@ -162,7 +163,7 @@ class ProductDummyData {
     //   brand: BrandDummyData.brandModels[0],
     //   sku: 'ABR4563',
     // ),
-    // // PRODUCT 4
+    // PRODUCT 4
     // ProductModel(
     //   id: '005',
     //   stock: 20,
@@ -170,7 +171,7 @@ class ProductDummyData {
     //   salePrice: 150,
     //   title: 'Mens Black Jacket, ',
     //   thumbnail: PImages.productMen3,
-    //   isFeatured: true,
+    //   isFeatured: false,
     //   description: 'Mens Black Jacket suit, ',
     //   categoryId: '1',
     //   productType: ProductType.single.name,
@@ -190,7 +191,7 @@ class ProductDummyData {
     //   salePrice: 1200,
     //   title: 'iphone x',
     //   thumbnail: PImages.iphone3,
-    //   isFeatured: true,
+    //   isFeatured: false,
     //   description: '',
     //   categoryId: '1',
     //   productType: ProductType.variable.name,
@@ -226,130 +227,130 @@ class ProductDummyData {
     //   brand: BrandDummyData.brandModels[7],
     //   sku: 'ABR4563',
     // ),
-    // // PRODUCT 6
-    // ProductModel(
-    //   id: '007',
-    //   stock: 50,
-    //   price: 3500,
-    //   salePrice: 3300,
-    //   title: 'Macbook Air',
-    //   thumbnail: PImages.macbook1,
-    //   isFeatured: true,
-    //   description: '',
-    //   categoryId: '1',
-    //   productType: ProductType.variable.name,
-    //   images: [PImages.macbook2, PImages.macbook4],
-    //   productAttributes: [
-    //     ProductAttributeModel(name: 'Color', values: [
-    //       'Grey',
-    //       'White',
-    //     ]),
-    //   ],
-    //   productVariations: [
-    //     ProductVariationModel(
-    //         id: '10',
-    //         attributeValues: {
-    //           'Color': 'Grey',
-    //         },
-    //         stock: 20,
-    //         price: 3500,
-    //         salePrice: 3400,
-    //         image: PImages.macbook1,
-    //         description: ''),
-    //     ProductVariationModel(
-    //         id: '11',
-    //         attributeValues: {
-    //           'Color': 'White',
-    //         },
-    //         stock: 10,
-    //         price: 3400,
-    //         salePrice: 3300,
-    //         image: PImages.macbook3,
-    //         description: ''),
-    //   ],
-    //   brand: BrandDummyData.brandModels[7],
-    //   sku: 'ABR4563',
-    // ),
-    // // PRODUCT 7
-    // ProductModel(
-    //   id: '008',
-    //   stock: 50,
-    //   price: 2000,
-    //   salePrice: 1700,
-    //   title: 'Dell superior',
-    //   thumbnail: PImages.dell1,
-    //   isFeatured: true,
-    //   description: '',
-    //   categoryId: '1',
-    //   productType: ProductType.variable.name,
-    //   images: [PImages.dell3, PImages.dell2],
-    //   productAttributes: [
-    //     ProductAttributeModel(name: 'Color', values: [
-    //       'Black',
-    //       'White',
-    //     ]),
-    //   ],
-    //   productVariations: [
-    //     ProductVariationModel(
-    //         id: '12',
-    //         attributeValues: {'Color': 'Black'},
-    //         stock: 20,
-    //         price: 2000,
-    //         salePrice: 1800,
-    //         image: PImages.dell4,
-    //         description: ''),
-    //     ProductVariationModel(
-    //         id: '13',
-    //         attributeValues: {'Color': 'White'},
-    //         stock: 10,
-    //         price: 1900,
-    //         salePrice: 1700,
-    //         image: PImages.dell3,
-    //         description: ''),
-    //   ],
-    //   brand: BrandDummyData.brandModels[7],
-    //   sku: 'ABR4563',
-    // ),
-    // // PRODUCT 8
-    // ProductModel(
-    //   id: '009',
-    //   stock: 20,
-    //   price: 200,
-    //   salePrice: 150,
-    //   title: 'Retractable Chair, ',
-    //   thumbnail: PImages.productChair1,
-    //   isFeatured: true,
-    //   description: '',
-    //   categoryId: '1',
-    //   productType: ProductType.single.name,
-    //   images: [
-    //     PImages.productMen4,
-    //   ],
-    //   productVariations: [],
-    //   productAttributes: [],
-    //   brand: BrandDummyData.brandModels[4],
-    //   sku: 'ABR4563',
-    // ),
+    // PRODUCT 6
+    ProductModel(
+      id: '007',
+      stock: 50,
+      price: 3500,
+      salePrice: 3300,
+      title: 'Macbook Air',
+      thumbnail: PImages.macbook1,
+      isFeatured: false,
+      description: '',
+      categoryId: '1',
+      productType: ProductType.variable.name,
+      images: [PImages.macbook2, PImages.macbook4],
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: [
+          'Grey',
+          'White',
+        ]),
+      ],
+      productVariations: [
+        ProductVariationModel(
+            id: '10',
+            attributeValues: {
+              'Color': 'Grey',
+            },
+            stock: 20,
+            price: 3500,
+            salePrice: 3400,
+            image: PImages.macbook1,
+            description: ''),
+        ProductVariationModel(
+            id: '11',
+            attributeValues: {
+              'Color': 'White',
+            },
+            stock: 10,
+            price: 3400,
+            salePrice: 3300,
+            image: PImages.macbook3,
+            description: ''),
+      ],
+      brand: BrandDummyData.brandModels[7],
+      sku: 'ABR4563',
+    ),
+    // PRODUCT 7
+    ProductModel(
+      id: '008',
+      stock: 50,
+      price: 2000,
+      salePrice: 1700,
+      title: 'Dell superior',
+      thumbnail: PImages.dell1,
+      isFeatured: false,
+      description: '',
+      categoryId: '1',
+      productType: ProductType.variable.name,
+      images: [PImages.dell3, PImages.dell2],
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: [
+          'Black',
+          'White',
+        ]),
+      ],
+      productVariations: [
+        ProductVariationModel(
+            id: '12',
+            attributeValues: {'Color': 'Black'},
+            stock: 20,
+            price: 2000,
+            salePrice: 1800,
+            image: PImages.dell4,
+            description: ''),
+        ProductVariationModel(
+            id: '13',
+            attributeValues: {'Color': 'White'},
+            stock: 10,
+            price: 1900,
+            salePrice: 1700,
+            image: PImages.dell3,
+            description: ''),
+      ],
+      brand: BrandDummyData.brandModels[7],
+      sku: 'ABR4563',
+    ),
+    // PRODUCT 8
+    ProductModel(
+      id: '009',
+      stock: 20,
+      price: 200,
+      salePrice: 150,
+      title: 'Retractable Chair, ',
+      thumbnail: PImages.productChair1,
+      isFeatured: true,
+      description: '',
+      categoryId: '1',
+      productType: ProductType.single.name,
+      images: [
+        PImages.productMen4,
+      ],
+      productVariations: [],
+      productAttributes: [],
+      brand: BrandDummyData.brandModels[4],
+      sku: 'ABR4563',
+    ),
     // PRODUCT 9
-    // ProductModel(
-    //   id: '010',
-    //   stock: 20,
-    //   price: 200,
-    //   salePrice: 150,
-    //   title: 'Fancy Chair, ',
-    //   thumbnail: PImages.productChair2,
-    //   isFeatured: true,
-    //   description: '',
-    //   categoryId: '1',
-    //   productType: ProductType.single.name,
-    //   images: [
-    //     PImages.productMen4,
-    //   ],
-    //   productVariations: [],
-    //   productAttributes: [],
-    //   brand: BrandDummyData.brandModels[4],
-    //   sku: 'ABR4563',
-    // ),
+    ProductModel(
+      id: '010',
+      stock: 20,
+      price: 200,
+      salePrice: 150,
+      title: 'Fancy Chair, ',
+      thumbnail: PImages.productChair2,
+      isFeatured: true,
+      description: '',
+      categoryId: '1',
+      productType: ProductType.single.name,
+      images: [
+        PImages.productMen4,
+      ],
+      productVariations: [],
+      productAttributes: [],
+      brand: BrandDummyData.brandModels[4],
+      sku: 'ABR4563',
+    ),
     // PRODUCT 10
     ProductModel(
       id: '011',

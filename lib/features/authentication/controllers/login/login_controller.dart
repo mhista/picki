@@ -77,7 +77,7 @@ class LoginController extends GetxController {
 
       final userCredentials =
           await AuthenticationRepository.instance.signInWithGoogle();
-
+      debugPrint(userCredentials.toString());
       await userController.saveUserRecord(userCredentials);
       // remove loader
       PFullScreenLoader.stopLoading();

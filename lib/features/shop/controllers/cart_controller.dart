@@ -73,7 +73,9 @@ class CartController extends GetxController {
       updateCart();
       // TRIGGER A SUCCESS MESSAGE
       PLoaders.customToast(message: 'Your Product has been added to Cart');
-    } catch (e) {}
+    } catch (e) {
+      return;
+    }
   }
 
 // CONVERT PRODUCT TO CARTMMODELITEM
@@ -197,6 +199,8 @@ class CartController extends GetxController {
       cartItems.assignAll(cartItemsStrings
           .map((item) => CartItemModel.fromMap(item as Map<String, dynamic>)));
       updateCartTotals();
+    } else {
+      return;
     }
   }
 
