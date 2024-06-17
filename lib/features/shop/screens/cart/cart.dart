@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
           animation: PImages.whops,
           showAction: true,
           actionText: 'Let\'s fill it',
-          onActionPressed: () => Get.off(() => const NavigationMenu()),
+          onActionPressed: () => Get.offAll(() => const NavigationMenu()),
         );
         if (cartController.cartItems.isEmpty) {
           return emptyAnimationWidget;

@@ -7,7 +7,6 @@ import 'package:pickafrika/features/shop/screens/product_details/widgets/product
 import 'package:pickafrika/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:pickafrika/utils/constants/enums.dart';
 import 'package:pickafrika/utils/constants/sizes.dart';
-
 import '../../../../common/widgets/texts/read_more_text.dart';
 import '../../models/product_model.dart';
 import 'widgets/product_image_slider.dart';
